@@ -169,3 +169,10 @@ After this there is one more step you need to do is to turn off SSL requirement
 Navigate to the Settings tab for the dashboard app, and add a config variable
 *PARSE_DASHBOARD_ALLOW_INSECURE_HTTP* and give it a value 1
 Your [Parse dashboard](https://recreo-parsedashboard.herokuapp.com/apps) is now ready 
+
+# References
+* https://www.raywenderlich.com/146736/parse-server-tutorial-ios
+* https://www.codementor.io/mattgoldspink/deploy-parse-dashboard-on-heroku-du1083egs
+* https://www.andrewcbancroft.com/2016/04/17/deploying-parse-dashboard/
+
+
