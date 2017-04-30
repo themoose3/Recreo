@@ -24,10 +24,17 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="robot" translatesAutoresizingMaskIntoConstraints="NO" id="cVY-AV-pcU">
                                 <rect key="frame" x="87" y="101" width="200" height="200"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="3kz-80-sap"/>
                                     <constraint firstAttribute="height" constant="200" id="8sZ-qd-Cta"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="5cF-o1-Pxn" appends="YES" id="cUA-zg-xKP"/>
+                                </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uti-Os-wfw">
                                 <rect key="frame" x="26" y="386" width="45" height="21"/>
@@ -98,6 +105,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PFw-fl-WIR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5cF-o1-Pxn">
+                    <connections>
+                        <action selector="onAvatarTap:" destination="4gC-9g-6Sf" id="shb-1I-56i"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="53.600000000000001" y="158.77061469265368"/>
         </scene>
