@@ -1,0 +1,6 @@
+framework module Pods_Recreo {
+  umbrella header "Pods-Recreo-umbrella.h"
+
+  export *
+  module * { export * }
+}
