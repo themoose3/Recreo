@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
-		84F664A11EA8463B00044DB4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F664A01EA8463B00044DB4 /* ViewController.swift */; };
 		84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A21EA8463B00044DB4 /* Main.storyboard */; };
 		84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A51EA8463B00044DB4 /* Assets.xcassets */; };
 		84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */; };
+		B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2831EB662E900C5A376 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6649E1EA8463B00044DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84F664A01EA8463B00044DB4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		84F664A31EA8463B00044DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84F664A51EA8463B00044DB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84F664A81EA8463B00044DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84F664AA1EA8463B00044DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B320F2831EB662E900C5A376 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				84F6649E1EA8463B00044DB4 /* AppDelegate.swift */,
-				84F664A01EA8463B00044DB4 /* ViewController.swift */,
 				84F664A21EA8463B00044DB4 /* Main.storyboard */,
 				84F664A51EA8463B00044DB4 /* Assets.xcassets */,
 				84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */,
 				84F664AA1EA8463B00044DB4 /* Info.plist */,
+				B320F2831EB662E900C5A376 /* ProfileViewController.swift */,
 			);
 			path = Recreo;
 			sourceTree = "<group>";
@@ -136,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F664A11EA8463B00044DB4 /* ViewController.swift in Sources */,
+				B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */,
 				84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +299,7 @@
 				84F664AF1EA8463B00044DB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
