@@ -23,3 +23,4 @@ The following are **nice-to-have** features:
 - Google oauth integration
 - Add long press gesture recognizer to collection view cell to delete photo from gallery
 - Detail view for photo
+- Carousel for Gallery 
