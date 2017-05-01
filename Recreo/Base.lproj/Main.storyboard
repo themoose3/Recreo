@@ -483,6 +483,9 @@
                                     <constraint firstAttribute="height" constant="150" id="ODG-sJ-JUo"/>
                                 </constraints>
                                 <state key="normal" image="f"/>
+                                <connections>
+                                    <action selector="onFacebookButtonTap:" destination="532-6C-VB8" eventType="touchUpInside" id="eIq-QO-Taf"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="nEo-eT-7k8">
                                 <rect key="frame" x="30" y="390" width="315" height="117"/>
@@ -506,6 +509,9 @@
                                         <state key="normal" title="Sign in">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onSigninTap:" destination="532-6C-VB8" eventType="touchUpInside" id="2dv-Iu-afI"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -529,6 +535,10 @@
                             <constraint firstItem="rE3-MY-W2w" firstAttribute="leading" secondItem="eNa-QR-rCO" secondAttribute="leading" constant="8" id="yRg-pH-fe3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="sQ9-SG-Nxw" id="geU-kN-K3a"/>
+                        <outlet property="passwordTextField" destination="F6A-Zn-6U5" id="W7Z-qV-s4a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3m5-z3-Q4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
