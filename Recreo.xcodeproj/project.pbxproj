@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		0971AF485D1A365A71196118 /* Pods_Recreo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */; };
 		84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEAD1EB67C670056B160 /* LoginViewController.swift */; };
+		84A7CEB01EB680300056B160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A7CEAF1EB680300056B160 /* GoogleService-Info.plist */; };
+		84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */; };
+		84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB41EB6DEEF0056B160 /* Constants.swift */; };
+		84A7CEB71EB6E1330056B160 /* FacebookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB61EB6E1330056B160 /* FacebookButton.swift */; };
+		84A7CEB91EB6F1810056B160 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB81EB6F1810056B160 /* CustomTextField.swift */; };
+		84A7CEBB1EB6F3430056B160 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEBA1EB6F3430056B160 /* CustomButton.swift */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
 		84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A21EA8463B00044DB4 /* Main.storyboard */; };
 		84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A51EA8463B00044DB4 /* Assets.xcassets */; };
@@ -27,6 +33,12 @@
 		2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.release.xcconfig"; sourceTree = "<group>"; };
 		3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recreo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A7CEAD1EB67C670056B160 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84A7CEAF1EB680300056B160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginView.swift; sourceTree = "<group>"; };
+		84A7CEB41EB6DEEF0056B160 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		84A7CEB61EB6E1330056B160 /* FacebookButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookButton.swift; sourceTree = "<group>"; };
+		84A7CEB81EB6F1810056B160 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		84A7CEBA1EB6F3430056B160 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6649E1EA8463B00044DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F664A31EA8463B00044DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,8 +101,20 @@
 		84A7CEAC1EB67C1F0056B160 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */,
+				84A7CEB61EB6E1330056B160 /* FacebookButton.swift */,
+				84A7CEB81EB6F1810056B160 /* CustomTextField.swift */,
+				84A7CEBA1EB6F3430056B160 /* CustomButton.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		84A7CEB31EB6DECD0056B160 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				84A7CEB41EB6DEEF0056B160 /* Constants.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		84F664921EA8463A00044DB4 = {
@@ -116,6 +140,7 @@
 			children = (
 				84A7CEAC1EB67C1F0056B160 /* Views */,
 				84A7CEAB1EB67C1A0056B160 /* Models */,
+				84A7CEB31EB6DECD0056B160 /* Utils */,
 				84A7CEAA1EB67C120056B160 /* Controllers */,
 				84F6649E1EA8463B00044DB4 /* AppDelegate.swift */,
 				84F664A21EA8463B00044DB4 /* Main.storyboard */,
@@ -260,12 +285,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84A7CEB91EB6F1810056B160 /* CustomTextField.swift in Sources */,
+				84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */,
 				B320F28E1EB6DDAB00C5A376 /* Photo.swift in Sources */,
 				B320F2881EB6D6F900C5A376 /* User.swift in Sources */,
 				84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */,
 				B320F2921EB6DED500C5A376 /* Conversation.swift in Sources */,
 				B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */,
+				84A7CEBB1EB6F3430056B160 /* CustomButton.swift in Sources */,
+				84A7CEB71EB6E1330056B160 /* FacebookButton.swift in Sources */,
 				84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */,
+				84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */,
 				B320F2901EB6DE2000C5A376 /* Message.swift in Sources */,
 				B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */,
 				B320F28A1EB6DB1A00C5A376 /* Event.swift in Sources */,
