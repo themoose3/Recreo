@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -17,11 +17,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //avatarImage.layer.cornerRadius = avatarImage.frame.size.width / 2
-        avatarImage.layer.cornerRadius = 10.0
-        avatarImage.layer.borderWidth = 5.0
-        avatarImage.layer.borderColor = UIColor.black.cgColor
-
+        setupAvatar()
         // Do any additional setup after loading the view.
     }
 
@@ -30,6 +26,19 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setupAvatar() {
+        avatarImage.layer.cornerRadius = 10.0
+        avatarImage.layer.borderWidth = 5.0
+        avatarImage.layer.borderColor = UIColor.black.cgColor
+        avatarImage.isUserInteractionEnabled = true
+    }
+    
+    @IBAction func onAvatarTap(_ sender: UITapGestureRecognizer) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
 
     /*
     // MARK: - Navigation
@@ -40,5 +49,25 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        var newImage: UIImage
+        
+        if let possibleImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
+            newImage = possibleImage
+        } else if let possibleImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            newImage = possibleImage
+        } else {
+            return
+        }
+        
+        // do something interesting here!
+        avatarImage.image = newImage
+        
+        dismiss(animated: true)
+    }
 
 }
