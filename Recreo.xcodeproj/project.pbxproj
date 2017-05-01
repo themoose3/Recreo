@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0971AF485D1A365A71196118 /* Pods_Recreo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */; };
 		84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEAD1EB67C670056B160 /* LoginViewController.swift */; };
-		84A7CEB01EB680300056B160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A7CEAF1EB680300056B160 /* GoogleService-Info.plist */; };
 		84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */; };
 		84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB41EB6DEEF0056B160 /* Constants.swift */; };
 		84A7CEB71EB6E1330056B160 /* FacebookButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB61EB6E1330056B160 /* FacebookButton.swift */; };
@@ -27,13 +26,18 @@
 		B320F28E1EB6DDAB00C5A376 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F28D1EB6DDAB00C5A376 /* Photo.swift */; };
 		B320F2901EB6DE2000C5A376 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F28F1EB6DE2000C5A376 /* Message.swift */; };
 		B320F2921EB6DED500C5A376 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2911EB6DED500C5A376 /* Conversation.swift */; };
+		B320F2951EB6FDE400C5A376 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2931EB6FDE400C5A376 /* EventDetailViewController.swift */; };
+		B320F2961EB6FDE400C5A376 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B320F2941EB6FDE400C5A376 /* EventDetailViewController.xib */; };
+		B320F2981EB6FE0200C5A376 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2971EB6FE0200C5A376 /* ChatViewController.swift */; };
+		B320F29A1EB7033700C5A376 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2991EB7033700C5A376 /* GalleryViewController.swift */; };
+		B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */; };
+		B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.release.xcconfig"; sourceTree = "<group>"; };
 		3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recreo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A7CEAD1EB67C670056B160 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		84A7CEAF1EB680300056B160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginView.swift; sourceTree = "<group>"; };
 		84A7CEB41EB6DEEF0056B160 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		84A7CEB61EB6E1330056B160 /* FacebookButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookButton.swift; sourceTree = "<group>"; };
@@ -54,6 +58,12 @@
 		B320F28D1EB6DDAB00C5A376 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		B320F28F1EB6DE2000C5A376 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		B320F2911EB6DED500C5A376 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		B320F2931EB6FDE400C5A376 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		B320F2941EB6FDE400C5A376 /* EventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailViewController.xib; sourceTree = "<group>"; };
+		B320F2971EB6FE0200C5A376 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		B320F2991EB7033700C5A376 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,10 @@
 			children = (
 				84A7CEAD1EB67C670056B160 /* LoginViewController.swift */,
 				B320F2831EB662E900C5A376 /* ProfileViewController.swift */,
+				B320F2931EB6FDE400C5A376 /* EventDetailViewController.swift */,
+				B320F2941EB6FDE400C5A376 /* EventDetailViewController.xib */,
+				B320F2971EB6FE0200C5A376 /* ChatViewController.swift */,
+				B320F2991EB7033700C5A376 /* GalleryViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -105,6 +119,8 @@
 				84A7CEB61EB6E1330056B160 /* FacebookButton.swift */,
 				84A7CEB81EB6F1810056B160 /* CustomTextField.swift */,
 				84A7CEBA1EB6F3430056B160 /* CustomButton.swift */,
+				B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */,
+				B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -223,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B320F2961EB6FDE400C5A376 /* EventDetailViewController.xib in Resources */,
 				84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */,
 				B320F2861EB6D56900C5A376 /* GoogleService-Info.plist in Resources */,
 				84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */,
@@ -286,11 +303,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A7CEB91EB6F1810056B160 /* CustomTextField.swift in Sources */,
+				B320F29A1EB7033700C5A376 /* GalleryViewController.swift in Sources */,
 				84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */,
+				B320F2981EB6FE0200C5A376 /* ChatViewController.swift in Sources */,
 				B320F28E1EB6DDAB00C5A376 /* Photo.swift in Sources */,
+				B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */,
+				B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */,
 				B320F2881EB6D6F900C5A376 /* User.swift in Sources */,
 				84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */,
 				B320F2921EB6DED500C5A376 /* Conversation.swift in Sources */,
+				B320F2951EB6FDE400C5A376 /* EventDetailViewController.swift in Sources */,
 				B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */,
 				84A7CEBB1EB6F3430056B160 /* CustomButton.swift in Sources */,
 				84A7CEB71EB6E1330056B160 /* FacebookButton.swift in Sources */,
