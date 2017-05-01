@@ -9,19 +9,24 @@
 /* Begin PBXBuildFile section */
 		0971AF485D1A365A71196118 /* Pods_Recreo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */; };
 		84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEAD1EB67C670056B160 /* LoginViewController.swift */; };
-		84A7CEB01EB680300056B160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84A7CEAF1EB680300056B160 /* GoogleService-Info.plist */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
 		84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A21EA8463B00044DB4 /* Main.storyboard */; };
 		84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A51EA8463B00044DB4 /* Assets.xcassets */; };
 		84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */; };
 		B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2831EB662E900C5A376 /* ProfileViewController.swift */; };
+		B320F2861EB6D56900C5A376 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B320F2851EB6D56900C5A376 /* GoogleService-Info.plist */; };
+		B320F2881EB6D6F900C5A376 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2871EB6D6F900C5A376 /* User.swift */; };
+		B320F28A1EB6DB1A00C5A376 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2891EB6DB1A00C5A376 /* Event.swift */; };
+		B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F28B1EB6DD3700C5A376 /* Gallery.swift */; };
+		B320F28E1EB6DDAB00C5A376 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F28D1EB6DDAB00C5A376 /* Photo.swift */; };
+		B320F2901EB6DE2000C5A376 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F28F1EB6DE2000C5A376 /* Message.swift */; };
+		B320F2921EB6DED500C5A376 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2911EB6DED500C5A376 /* Conversation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.release.xcconfig"; sourceTree = "<group>"; };
 		3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recreo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A7CEAD1EB67C670056B160 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		84A7CEAF1EB680300056B160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6649E1EA8463B00044DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F664A31EA8463B00044DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -30,6 +35,13 @@
 		84F664AA1EA8463B00044DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A01318A829FE1DC440A7C97B /* Pods-Recreo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.debug.xcconfig"; sourceTree = "<group>"; };
 		B320F2831EB662E900C5A376 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B320F2851EB6D56900C5A376 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B320F2871EB6D6F900C5A376 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B320F2891EB6DB1A00C5A376 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B320F28B1EB6DD3700C5A376 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
+		B320F28D1EB6DDAB00C5A376 /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		B320F28F1EB6DE2000C5A376 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B320F2911EB6DED500C5A376 /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,12 @@
 		84A7CEAB1EB67C1A0056B160 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B320F2871EB6D6F900C5A376 /* User.swift */,
+				B320F2891EB6DB1A00C5A376 /* Event.swift */,
+				B320F28B1EB6DD3700C5A376 /* Gallery.swift */,
+				B320F28D1EB6DDAB00C5A376 /* Photo.swift */,
+				B320F28F1EB6DE2000C5A376 /* Message.swift */,
+				B320F2911EB6DED500C5A376 /* Conversation.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -104,7 +122,7 @@
 				84F664A51EA8463B00044DB4 /* Assets.xcassets */,
 				84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */,
 				84F664AA1EA8463B00044DB4 /* Info.plist */,
-				84A7CEAF1EB680300056B160 /* GoogleService-Info.plist */,
+				B320F2851EB6D56900C5A376 /* GoogleService-Info.plist */,
 			);
 			path = Recreo;
 			sourceTree = "<group>";
@@ -181,7 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */,
-				84A7CEB01EB680300056B160 /* GoogleService-Info.plist in Resources */,
+				B320F2861EB6D56900C5A376 /* GoogleService-Info.plist in Resources */,
 				84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */,
 				84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */,
 			);
@@ -242,9 +260,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B320F28E1EB6DDAB00C5A376 /* Photo.swift in Sources */,
+				B320F2881EB6D6F900C5A376 /* User.swift in Sources */,
 				84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */,
+				B320F2921EB6DED500C5A376 /* Conversation.swift in Sources */,
 				B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */,
 				84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */,
+				B320F2901EB6DE2000C5A376 /* Message.swift in Sources */,
+				B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */,
+				B320F28A1EB6DB1A00C5A376 /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
