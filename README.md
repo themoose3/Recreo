@@ -22,3 +22,4 @@ The following are **nice-to-have** features:
 - Maps for location / directions
 - Google oauth integration
 - Add long press gesture recognizer to collection view cell to delete photo from gallery
+- Detail view for photo
