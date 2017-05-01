@@ -47,8 +47,6 @@ class LoginViewController: UIViewController {
             }
         })
     }
-    
-    
 
     @IBAction func onSigninTap(_ sender: Any) {
         if let email = emailTextField.text, let pwd = passwordTextField.text {
