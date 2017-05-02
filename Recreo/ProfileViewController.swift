@@ -34,25 +34,48 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     @IBAction func onAvatarTap(_ sender: UITapGestureRecognizer) {
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        present(picker, animated: true)
-    }
+        let actionSheet = UIAlertController()
+        let takePhotoAction = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.default) { (UIAlertAction) in
+            print("take photo")
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+                let picker = UIImagePickerController()
+                picker.delegate = self
+                picker.sourceType = UIImagePickerControllerSourceType.camera;
+                picker.allowsEditing = false
+                self.present(picker, animated: true, completion: nil)
+                // Add "save" logic
+            }
+        }
 
+        let choosePhotoAction = UIAlertAction(title: "Choose Photo", style: UIAlertActionStyle.default) { (UIAlertAction) in
+            let picker = UIImagePickerController()
+            picker.allowsEditing = true
+            picker.delegate = self
+            self.present(picker, animated: true)
+            // Add "save" logic
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+        }
+
+        actionSheet.addAction(takePhotoAction)
+        actionSheet.addAction(choosePhotoAction)
+        actionSheet.addAction(cancelAction)
+
+        self.present(actionSheet, animated: true) {
+        }
+    }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var newImage: UIImage
         
@@ -69,5 +92,4 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         dismiss(animated: true)
     }
-
 }
