@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+      
+        let ref = FIRDatabase.database().reference()
+        let itemsRef = ref.child("Test")
+        itemsRef.setValue(["name":"sideok"])
         return true
     }
 
