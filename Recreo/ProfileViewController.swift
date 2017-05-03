@@ -8,16 +8,24 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+enum TextField {
+    case name
+    case email
+}
+
+class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAvatar()
+        nameTextField.delegate = self
+        emailTextField.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -92,4 +100,73 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         dismiss(animated: true)
     }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("got here")
+        if textField == nameTextField {
+            saveText(textField: .name)
+            print("edited name")
+        } else {
+            saveText(textField: .email)
+            print("edited email")
+        }
+         textField.resignFirstResponder()
+    }
+    
+    func saveText(textField: TextField) {
+        switch textField {
+        case .name:
+            print("name")
+        default:
+            print("email")
+        }
+        // Save in Firebase
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("TextField should return method called")
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func registerForKeyboardNotifications(){
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWasShown(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWasShown(notification: NSNotification){
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.isScrollEnabled = true
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+        
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if (!aRect.contains(emailTextField.frame.origin)){
+            scrollView.scrollRectToVisible(emailTextField.frame, animated: true)
+        }
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification){
+        //Once keyboard disappears, restore original positions
+        var info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        scrollView.contentInset = contentInsets
+        scrollView.scrollIndicatorInsets = contentInsets
+        view.endEditing(true)
+        scrollView.isScrollEnabled = false
+    }
+    
 }
