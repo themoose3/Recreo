@@ -168,5 +168,13 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         view.endEditing(true)
         scrollView.isScrollEnabled = false
     }
+  
+    @IBAction func onCreateEventTest(_ sender: Any) {
+      print("button clicked")
+      performSegue(withIdentifier: "createEventSegue", sender: nil)
+    }
+  
+  
+  
     
 }

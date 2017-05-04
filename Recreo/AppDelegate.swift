@@ -21,9 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
       
-        let ref = FIRDatabase.database().reference()
-        let itemsRef = ref.child("Test")
-        itemsRef.setValue(["name":"sideok"])
         return true
     }
 
