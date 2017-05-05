@@ -1,5 +1,5 @@
 //
-//  MenuCell.swift
+//  EventCell.swift
 //  Recreo
 //
 //  Created by Padmanabhan, Avinash on 5/5/17.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class MenuCell: UITableViewCell {
-
-    @IBOutlet weak var eventLabel: UILabel!
+class EventCell: UITableViewCell {
+    
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +23,5 @@ class MenuCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

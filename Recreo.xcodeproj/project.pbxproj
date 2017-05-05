@@ -16,9 +16,11 @@
 		84A7CEBB1EB6F3430056B160 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEBA1EB6F3430056B160 /* CustomButton.swift */; };
 		84BBE0DE1EBBE95C000B92D3 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0DD1EBBE95C000B92D3 /* HamburgerViewController.swift */; };
 		84BBE0E01EBBE96E000B92D3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */; };
-		84BBE0E21EBBF2F8000B92D3 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0E11EBBF2F8000B92D3 /* MenuCell.swift */; };
 		84BBE0EA1EBD012F000B92D3 /* ArchivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */; };
 		84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */; };
+		84BBE0F51EBD1ECE000B92D3 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0F31EBD1ECE000B92D3 /* EventCell.swift */; };
+		84BBE0F61EBD1ECE000B92D3 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BBE0F41EBD1ECE000B92D3 /* EventCell.xib */; };
+		84BBE0F81EBD1F40000B92D3 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0F71EBD1F40000B92D3 /* MenuCell.swift */; };
 		84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */; };
 		84F19AA81EBAFEA200979C3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F19AA71EBAFEA200979C3F /* GoogleService-Info.plist */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
@@ -54,9 +56,11 @@
 		84A7CEBA1EB6F3430056B160 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		84BBE0DD1EBBE95C000B92D3 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		84BBE0E11EBBF2F8000B92D3 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchivesViewController.swift; sourceTree = "<group>"; };
 		84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		84BBE0F31EBD1ECE000B92D3 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
+		84BBE0F41EBD1ECE000B92D3 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		84BBE0F71EBD1F40000B92D3 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
 		84F19AA71EBAFEA200979C3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,7 +152,9 @@
 				B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */,
 				B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */,
 				8B613ABA1EB9C3F700C9DA0F /* ContactListCell.swift */,
-				84BBE0E11EBBF2F8000B92D3 /* MenuCell.swift */,
+				84BBE0F31EBD1ECE000B92D3 /* EventCell.swift */,
+				84BBE0F41EBD1ECE000B92D3 /* EventCell.xib */,
+				84BBE0F71EBD1F40000B92D3 /* MenuCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -276,6 +282,7 @@
 				84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */,
 				84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */,
 				84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */,
+				84BBE0F61EBD1ECE000B92D3 /* EventCell.xib in Resources */,
 				84F19AA81EBAFEA200979C3F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,18 +356,19 @@
 				84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */,
 				84BBE0DE1EBBE95C000B92D3 /* HamburgerViewController.swift in Sources */,
 				B320F2921EB6DED500C5A376 /* Conversation.swift in Sources */,
+				84BBE0F81EBD1F40000B92D3 /* MenuCell.swift in Sources */,
 				B320F2951EB6FDE400C5A376 /* EventDetailViewController.swift in Sources */,
 				B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */,
 				84BBE0E01EBBE96E000B92D3 /* MenuViewController.swift in Sources */,
 				84A7CEBB1EB6F3430056B160 /* CustomButton.swift in Sources */,
 				84A7CEB71EB6E1330056B160 /* FacebookButton.swift in Sources */,
+				84BBE0F51EBD1ECE000B92D3 /* EventCell.swift in Sources */,
 				84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */,
 				84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */,
 				84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */,
 				B320F2901EB6DE2000C5A376 /* Message.swift in Sources */,
 				B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */,
 				B320F28A1EB6DB1A00C5A376 /* Event.swift in Sources */,
-				84BBE0E21EBBF2F8000B92D3 /* MenuCell.swift in Sources */,
 				84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
