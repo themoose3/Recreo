@@ -17,6 +17,8 @@
 		84BBE0DE1EBBE95C000B92D3 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0DD1EBBE95C000B92D3 /* HamburgerViewController.swift */; };
 		84BBE0E01EBBE96E000B92D3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */; };
 		84BBE0E21EBBF2F8000B92D3 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0E11EBBF2F8000B92D3 /* MenuCell.swift */; };
+		84BBE0EA1EBD012F000B92D3 /* ArchivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */; };
+		84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */; };
 		84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */; };
 		84F19AA81EBAFEA200979C3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F19AA71EBAFEA200979C3F /* GoogleService-Info.plist */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
@@ -53,6 +55,8 @@
 		84BBE0DD1EBBE95C000B92D3 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		84BBE0E11EBBF2F8000B92D3 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchivesViewController.swift; sourceTree = "<group>"; };
+		84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
 		84F19AA71EBAFEA200979C3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,10 +116,11 @@
 				B320F2971EB6FE0200C5A376 /* ChatViewController.swift */,
 				B320F2991EB7033700C5A376 /* GalleryViewController.swift */,
 				8B613AB61EB9BCAB00C9DA0F /* CreateEventViewController.swift */,
-				8B613AB81EB9C1AF00C9DA0F /* ContactListViewController.swift */,
 				84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */,
 				84BBE0DD1EBBE95C000B92D3 /* HamburgerViewController.swift */,
 				84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */,
+				84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */,
+				84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				B320F2981EB6FE0200C5A376 /* ChatViewController.swift in Sources */,
 				8B613ABB1EB9C3F700C9DA0F /* ContactListCell.swift in Sources */,
 				B320F28E1EB6DDAB00C5A376 /* Photo.swift in Sources */,
+				84BBE0EA1EBD012F000B92D3 /* ArchivesViewController.swift in Sources */,
 				B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */,
 				B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */,
 				8B613AB71EB9BCAB00C9DA0F /* CreateEventViewController.swift in Sources */,
@@ -349,6 +355,7 @@
 				84A7CEBB1EB6F3430056B160 /* CustomButton.swift in Sources */,
 				84A7CEB71EB6E1330056B160 /* FacebookButton.swift in Sources */,
 				84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */,
+				84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */,
 				84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */,
 				B320F2901EB6DE2000C5A376 /* Message.swift in Sources */,
 				B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */,

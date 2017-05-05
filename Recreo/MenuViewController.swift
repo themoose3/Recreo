@@ -12,10 +12,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBOutlet weak var tableView: UITableView!
     
-    private var eventsFeedViewController: UIViewController!
-    private var profileNavigationController: UIViewController!
-    private var archivesViewController: UIViewController!
-    private var settingsViewController: UIViewController!
+    private var eventsFeedVC: UIViewController!
+    private var profileVC: UIViewController!
+    private var archivesVC: UIViewController!
+    private var settingsVC: UIViewController!
+    
     var viewControllers: [UIViewController] = []
     var hamburgerViewController: HamburgerViewController!
     
@@ -26,18 +27,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        eventsFeedViewController = storyboard.instantiateViewController(withIdentifier: "EventsFeedNavigationController")
-        profileNavigationController = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
+        eventsFeedVC = storyboard.instantiateViewController(withIdentifier: "EventsFeedNavigationController")
+        profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
+        archivesVC = storyboard.instantiateViewController(withIdentifier: "ArchivesNavigationController")
+        settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsNavigationController")
         
-        viewControllers.append(eventsFeedViewController)
-        viewControllers.append(profileNavigationController)
-        
+        viewControllers.append(eventsFeedVC)
+        viewControllers.append(profileVC)
+        viewControllers.append(archivesVC)
+        viewControllers.append(settingsVC)
 
-        //hamburgerViewController.contentViewController = profileNavigationController
+        hamburgerViewController.contentViewController = eventsFeedVC
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -47,19 +51,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         
-        if indexPath.row == 0 {
-            cell.textLabel?.text = "Events"
-        } else if indexPath.row == 1 {
-            cell.textLabel?.text = "Profile"
-        } else if indexPath.row == 2 {
-            cell.textLabel?.text = "Archives"
-        } else if indexPath.row == 3 {
-            cell.textLabel?.text = "Settings"
-        } else {
-            cell.textLabel?.text = "Sign Out"
-        }
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 21)
-        cell.textLabel?.textColor = UIColor.white
+        let titles = ["Events", "Profile", "Archives", "Settings"]
+        cell.eventLabel?.text = titles[indexPath.row]
+        cell.eventLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 21)
+        cell.eventLabel?.textColor = UIColor.white
         cell.backgroundColor = UIColor(red: 85/255.0, green: 172/255.0, blue: 238/255.0, alpha: 1.0)
         
         return cell
@@ -67,5 +62,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
     }
 }

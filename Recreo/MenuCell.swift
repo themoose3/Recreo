@@ -10,6 +10,8 @@ import UIKit
 
 class MenuCell: UITableViewCell {
 
+    @IBOutlet weak var eventLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
