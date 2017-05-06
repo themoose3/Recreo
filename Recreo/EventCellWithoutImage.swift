@@ -1,5 +1,5 @@
 //
-//  EventCell.swift
+//  EventCellWithoutImage.swift
 //  Recreo
 //
 //  Created by Padmanabhan, Avinash on 5/6/17.
@@ -8,10 +8,8 @@
 
 import UIKit
 
-class EventCell: UITableViewCell {
+class EventCellWithoutImage: UITableViewCell {
 
-    @IBOutlet weak var eventLabel: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

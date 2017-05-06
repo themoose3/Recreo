@@ -11,7 +11,7 @@ import CoreLocation
 
 class Event: NSObject {
     
-    var eventId: Int
+    var eventId: String
     var eventName: String
     var eventDescription: String?
     var host: User
@@ -25,7 +25,7 @@ class Event: NSObject {
     var galleryId: Gallery?
     var eventImage: URL?
     
-    init(eventId: Int, eventName: String, host: User, created: Date, startTime: Date) {
+    init(eventId: String, eventName: String, host: User, created: Date, startTime: Date) {
         self.eventId = eventId
         self.eventName = eventName
         self.host = host

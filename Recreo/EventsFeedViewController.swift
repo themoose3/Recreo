@@ -12,6 +12,8 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tableView: UITableView!
     
+    var event: Event!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,15 +25,36 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("EventCell", owner: self, options: nil)?.first as! EventCell
-        cell.label1.text = "row \(indexPath.row)"
-        cell.label2.text = "string \(indexPath.row)"
+        cell.eventLabel.text = "row \(indexPath.row)"
         
         return cell
+    }
+    
+    //init(userId: Int, email: String, phoneNumber: String) {
+    //init(eventId: Int, eventName: String, host: User, created: Date, startTime: Date) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let user = User(userId: "epkM4f0wwbZTz97U3uhvMzW7UWl2", email: "avinash@gmail.com", phoneNumber: "1234567890")
+        let createdTime = Date()
+        let interval = TimeInterval(60*60*24*indexPath.row)
+        let startTime = createdTime.addingTimeInterval(interval)
+        event = Event(eventId: "KjRdocp00UXRPhnaZeF", eventName: "Event", host: user, created: createdTime, startTime: startTime)
+        
+        performSegue(withIdentifier: "eventDetail", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "eventDetail" {
+            let eventDetailController = segue.destination as! EventDetailViewController
+            eventDetailController.event = event
+        }
     }
     
 }
