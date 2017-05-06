@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SwiftKeychainWrapper
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -41,17 +43,17 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.size.height/4
+        return tableView.bounds.size.height/5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         
-        let titles = ["Events", "Profile", "Archives", "Settings"]
+        let titles = ["Events", "Profile", "Archives", "Settings", "Sign Out"]
         cell.eventLabel?.text = titles[indexPath.row]
         cell.eventLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 21)
         cell.eventLabel?.textColor = UIColor.white
@@ -62,7 +64,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        if(indexPath.row == 4) {
+            let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+            print("AVINASH: ID removed from keychain \(keychainResult)")
+            try! FIRAuth.auth()?.signOut()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLogout"), object: nil)
+
+        } else {
+            hamburgerViewController.contentViewController = viewControllers[indexPath.row]
+        }
     }
 }

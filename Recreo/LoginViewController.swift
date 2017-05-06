@@ -19,16 +19,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            print("AVINASH: Id found in keychain")
-            performSegue(withIdentifier: "toFeedSegue", sender: nil)
-        }
     }
     
     @IBAction func onFacebookButtonTap(_ sender: Any) {
@@ -88,7 +78,7 @@ class LoginViewController: UIViewController {
      func completeSignIn(id: String) {
         let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("AVINASH: User saved to keychain: \(keyChainResult)")
-        performSegue(withIdentifier: "toFeedSegue", sender: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLogin"), object: nil)
     }
 }
 

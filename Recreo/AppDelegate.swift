@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,20 +19,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        FIRApp.configure()
-//        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-//      
-//        let ref = FIRDatabase.database().reference()
-        //let itemsRef = ref.child("Test")
-        //itemsRef.setValue(["name":"sideok"])
+        FIRApp.configure()
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("AVINASH: Id found in keychain")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+            window?.rootViewController = hamburgerViewController
+            
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            menuViewController.hamburgerViewController = hamburgerViewController
+            hamburgerViewController.menuViewController = menuViewController
+        } 
+
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLogin"), object: nil, queue: OperationQueue.main) { (Notification) in
+            print("AVINASH: Id inserted in keychain")
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
+            self.window?.rootViewController = hamburgerViewController
+            
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            menuViewController.hamburgerViewController = hamburgerViewController
+            hamburgerViewController.menuViewController = menuViewController
+        }
         
-        let hamburgerViewController = window!.rootViewController as! HamburgerViewController
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        
-        menuViewController.hamburgerViewController = hamburgerViewController
-        hamburgerViewController.menuViewController = menuViewController
-        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateInitialViewController()
+            
+            self.window?.rootViewController = vc
+        }
         return true
     }
 

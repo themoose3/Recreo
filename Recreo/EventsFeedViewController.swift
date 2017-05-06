@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Firebase
-import SwiftKeychainWrapper
 
 class EventsFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -36,11 +34,4 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
     
-    @IBAction func onSignOut(_ sender: Any) {
-        let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        print("AVINASH: ID removed from keychain \(keychainResult)")
-        try! FIRAuth.auth()?.signOut()
-        performSegue(withIdentifier: "backToSignIn", sender: nil)
-    }
-
 }
