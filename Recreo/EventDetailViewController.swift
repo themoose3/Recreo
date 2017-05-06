@@ -45,7 +45,11 @@ class EventDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         //let invitees = ["+14088074454": name1, "+14151234567": name2, "+15302345678": name3]
+=======
+        let invitees = ["+14088074454": name1, "+14151234567": name2, "+15302345678": name3]
+>>>>>>> 0fd8f69c737c3be1da818e30ef982a5e3b8d523d
         setupDetails()
         
         

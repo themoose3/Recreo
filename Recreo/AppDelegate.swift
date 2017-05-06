@@ -21,6 +21,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+<<<<<<< HEAD
+=======
+      
+       // let ref = FIRDatabase.database().reference()
+        //let itemsRef = ref.child("Test")
+        //itemsRef.setValue(["name":"sideok"])
+        
+       // let hamburgerViewController = window!.rootViewController as! HamburgerViewController
+      //  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      //  let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+        
+>>>>>>> 0fd8f69c737c3be1da818e30ef982a5e3b8d523d
         
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("AVINASH: Id found in keychain")
