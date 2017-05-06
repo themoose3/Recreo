@@ -44,7 +44,8 @@ class LoginViewController: UIViewController {
                 if error == nil {
                     print("AVINASH: Email/Password user authenticated with Firebase")
                     if let user  = user {
-                        self.completeSignIn(id: user.uid)
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
@@ -53,7 +54,8 @@ class LoginViewController: UIViewController {
                         } else {
                             print("AVINASH: Successfully created user with email/password")
                             if let user  = user {
-                                self.completeSignIn(id: user.uid)
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -69,13 +71,15 @@ class LoginViewController: UIViewController {
             } else {
                 print("AVINASH: Successfully authenticated with Firebase\n")
                 if let user  = user {
-                    self.completeSignIn(id: user.uid)
+                    let userData = ["provider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
                 }
             }
         })
     }
     
-     func completeSignIn(id: String) {
+     func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("AVINASH: User saved to keychain: \(keyChainResult)")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLogin"), object: nil)
