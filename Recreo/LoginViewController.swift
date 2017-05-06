@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                         } else {
                             print("AVINASH: Successfully created user with email/password")
                             if let user  = user {
-                                let userData = ["provider": user.providerID]
+                                let userData = ["provider": user.providerID, "email": email]
                                 self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
@@ -71,8 +71,8 @@ class LoginViewController: UIViewController {
             } else {
                 print("AVINASH: Successfully authenticated with Firebase\n")
                 if let user  = user {
-                    let userData = ["provider": credential.provider]
-                    self.completeSignIn(id: user.uid, userData: userData)
+                    let userData = ["provider": credential.provider, "email": user.email]
+                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                 }
             }
         })
