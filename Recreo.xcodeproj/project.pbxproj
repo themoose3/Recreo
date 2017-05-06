@@ -18,7 +18,6 @@
 		84BBE0E01EBBE96E000B92D3 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */; };
 		84BBE0E21EBBF2F8000B92D3 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0E11EBBF2F8000B92D3 /* MenuCell.swift */; };
 		84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */; };
-		84F19AA81EBAFEA200979C3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84F19AA71EBAFEA200979C3F /* GoogleService-Info.plist */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
 		84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A21EA8463B00044DB4 /* Main.storyboard */; };
 		84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A51EA8463B00044DB4 /* Assets.xcassets */; };
@@ -39,6 +38,7 @@
 		B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */; };
 		B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */; };
 		B320F2A21EB9978700C5A376 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B320F2A11EB9978700C5A376 /* MapKit.framework */; };
+		B3FC2F6F1EBD77B600863435 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3FC2F6E1EBD77B600863435 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,6 @@
 		84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		84BBE0E11EBBF2F8000B92D3 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
-		84F19AA71EBAFEA200979C3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6649E1EA8463B00044DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F664A31EA8463B00044DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -78,6 +77,7 @@
 		B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		B320F2A11EB9978700C5A376 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B3FC2F6E1EBD77B600863435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,6 @@
 				B320F2971EB6FE0200C5A376 /* ChatViewController.swift */,
 				B320F2991EB7033700C5A376 /* GalleryViewController.swift */,
 				8B613AB61EB9BCAB00C9DA0F /* CreateEventViewController.swift */,
-				8B613AB81EB9C1AF00C9DA0F /* ContactListViewController.swift */,
 				84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */,
 				84BBE0DD1EBBE95C000B92D3 /* HamburgerViewController.swift */,
 				84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */,
@@ -186,7 +185,7 @@
 				84F664A51EA8463B00044DB4 /* Assets.xcassets */,
 				84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */,
 				84F664AA1EA8463B00044DB4 /* Info.plist */,
-				84F19AA71EBAFEA200979C3F /* GoogleService-Info.plist */,
+				B3FC2F6E1EBD77B600863435 /* GoogleService-Info.plist */,
 			);
 			path = Recreo;
 			sourceTree = "<group>";
@@ -271,7 +270,7 @@
 				84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */,
 				84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */,
 				84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */,
-				84F19AA81EBAFEA200979C3F /* GoogleService-Info.plist in Resources */,
+				B3FC2F6F1EBD77B600863435 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

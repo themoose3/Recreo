@@ -21,13 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
       
-        let ref = FIRDatabase.database().reference()
+       // let ref = FIRDatabase.database().reference()
         //let itemsRef = ref.child("Test")
         //itemsRef.setValue(["name":"sideok"])
         
-        let hamburgerViewController = window!.rootViewController as! HamburgerViewController
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
+       // let hamburgerViewController = window!.rootViewController as! HamburgerViewController
+      //  let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      //  let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController")
         
         
         
