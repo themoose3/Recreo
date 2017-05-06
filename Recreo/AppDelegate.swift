@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
+
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("AVINASH: Id found in keychain")
             

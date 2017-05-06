@@ -15,16 +15,14 @@ class Event: NSObject {
     var eventName: String
     var eventDescription: String?
     var host: User
-    var invitees: [User]?
+    var invitees = [String: String?]()
     var venue: String?
-    var venueCoords: CLLocationCoordinate2D?
+    var address: String
     var created: String
-    var eventDate: Date?
     var startDate: String
-    var endDate: String?
+    var endDate: String
     var galleryId: Gallery?
     var eventImage: URL?
-    var address: String
     
     init(eventId: String, eventName: String, host: User, created: String, startDate: String, endDate: String, address: String) {
         self.eventId = eventId

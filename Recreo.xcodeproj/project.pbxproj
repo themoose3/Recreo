@@ -48,6 +48,7 @@
 		B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */; };
 		B320F2A21EB9978700C5A376 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B320F2A11EB9978700C5A376 /* MapKit.framework */; };
 		B3E7886E1EBE9CB300BD2C0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3E7886D1EBE9CB300BD2C0F /* GoogleService-Info.plist */; };
+		B3FC2F6F1EBD77B600863435 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3FC2F6E1EBD77B600863435 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		B320F2A11EB9978700C5A376 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		B3E7886D1EBE9CB300BD2C0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B3FC2F6E1EBD77B600863435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */,
 				B3E7886D1EBE9CB300BD2C0F /* GoogleService-Info.plist */,
 				84F664AA1EA8463B00044DB4 /* Info.plist */,
+				B3FC2F6E1EBD77B600863435 /* GoogleService-Info.plist */,
 			);
 			path = Recreo;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				8452C4A31EBE79040048E400 /* EventCellWithImage.xib in Resources */,
 				84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */,
 				84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */,
+				B3FC2F6F1EBD77B600863435 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

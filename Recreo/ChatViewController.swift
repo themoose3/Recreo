@@ -12,13 +12,28 @@ class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupInputComponents()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func setupInputComponents() {
+        let containerView = UIView()
+        containerView.backgroundColor = UIColor.red
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(containerView)
+        
+        containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     /*
     // MARK: - Navigation
 

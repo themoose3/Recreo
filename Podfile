@@ -16,4 +16,5 @@ target 'Recreo' do
   pod 'FacebookShare'
   
   pod 'SwiftKeychainWrapper'
+  pod 'GeoFire',:git => 'https://github.com/firebase/geofire-objc.git'
 end
