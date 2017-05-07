@@ -28,8 +28,8 @@ class ArchivesViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("EventCell", owner: self, options: nil)?.first as! EventCell
-        cell.label1.text = "row \(indexPath.row)"
-        cell.label2.text = "string \(indexPath.row)"
+//        cell.label1.text = "row \(indexPath.row)"
+//        cell.label2.text = "string \(indexPath.row)"
         
         return cell
     }
