@@ -1060,7 +1060,7 @@
                     <navigationItem key="navigationItem" id="ORs-O5-E8t"/>
                     <connections>
                         <outlet property="tableView" destination="Orp-Bl-64N" id="QNI-Jh-DIA"/>
-                        <segue destination="Pa8-wU-dTA" kind="show" identifier="EventDetailSegue" id="xFm-55-EDR"/>
+                        <segue destination="Pa8-wU-dTA" kind="presentation" identifier="EventDetailSegue" id="rSz-fF-PCH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u2u-Uz-3CJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
