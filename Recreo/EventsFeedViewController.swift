@@ -62,17 +62,16 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
         //let eventTime = createdTime.addingTimeInterval(interval)
         //event = Event(eventName: "Event", host: user, createdDate: createdTime, eventDate: eventTime, address: "185 Berry St., San Francisco, CA")
         
-        performSegue(withIdentifier: "EventDetailSegue", sender: self)
+        performSegue(withIdentifier: "EventDetailSegue", sender: indexPath)
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EventDetailSegue" {
-            if let indexPath = tableView.indexPathForSelectedRow {
                 let eventDetailVC = segue.destination as! EventDetailViewController
-                let event = events[indexPath.row]
+            let row = (sender as! IndexPath).row
+            let event = events[row]
                 eventDetailVC.event = event
-            }
         }
     }
     
