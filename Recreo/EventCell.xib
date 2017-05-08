@@ -18,14 +18,19 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyf-6i-O4n">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyf-6i-O4n">
                         <rect key="frame" x="8" y="11" width="43" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="dyf-6i-O4n" secondAttribute="bottom" constant="11" id="1rM-ba-Fxr"/>
+                    <constraint firstItem="dyf-6i-O4n" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="7F9-6a-ZqS"/>
+                    <constraint firstItem="dyf-6i-O4n" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Bxj-at-hYH"/>
+                    <constraint firstItem="dyf-6i-O4n" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="SNe-L2-jGE"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="eventLabel" destination="dyf-6i-O4n" id="daG-l1-MW3"/>

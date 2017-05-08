@@ -13,11 +13,12 @@ let DB_BASE = FIRDatabase.database().reference()
 
 class DataService {
     
+    //FIRDatabase.database().persistenceEnabled = true
     static let ds = DataService()
     
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
-    private var _REF_EVENTS = DB_BASE.child("events")
+    private var _REF_EVENTS = DB_BASE.child("Events")
     
     var REF_BASE: FIRDatabaseReference {
         return _REF_BASE

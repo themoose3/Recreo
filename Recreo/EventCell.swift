@@ -12,6 +12,12 @@ class EventCell: UITableViewCell {
 
     @IBOutlet weak var eventLabel: UILabel!
     
+    var event: Event! {
+        didSet {
+            eventLabel.text = event.eventName
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

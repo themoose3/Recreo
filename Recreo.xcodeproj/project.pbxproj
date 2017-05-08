@@ -26,6 +26,7 @@
 		84BBE0EA1EBD012F000B92D3 /* ArchivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */; };
 		84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */; };
 		84BBE0F81EBD1F40000B92D3 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0F71EBD1F40000B92D3 /* MenuCell.swift */; };
+		84C9C4771EBF37690064A412 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84C9C4761EBF37690064A412 /* GoogleService-Info.plist */; };
 		84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
 		84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A21EA8463B00044DB4 /* Main.storyboard */; };
@@ -47,7 +48,6 @@
 		B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */; };
 		B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */; };
 		B320F2A21EB9978700C5A376 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B320F2A11EB9978700C5A376 /* MapKit.framework */; };
-		B3E7886E1EBE9CB300BD2C0F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3E7886D1EBE9CB300BD2C0F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +71,7 @@
 		84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchivesViewController.swift; sourceTree = "<group>"; };
 		84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84BBE0F71EBD1F40000B92D3 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		84C9C4761EBF37690064A412 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6649E1EA8463B00044DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		B320F2A11EB9978700C5A376 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B3E7886D1EBE9CB300BD2C0F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +219,7 @@
 				84F664A21EA8463B00044DB4 /* Main.storyboard */,
 				84F664A51EA8463B00044DB4 /* Assets.xcassets */,
 				84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */,
-				B3E7886D1EBE9CB300BD2C0F /* GoogleService-Info.plist */,
+				84C9C4761EBF37690064A412 /* GoogleService-Info.plist */,
 				84F664AA1EA8463B00044DB4 /* Info.plist */,
 			);
 			path = Recreo;
@@ -302,7 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8452C4AD1EBE82090048E400 /* EventCell.xib in Resources */,
-				B3E7886E1EBE9CB300BD2C0F /* GoogleService-Info.plist in Resources */,
+				84C9C4771EBF37690064A412 /* GoogleService-Info.plist in Resources */,
 				B320F2961EB6FDE400C5A376 /* EventDetailViewController.xib in Resources */,
 				8452C4A91EBE793E0048E400 /* EventCellWithoutImage.xib in Resources */,
 				84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */,
@@ -357,7 +357,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

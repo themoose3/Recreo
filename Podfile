@@ -16,4 +16,5 @@ target 'Recreo' do
   pod 'FacebookShare'
   
   pod 'SwiftKeychainWrapper'
+  pod 'AFNetworking'
 end

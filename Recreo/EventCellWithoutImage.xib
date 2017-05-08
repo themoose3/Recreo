@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="333" height="202"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="333" height="201.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="333" height="201"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dco-VV-Rfe">
@@ -121,6 +121,14 @@
                     <constraint firstItem="koC-yd-6kf" firstAttribute="top" secondItem="vDf-KV-uIk" secondAttribute="bottom" constant="3" id="rgS-XI-7Vw"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="eventCellMessageLabel" destination="tYz-tA-hX0" id="Ien-Co-APC"/>
+                <outlet property="eventDateLabel" destination="WvA-b7-ccE" id="e43-Jc-S5G"/>
+                <outlet property="eventDayTimeLocationLabel" destination="ppf-g1-Lcx" id="HzP-x8-uVb"/>
+                <outlet property="eventHostProfileImageView" destination="dco-VV-Rfe" id="T3r-lE-b86"/>
+                <outlet property="eventMonthLabel" destination="4AW-En-NsG" id="PoZ-IN-qtW"/>
+                <outlet property="eventNameLabel" destination="PMo-7x-5tQ" id="uJg-FZ-aRI"/>
+            </connections>
             <point key="canvasLocation" x="-11.5" y="-14"/>
         </tableViewCell>
     </objects>
