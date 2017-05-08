@@ -320,6 +320,7 @@ class ChatViewController: JSQMessagesViewController {
     
     func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         return kJSQMessagesCollectionViewCellLabelHeightDefault
+
     }
     
 //    override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
