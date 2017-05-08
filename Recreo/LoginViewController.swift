@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
                 if error == nil {
                     print("AVINASH: Email/Password user authenticated with Firebase")
                     if let user  = user {
-                        let userData = ["provider": user.providerID]
+                        let userData = ["provider": user.providerID, "email": email, "userId": user.uid]
                         self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
