@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
                         } else {
                             print("AVINASH: Successfully created user with email/password")
                             if let user  = user {
-                                let userData = ["provider": user.providerID, "email": email]
+                                let userData = ["provider": user.providerID, "email": email, "userId": user.uid]
                                 self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }
@@ -71,7 +71,7 @@ class LoginViewController: UIViewController {
             } else {
                 print("AVINASH: Successfully authenticated with Firebase\n")
                 if let user  = user {
-                    let userData = ["provider": credential.provider, "email": user.email]
+                    let userData = ["provider": credential.provider, "email": user.email, "userId": user.uid]
                     self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                 }
             }
@@ -83,6 +83,11 @@ class LoginViewController: UIViewController {
         let keyChainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("AVINASH: User saved to keychain: \(keyChainResult)")
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UserDidLogin"), object: nil)
+        
+        let defaults = UserDefaults.standard
+        defaults.set(userData["userId"], forKey: "User")
+        defaults.set(userData["email"], forKey: "UserEmail")
+        defaults.synchronize()
     }
 }
 

@@ -171,6 +171,8 @@ class EventDetailViewController: UIViewController {
             //let galleryVC = segue.destination as! GalleryViewController
         }
         if segue.identifier == "ChatSegue" {
+            let chatVC = segue.destination as! ChatViewController
+            chatVC.eventRef = FIRDatabase.database().reference().child("Events").child((event?.eventId)!)
             
         }
         // Get the new view controller using segue.destinationViewController.

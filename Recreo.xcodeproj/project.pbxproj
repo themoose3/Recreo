@@ -312,8 +312,6 @@
 				8452C4A31EBE79040048E400 /* EventCellWithImage.xib in Resources */,
 				84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */,
 				84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */,
-				84BBE0F61EBD1ECE000B92D3 /* EventCell.xib in Resources */,
-				84F19AA81EBAFEA200979C3F /* GoogleService-Info.plist in Resources */,
 				B3FC2F6F1EBD77B600863435 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +526,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Recreo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -541,6 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Recreo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

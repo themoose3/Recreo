@@ -17,4 +17,5 @@ target 'Recreo' do
   
   pod 'SwiftKeychainWrapper'
   pod 'JSQMessagesViewController'
+  pod 'SwiftGifOrigin'
 end
