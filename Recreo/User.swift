@@ -22,7 +22,7 @@ class User {
     private var _profileImageUrl: String!
     
     private var _userRef: FIRDatabaseReference!
-  
+
     var userId: String {
         return _userId
     }
@@ -55,9 +55,7 @@ class User {
         return _userRef
     }
 
-    
     init(userId: String) {
-
         self._userId = userId
     }
     
