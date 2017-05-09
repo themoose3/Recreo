@@ -41,7 +41,12 @@ class EventCellWithoutImage: UITableViewCell {
             let timeString = dateFormatter.string(from: eventDate)
             eventDayTimeLocationLabel.text = "\(dayOfWeekString) \(timeString) at \(event.eventVenue), \(event.eventCity) \(event.eventState)"
             
-            
+            if(event.eventHost.profileImageUrl != "") {
+                let hostProfileImageUrl = URL(string: event.eventHost.profileImageUrl)
+                eventHostProfileImageView.setImageWith(hostProfileImageUrl!)
+            } else {
+                eventHostProfileImageView.image = UIImage(named: "default_profile_image")
+            }
         }
     }
     
