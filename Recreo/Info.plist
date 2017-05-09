@@ -5,7 +5,9 @@
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>We need to import photos of people.</string>
+	<string>Photo access for Recreo-App</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera access for Recreo-App</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -45,27 +47,25 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb1929419600637358</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>1929419600637358</string>
-    <key>FacebookDisplayName</key>
-    <string>Recreo-App</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>Photo access for Recreo-App</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1929419600637358</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>1929419600637358</string>
+	<key>FacebookDisplayName</key>
+	<string>Recreo-App</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>
