@@ -10,7 +10,6 @@ import CoreLocation
 import Firebase
 
 class Event {
-    
     // event metadata
     private var _eventId: String!
     private var _eventHost: User!
@@ -192,14 +191,5 @@ class Event {
             self._eventZip = eventZip
         }
 
-    }
-    
-    func updateYesGoing(addYes: Bool) {
-    }
-    
-    func updateNoGoing(addNo: Bool) {
-    }
-
-    func updateMaybeGoing(addMaybe: Bool) {
     }
 }
