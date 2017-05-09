@@ -19,9 +19,11 @@ class User {
     private var _firstName: String!
     private var _lastName: String!
     private var _profileImageUrl: String!
-    
     private var _userRef: FIRDatabaseReference!
     
+    private var _hostedEvents: [String: Bool]!
+    private var _invitedEvents: [String: Bool]!
+  
     var userId: String {
         return _userId
     }
@@ -53,7 +55,15 @@ class User {
     var userRef: FIRDatabaseReference {
         return _userRef
     }
-    
+  
+    var hostedEvents: [String:Bool]{
+        return _hostedEvents
+    }
+  
+    var invitedEvents: [String:Bool]{
+        return _invitedEvents
+    }
+  
     init(userId: String, firstName: String) {
         self._userId = userId
         self._firstName = firstName

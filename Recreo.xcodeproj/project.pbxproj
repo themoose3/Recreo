@@ -15,7 +15,6 @@
 		8452C4A91EBE793E0048E400 /* EventCellWithoutImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452C4A71EBE793E0048E400 /* EventCellWithoutImage.xib */; };
 		8452C4AC1EBE82090048E400 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C4AA1EBE82090048E400 /* EventCell.swift */; };
 		8452C4AD1EBE82090048E400 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452C4AB1EBE82090048E400 /* EventCell.xib */; };
-		8470A1FF1EC0156F0082BEAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8470A1FE1EC0156F0082BEAA /* GoogleService-Info.plist */; };
 		84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEAD1EB67C670056B160 /* LoginViewController.swift */; };
 		84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */; };
 		84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB41EB6DEEF0056B160 /* Constants.swift */; };
@@ -34,6 +33,8 @@
 		84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */; };
 		8B613AB71EB9BCAB00C9DA0F /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B613AB61EB9BCAB00C9DA0F /* CreateEventViewController.swift */; };
 		8B613ABB1EB9C3F700C9DA0F /* ContactListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B613ABA1EB9C3F700C9DA0F /* ContactListCell.swift */; };
+		8B7D86921EC0DF4600EBC135 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B7D86911EC0DF4600EBC135 /* GoogleService-Info.plist */; };
+		8B7D86941EC0F06100EBC135 /* CreateEventImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7D86931EC0F06100EBC135 /* CreateEventImageCollectionCell.swift */; };
 		B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2831EB662E900C5A376 /* ProfileViewController.swift */; };
 		B320F2881EB6D6F900C5A376 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2871EB6D6F900C5A376 /* User.swift */; };
 		B320F28A1EB6DB1A00C5A376 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F2891EB6DB1A00C5A376 /* Event.swift */; };
@@ -60,7 +61,6 @@
 		8452C4A71EBE793E0048E400 /* EventCellWithoutImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCellWithoutImage.xib; sourceTree = "<group>"; };
 		8452C4AA1EBE82090048E400 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		8452C4AB1EBE82090048E400 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		8470A1FE1EC0156F0082BEAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84A7CEAD1EB67C670056B160 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginView.swift; sourceTree = "<group>"; };
 		84A7CEB41EB6DEEF0056B160 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -81,6 +81,8 @@
 		84F664AA1EA8463B00044DB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B613AB61EB9BCAB00C9DA0F /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		8B613ABA1EB9C3F700C9DA0F /* ContactListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListCell.swift; sourceTree = "<group>"; };
+		8B7D86911EC0DF4600EBC135 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B7D86931EC0F06100EBC135 /* CreateEventImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventImageCollectionCell.swift; sourceTree = "<group>"; };
 		A01318A829FE1DC440A7C97B /* Pods-Recreo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.debug.xcconfig"; sourceTree = "<group>"; };
 		B320F2831EB662E900C5A376 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B320F2871EB6D6F900C5A376 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				8452C4A71EBE793E0048E400 /* EventCellWithoutImage.xib */,
 				8452C4AA1EBE82090048E400 /* EventCell.swift */,
 				8452C4AB1EBE82090048E400 /* EventCell.xib */,
+				8B7D86931EC0F06100EBC135 /* CreateEventImageCollectionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -220,7 +223,7 @@
 				84F664A51EA8463B00044DB4 /* Assets.xcassets */,
 				84F664A71EA8463B00044DB4 /* LaunchScreen.storyboard */,
 				84F664AA1EA8463B00044DB4 /* Info.plist */,
-				8470A1FE1EC0156F0082BEAA /* GoogleService-Info.plist */,
+				8B7D86911EC0DF4600EBC135 /* GoogleService-Info.plist */,
 			);
 			path = Recreo;
 			sourceTree = "<group>";
@@ -302,7 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8452C4AD1EBE82090048E400 /* EventCell.xib in Resources */,
-				8470A1FF1EC0156F0082BEAA /* GoogleService-Info.plist in Resources */,
+				8B7D86921EC0DF4600EBC135 /* GoogleService-Info.plist in Resources */,
 				B320F2961EB6FDE400C5A376 /* EventDetailViewController.xib in Resources */,
 				8452C4A91EBE793E0048E400 /* EventCellWithoutImage.xib in Resources */,
 				84F664A91EA8463B00044DB4 /* LaunchScreen.storyboard in Resources */,
@@ -371,6 +374,7 @@
 				B320F29A1EB7033700C5A376 /* GalleryViewController.swift in Sources */,
 				84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */,
 				B320F2981EB6FE0200C5A376 /* ChatViewController.swift in Sources */,
+				8B7D86941EC0F06100EBC135 /* CreateEventImageCollectionCell.swift in Sources */,
 				8B613ABB1EB9C3F700C9DA0F /* ContactListCell.swift in Sources */,
 				B320F28E1EB6DDAB00C5A376 /* Photo.swift in Sources */,
 				84BBE0EA1EBD012F000B92D3 /* ArchivesViewController.swift in Sources */,

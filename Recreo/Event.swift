@@ -5,7 +5,6 @@
 //  Created by Angie Lal on 4/30/17.
 //  Copyright © 2017 Intuit. All rights reserved.
 //
-
 import Foundation
 import CoreLocation
 import Firebase
@@ -34,7 +33,7 @@ class Event {
     var eventDescription: String {
         return _eventDescription ?? ""
     }
-
+    
     // event location
     private var _eventAddress: String!
     private var _eventCity: String!
@@ -67,7 +66,6 @@ class Event {
         return _eventVenueCoords!
     }
 
-    
     // event datetime
     private var _createdDate: Date!
     private var _startDate: Date!
@@ -84,7 +82,6 @@ class Event {
     var eventEndDate: Date {
         return _endDate ?? Date()
     }
-
     
     // event invitees
     private var _invitees: [User]!
@@ -108,6 +105,7 @@ class Event {
         return _maybeGoing ?? []
     }
 
+    
     // event assets
     private var _galleryId: String!
     private var _eventImageUrl: String?
@@ -126,6 +124,7 @@ class Event {
         self._createdDate = createdDate
         self._eventAddress = address
     }
+
     
     init(eventId: String, eventData: Dictionary<String, Any>) {
         self._eventId = eventId
