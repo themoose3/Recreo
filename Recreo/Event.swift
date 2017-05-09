@@ -12,6 +12,10 @@ import Firebase
 
 class Event {
     
+    //firebase references
+    private var _eventRef: FIRDatabaseReference!
+    private var _userRef: FIRDatabaseReference!
+    
     // event metadata
     private var _eventId: String!
     private var _eventHost: User!
@@ -100,14 +104,14 @@ class Event {
     
     // event assets
     private var _galleryId: String!
-    private var _eventImageUrl: URL!
+    private var _eventImageUrl: String?
     
     var eventGalleryId: String {
         return _galleryId ?? ""
     }
     
-    var eventImageUrl: URL {
-        return _eventImageUrl!
+    var eventImageUrl: String {
+        return _eventImageUrl ?? ""
     }
     
     init(eventName: String, host: User, createdDate: Date, eventDate: Date, address: String) {
@@ -120,16 +124,21 @@ class Event {
     
     init(eventId: String, eventData: Dictionary<String, Any>) {
         self._eventId = eventId
+        self._eventRef = DataService.ds.REF_EVENTS.child(_eventId)
 
         if let eventName = eventData["eventName"] as? String {
             self._eventName = eventName
         }
-        
 
-        if let host = eventData["eventHost"] as? String {
-            let user = User(userId: host,  email: "recreo.email@gmail.com", firstName: "Avinash")
-            
-            self._eventHost = user
+        if let userKey = eventData["eventHost"] as? String {
+            self._userRef = FIRDatabase.database().reference().child("users").child(userKey)
+            self._userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                print("USERY: \(snapshot.key)")
+                if let userDict = snapshot.value! as? Dictionary<String, Any> {
+                    let id = snapshot.key
+                    self._eventHost = User(userId: id, userData: userDict)
+                }
+            })
         }
 
         if let createdDate = eventData["created"] as? String {
@@ -144,6 +153,10 @@ class Event {
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
             
             self._eventDate = dateFormatter.date(from: eventDate)
+        }
+        
+        if let eventImageUrl = eventData["imageUrl"] as? String {
+            self._eventImageUrl = eventImageUrl
         }
         
         if let eventAddress = eventData["address"] as? String {

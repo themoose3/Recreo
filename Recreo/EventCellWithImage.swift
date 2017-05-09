@@ -7,9 +7,58 @@
 //
 
 import UIKit
+import AFNetworking
 
 class EventCellWithImage: UITableViewCell {
 
+    @IBOutlet weak var eventCellMessageLabel: UILabel!
+    @IBOutlet weak var eventHostProfileImageView: UIImageView!
+    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventMonthLabel: UILabel!
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventDayTimeLocationLabel: UILabel!
+    @IBOutlet weak var eventImageView: UIImageView!
+    
+    var event: Event! {
+        didSet {
+            eventCellMessageLabel.text = "\(event.eventHost.firstName) is hosting an event"
+            
+            let eventDate = event.eventDate
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateFormat = "MMM"
+            let monthString = dateFormatter.string(from: eventDate)
+            eventMonthLabel.text = monthString.uppercased()
+            
+            dateFormatter.dateFormat = "dd"
+            let dateString = dateFormatter.string(from: eventDate)
+            eventDateLabel.text = dateString.uppercased()
+            
+            eventNameLabel.text = event.eventName
+            
+            dateFormatter.dateFormat = "E"
+            let dayOfWeekString = dateFormatter.string(from: eventDate)
+            dateFormatter.dateFormat = "h:mm a"
+            let timeString = dateFormatter.string(from: eventDate)
+            eventDayTimeLocationLabel.text = "\(dayOfWeekString) \(timeString) at \(event.eventVenue), \(event.eventCity) \(event.eventState)"
+            
+            if(event.eventHost.profileImageUrl != "") {
+                let hostProfileImageUrl = URL(string: event.eventHost.profileImageUrl)
+                eventHostProfileImageView.setImageWith(hostProfileImageUrl!)
+            } else {
+                eventHostProfileImageView.image = UIImage(named: "default_profile_image")
+            }
+            
+            if(event.eventImageUrl != "") {
+                let eventImageUrl = URL(string: event.eventImageUrl)
+                eventImageView.setImageWith(eventImageUrl!)
+            } else {
+                eventImageView.image = UIImage(named: "default_event_image")
+            }
+
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

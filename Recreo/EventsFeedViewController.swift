@@ -45,25 +45,39 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
-        
         let event = events[indexPath.row]
-        cell.event = event
-        
-        return cell
+
+        if event.eventImageUrl != "" {
+            let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
+            
+            //let event = events[indexPath.row]
+            cell.event = event
+            
+            return cell
+        } else {
+            let cell = Bundle.main.loadNibNamed("EventCellWithImage", owner: self, options: nil)?.first as! EventCellWithImage
+            
+            //let event = events[indexPath.row]
+            cell.event = event
+            
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        //let user = User(userId: "epkM4f0wwbZTz97U3uhvMzW7UWl2", email: "avinash@gmail.com")
-        //let createdTime = Date()
-        //let interval = TimeInterval(60*60*24*indexPath.row)
-        //let eventTime = createdTime.addingTimeInterval(interval)
-        //event = Event(eventName: "Event", host: user, createdDate: createdTime, eventDate: eventTime, address: "185 Berry St., San Francisco, CA")
-        
         performSegue(withIdentifier: "EventDetailSegue", sender: indexPath)
-        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let event = events[indexPath.row]
+    
+        if event.eventImageUrl != "" {
+            return 202
+        } else {
+            return 312
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,7 +86,7 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
             let eventDetailVC = navigationController.topViewController as! EventDetailViewController
             let row = (sender as! IndexPath).row
             let event = events[row]
-                eventDetailVC.event = event
+            eventDetailVC.event = event
         }
     }
     

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 class User {
     
@@ -17,7 +18,9 @@ class User {
     private var _phoneNumber: String!
     private var _firstName: String!
     private var _lastName: String!
-    private var _profileImage: URL!
+    private var _profileImageUrl: String!
+    
+    private var _userRef: FIRDatabaseReference!
     
     var userId: String {
         return _userId
@@ -36,32 +39,48 @@ class User {
     }
     
     var firstName: String {
-        return _firstName
+        return _firstName ?? "Dino"
     }
     
     var lastName: String {
-        return _lastName
+        return _lastName ?? "Juliet"
     }
     
-    var profileImage: URL {
-        return _profileImage
+    var profileImageUrl: String {
+        return _profileImageUrl ?? ""
     }
     
-    init(userId: String, email: String, firstName: String) {
+    var userRef: FIRDatabaseReference {
+        return _userRef
+    }
+    
+    init(userId: String) {
         self._userId = userId
-        self._email = email
-        self._firstName = firstName
     }
     
     init(userId: String, userData: Dictionary<String, Any>) {
         self._userId = userId
+        self._userRef = DataService.ds.REF_USERS.child(userId)
         
-        if let provider = userData["provider"] as? String {
-            self._provider = provider
+        if let email = userData["email"] as? String {
+            self._email = email
         }
 
         if let provider = userData["provider"] as? String {
             self._provider = provider
         }
+        
+        if let profileImageUrl = userData["profileImageUrl"] as? String {
+            self._profileImageUrl = profileImageUrl
+        }
+        
+        if let firstName = userData["firstName"] as? String {
+            self._firstName = firstName
+        }
+        
+        if let lastName = userData["lastName"] as? String {
+            self._lastName = lastName
+        }
+        
     }
 }
