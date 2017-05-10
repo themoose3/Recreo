@@ -23,7 +23,7 @@ class EventCellWithImage: UITableViewCell {
         didSet {
             eventCellMessageLabel.text = "\(event.eventHost.firstName) is hosting an event"
             
-            let eventDate = event.eventDate
+            let eventDate = event.eventStartDate
             let dateFormatter = DateFormatter()
             
             dateFormatter.dateFormat = "MMM"

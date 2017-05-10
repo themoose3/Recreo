@@ -54,8 +54,9 @@ class User {
         return _userRef
     }
     
-    init(userId: String) {
+    init(userId: String, firstName: String) {
         self._userId = userId
+        self._firstName = firstName
     }
     
     init(userId: String, userData: Dictionary<String, Any>) {

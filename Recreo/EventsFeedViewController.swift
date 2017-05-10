@@ -23,7 +23,10 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: "tableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
+        //let copyEvents = events
+        
         DataService.ds.REF_EVENTS.observe(.value, with: { (snapshot) in
+            self.events.removeAll()
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     if let eventDict = snap.value! as? Dictionary<String, Any> {
@@ -49,15 +52,11 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
 
         if event.eventImageUrl != "" {
             let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
-            
-            //let event = events[indexPath.row]
             cell.event = event
             
             return cell
         } else {
             let cell = Bundle.main.loadNibNamed("EventCellWithImage", owner: self, options: nil)?.first as! EventCellWithImage
-            
-            //let event = events[indexPath.row]
             cell.event = event
             
             return cell

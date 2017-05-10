@@ -12,10 +12,6 @@ import Firebase
 
 class Event {
     
-    //firebase references
-    private var _eventRef: FIRDatabaseReference!
-    private var _userRef: FIRDatabaseReference!
-    
     // event metadata
     private var _eventId: String!
     private var _eventHost: User!
@@ -74,16 +70,11 @@ class Event {
     
     // event datetime
     private var _createdDate: Date!
-    private var _eventDate: Date!
     private var _startDate: Date!
     private var _endDate: Date!
     
     var createdDate: Date {
         return _createdDate
-    }
-    
-    var eventDate: Date {
-        return _eventDate
     }
     
     var eventStartDate: Date {
@@ -97,11 +88,26 @@ class Event {
     
     // event invitees
     private var _invitees: [User]!
+    private var _yesGoing: [User]!
+    private var _noGoing: [User]!
+    private var _maybeGoing: [User]!
     
     var eventInvitees: [User] {
         return _invitees ?? []
     }
-    
+
+    var yesGoing: [User] {
+        return _yesGoing ?? []
+    }
+
+    var noGoing: [User] {
+        return _noGoing ?? []
+    }
+
+    var maybeGoing: [User] {
+        return _maybeGoing ?? []
+    }
+
     // event assets
     private var _galleryId: String!
     private var _eventImageUrl: String?
@@ -118,27 +124,35 @@ class Event {
         self._eventName = eventName
         self._eventHost = host
         self._createdDate = createdDate
-        self._eventDate = eventDate
         self._eventAddress = address
     }
     
     init(eventId: String, eventData: Dictionary<String, Any>) {
         self._eventId = eventId
-        self._eventRef = DataService.ds.REF_EVENTS.child(_eventId)
 
         if let eventName = eventData["eventName"] as? String {
             self._eventName = eventName
         }
 
         if let userKey = eventData["eventHost"] as? String {
-            self._userRef = FIRDatabase.database().reference().child("users").child(userKey)
-            self._userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            var user = User(userId: userKey, firstName: "Dino")
+            
+            let usersRef = FIRDatabase.database().reference().child("Users")
+            let userRef = usersRef.child(userKey)
+            print(userRef)
+            
+            userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 print("USERY: \(snapshot.key)")
+                print("USERY DATA: \(snapshot.value)")
                 if let userDict = snapshot.value! as? Dictionary<String, Any> {
                     let id = snapshot.key
-                    self._eventHost = User(userId: id, userData: userDict)
+                    user = User(userId: id, userData: userDict)
                 }
+            }, withCancel: { error in
+                print(error.localizedDescription)
             })
+            
+            self._eventHost = user
         }
 
         if let createdDate = eventData["created"] as? String {
@@ -148,11 +162,11 @@ class Event {
             self._createdDate = dateFormatter.date(from: createdDate)
         }
 
-        if let eventDate = eventData["eventDate"] as? String{
+        if let startDate = eventData["eventStartDate"] as? String{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
             
-            self._eventDate = dateFormatter.date(from: eventDate)
+            self._startDate = dateFormatter.date(from: startDate)
         }
         
         if let eventImageUrl = eventData["imageUrl"] as? String {
@@ -179,5 +193,14 @@ class Event {
             self._eventZip = eventZip
         }
 
+    }
+    
+    func updateYesGoing(addYes: Bool) {
+    }
+    
+    func updateNoGoing(addNo: Bool) {
+    }
+
+    func updateMaybeGoing(addMaybe: Bool) {
     }
 }
