@@ -18,6 +18,7 @@ class User {
     private var _phoneNumber: String!
     private var _firstName: String!
     private var _lastName: String!
+
     private var _profileImageUrl: String!
     private var _userRef: FIRDatabaseReference!
     
