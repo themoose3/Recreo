@@ -50,7 +50,7 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = events[indexPath.row]
 
-        if event.eventImageUrl != "" {
+        if event.eventImageUrl == "" {
             let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
             cell.event = event
             
@@ -72,7 +72,7 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let event = events[indexPath.row]
     
-        if event.eventImageUrl != "" {
+        if event.eventImageUrl == "" {
             return 202
         } else {
             return 312

@@ -5,7 +5,6 @@
 //  Created by Angie Lal on 4/30/17.
 //  Copyright © 2017 Intuit. All rights reserved.
 //
-
 import Foundation
 import CoreLocation
 import Firebase

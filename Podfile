@@ -19,4 +19,6 @@ target 'Recreo' do
   pod 'AFNetworking'
   pod 'JSQMessagesViewController'
   pod 'SwiftGifOrigin'
+
+  pod 'MBProgressHUD'
 end
