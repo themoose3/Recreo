@@ -1058,8 +1058,22 @@
                             <constraint firstItem="Orp-Bl-64N" firstAttribute="leading" secondItem="gg2-Km-v27" secondAttribute="leading" id="nRb-vU-TtF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="ORs-O5-E8t"/>
+                    <navigationItem key="navigationItem" id="ORs-O5-E8t">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="MX3-ik-P2h">
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Hosting"/>
+                                <segment title="Invited"/>
+                            </segments>
+                            <connections>
+                                <action selector="onSegmentChange:" destination="aad-XB-Yij" eventType="valueChanged" id="I53-aN-SwN"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
+                        <outlet property="eventsSegmentedControl" destination="MX3-ik-P2h" id="TsL-hg-pvc"/>
                         <outlet property="tableView" destination="Orp-Bl-64N" id="QNI-Jh-DIA"/>
                         <segue destination="8yM-gq-haB" kind="presentation" identifier="EventDetailSegue" id="rSz-fF-PCH"/>
                     </connections>
