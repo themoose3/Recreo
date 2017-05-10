@@ -8,13 +8,18 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class EventsFeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var eventsSegmentedControl: UISegmentedControl!
     
     var event: Event!
     var events = [Event]()
+    var hostedEvents = [Event]()
+    var invitedToEvents = [Event]()
+    var shownEvents = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +27,9 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(UINib(nibName: "tableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        //let copyEvents = events
+        //tableView.register(UINib(nibName: "tableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
         
+        let currentUserUID = KeychainWrapper.standard.string(forKey: KEY_UID)
         DataService.ds.REF_EVENTS.observe(.value, with: { (snapshot) in
             self.events.removeAll()
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -33,6 +38,10 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
                         let id = snap.key
                         let event = Event(eventId: id, eventData: eventDict)
                         self.events.append(event)
+                        if(event.eventHost.userId == currentUserUID) {
+                            self.hostedEvents.append(event)
+                            self.shownEvents.append(event)
+                        }
                         //print("SNAPPY: \(event.eventName)")
                         //print("SNAPPY EVENT COUNT: \(self.events.count)")
                     }
@@ -42,13 +51,23 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
         })
     }
     
+    @IBAction func onSegmentChange(_ sender: Any) {
+        switch eventsSegmentedControl.selectedSegmentIndex {
+        case 0:
+            shownEvents = hostedEvents
+        case 1:
+            shownEvents = invitedToEvents
+        default:
+            shownEvents = events
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return events.count
+        return shownEvents.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let event = events[indexPath.row]
+        let event = shownEvents[indexPath.row]
 
         if event.eventImageUrl == "" {
             let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
@@ -70,7 +89,7 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let event = events[indexPath.row]
+        let event = shownEvents[indexPath.row]
     
         if event.eventImageUrl == "" {
             return 202
@@ -84,7 +103,7 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
             let navigationController = segue.destination as! UINavigationController
             let eventDetailVC = navigationController.topViewController as! EventDetailViewController
             let row = (sender as! IndexPath).row
-            let event = events[row]
+            let event = shownEvents[row]
             eventDetailVC.event = event
         }
     }
