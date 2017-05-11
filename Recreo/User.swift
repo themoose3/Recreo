@@ -18,7 +18,7 @@ class User {
     private var _phoneNumber: String!
     private var _firstName: String!
     private var _lastName: String!
-    private var _profileImageUrl: String!
+    private var _profileImageUrl: URL?
     
     private var _userRef: FIRDatabaseReference!
     
@@ -46,8 +46,8 @@ class User {
         return _lastName ?? "Juliet"
     }
     
-    var profileImageUrl: String {
-        return _profileImageUrl ?? ""
+    var profileImageUrl: URL {
+        return _profileImageUrl!
     }
     
     var userRef: FIRDatabaseReference {
@@ -55,11 +55,13 @@ class User {
     }
     
     init(userId: String, firstName: String) {
+        print("AVINASH: User pass with init of userId and firstName")
         self._userId = userId
         self._firstName = firstName
     }
     
     init(userId: String, userData: Dictionary<String, Any>) {
+        print("AVINASH: User pass with init of userDict")
         self._userId = userId
         self._userRef = DataService.ds.REF_USERS.child(userId)
         
@@ -71,8 +73,9 @@ class User {
             self._provider = provider
         }
         
-        if let profileImageUrl = userData["profileImageUrl"] as? String {
-            self._profileImageUrl = profileImageUrl
+        let profileImageUrlString = userData["profileImageUrl"] as? String
+        if let profileImageUrlString = profileImageUrlString {
+            self._profileImageUrl = URL(string: profileImageUrlString)
         }
         
         if let firstName = userData["firstName"] as? String {
@@ -82,6 +85,6 @@ class User {
         if let lastName = userData["lastName"] as? String {
             self._lastName = lastName
         }
-        
     }
+    
 }

@@ -20,6 +20,7 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     var hostedEvents = [Event]()
     var invitedToEvents = [Event]()
     var shownEvents = [Event]()
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +28,43 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
-        //tableView.register(UINib(nibName: "tableViewCell", bundle: nil), forCellReuseIdentifier: "EventCell")
-        
         let currentUserUID = KeychainWrapper.standard.string(forKey: KEY_UID)
-        DataService.ds.REF_EVENTS.observe(.value, with: { (snapshot) in
-            self.events.removeAll()
+
+        DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
+            print("AVINASH: REF_USERS observe\n")
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
-                    if let eventDict = snap.value! as? Dictionary<String, Any> {
+                    print("AVINASH: Users table, \(snap.key)")
+                    if let userDict = snap.value! as? Dictionary<String, Any> {
                         let id = snap.key
-                        let event = Event(eventId: id, eventData: eventDict)
+                        let user = User(userId: id, userData: userDict)
+                        print(user.firstName)
+                        self.users.append(user)
+                    }
+                }
+            }
+        })
+        
+        DataService.ds.REF_EVENTS.observe(.value, with: { (snapshot) in
+            print("AVINASH: REF_EVENTS observe\n")
+            self.events.removeAll()
+            self.shownEvents.removeAll()
+            self.hostedEvents.removeAll()
+            self.invitedToEvents.removeAll()
+            
+            print("AVINASH: remove events")
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                print("AVINASH: snapshot has children?")
+                for snap in snapshot {
+                    print("AVINASH: going through snaps")
+                    if let eventDict = snap.value! as? Dictionary<String, Any> {
+                        print("AVINASH: setting up the event from REF_EVENTS observe callback")
+                        let id = snap.key
+                        let eventHost = eventDict["eventHost"]
+                        let userFromEventHost = self.getUserById(users: self.users, userId: eventHost as! String)
+                        print("AVINASH: profile image url, \(userFromEventHost.profileImageUrl)")
+                        print("AVINASH: sending to Event pass with id: \(id) and event host uid: \(eventHost!)")
+                        let event = Event(eventId: id, eventData: eventDict, user: userFromEventHost)
                         self.events.append(event)
                         if(event.eventHost.userId == currentUserUID) {
                             self.hostedEvents.append(event)
@@ -49,6 +77,15 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
             }
             self.tableView.reloadData()
         })
+    }
+    
+    private func getUserById(users: [User], userId: String) -> User {
+        for user in users {
+            if user.userId == userId {
+                return user
+            }
+        }
+        return User(userId: "DummyUser", firstName: "Dummy")
     }
     
     @IBAction func onSegmentChange(_ sender: Any) {
@@ -68,8 +105,9 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = shownEvents[indexPath.row]
-
-        if event.eventImageUrl != "" {
+        
+        if event.eventImageUrl == nil {
+        //if event.eventImageUrl != "" {
             let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
             cell.event = event
             
@@ -91,7 +129,7 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let event = shownEvents[indexPath.row]
     
-        if event.eventImageUrl != "" {
+        if event.eventImageUrl == nil {
             return 202
         } else {
             return 312

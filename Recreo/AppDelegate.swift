@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
               
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            print("AVINASH: Id found in keychain")
+            //print("AVINASH: Id found in keychain")
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController

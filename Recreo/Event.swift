@@ -110,14 +110,20 @@ class Event {
 
     // event assets
     private var _galleryId: String!
-    private var _eventImageUrl: String?
+    private var _eventImageUrl: URL?
     
     var eventGalleryId: String {
         return _galleryId ?? ""
     }
     
-    var eventImageUrl: String {
-        return _eventImageUrl ?? ""
+    var eventImageUrl: URL {
+        return _eventImageUrl!
+    }
+    
+    init(eventId: String, eventHost: User) {
+        print("AVINASH: Event pass with init of id and host")
+        self._eventId = eventId
+        self._eventHost = eventHost
     }
     
     init(eventName: String, host: User, createdDate: Date, eventDate: Date, address: String) {
@@ -127,33 +133,35 @@ class Event {
         self._eventAddress = address
     }
     
-    init(eventId: String, eventData: Dictionary<String, Any>) {
+    init(eventId: String, eventData: Dictionary<String, Any>, user: User) {
+        print("AVINASH: Event pass with init of eventDict")
         self._eventId = eventId
 
         if let eventName = eventData["eventName"] as? String {
             self._eventName = eventName
         }
 
-        if let userKey = eventData["eventHost"] as? String {
-            var user = User(userId: userKey, firstName: "Dino")
-            
-            let usersRef = FIRDatabase.database().reference().child("Users")
-            let userRef = usersRef.child(userKey)
-            print(userRef)
-            
-            userRef.observeSingleEvent(of: .value, with: { (snapshot) in
-                print("USERY: \(snapshot.key)")
-                print("USERY DATA: \(snapshot.value)")
-                if let userDict = snapshot.value! as? Dictionary<String, Any> {
-                    let id = snapshot.key
-                    user = User(userId: id, userData: userDict)
-                }
-            }, withCancel: { error in
-                print(error.localizedDescription)
-            })
-            
-            self._eventHost = user
-        }
+//        if let userKey = eventData["eventHost"] as? String {
+//            print("AVINASH: Event pass with init of eventDict, calling User init of userId and firstName")
+//            var user = User(userId: userKey, firstName: "Dino")
+//            
+//            let usersRef = FIRDatabase.database().reference().child("Users")
+//            let userRef = usersRef.child(userKey)
+//            print("AVINASH: \(userRef)")
+//            
+//            userRef.observe(.value, with: { (snapshot) in
+//                print("AVINASH: \(snapshot.key)")
+//                print("AVINASH: \(snapshot.value)")
+//                if let userDict = snapshot.value! as? Dictionary<String, Any> {
+//                    let id = snapshot.key
+//                    print("AVINASH: Event pass with init of eventDict, calling User init of userDict")
+//                    user = User(userId: id, userData: userDict)
+//                }
+//            }, withCancel: { error in
+//                print(error.localizedDescription)
+//            })
+        self._eventHost = user
+//        }
 
         if let createdDate = eventData["created"] as? String {
             let dateFormatter = DateFormatter()
@@ -169,8 +177,9 @@ class Event {
             self._startDate = dateFormatter.date(from: startDate)
         }
         
-        if let eventImageUrl = eventData["imageUrl"] as? String {
-            self._eventImageUrl = eventImageUrl
+        let eventImageUrlString = eventData["imageUrl"] as? String
+        if let eventImageUrlString = eventImageUrlString{
+            self._eventImageUrl = URL(string: eventImageUrlString)
         }
         
         if let eventAddress = eventData["address"] as? String {
@@ -191,6 +200,7 @@ class Event {
         
         if let eventZip = eventData["zip"] as? Int16 {
             self._eventZip = eventZip
+            print("AVINASH: Just checking on the zip")
         }
 
     }

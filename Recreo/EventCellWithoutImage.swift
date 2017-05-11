@@ -51,12 +51,15 @@ class EventCellWithoutImage: UITableViewCell {
             let timeString = dateFormatter.string(from: eventDate)
             eventDayTimeLocationLabel.text = "\(dayOfWeekString) \(timeString) at \(event.eventVenue), \(event.eventCity) \(event.eventState)"
             
-            if(event.eventHost.profileImageUrl != "") {
-                let hostProfileImageUrl = URL(string: event.eventHost.profileImageUrl)
-                eventHostProfileImageView.setImageWith(hostProfileImageUrl!)
-            } else {
-                eventHostProfileImageView.image = UIImage(named: "default_profile_image")
-            }
+//            if(event.eventHost.profileImageUrl != "") {
+//                let hostProfileImageUrl = URL(string: event.eventHost.profileImageUrl)
+//                print("AVINASH: profile image url from event cell, \(hostProfileImageUrl)")
+//                eventHostProfileImageView.setImageWith(hostProfileImageUrl!)
+//            } else {
+//                eventHostProfileImageView.image = UIImage(named: "default_profile_image")
+//            }
+            eventHostProfileImageView.image = nil
+            eventHostProfileImageView.setImageWith(event.eventHost.profileImageUrl)
             
             let currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)
             goingYesReference = DataService.ds.REF_EVENTS.child(event.eventId).child("yesGoing").child(currentUser!)
