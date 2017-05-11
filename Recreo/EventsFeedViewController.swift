@@ -54,11 +54,9 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
             
             print("AVINASH: remove events")
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                print("AVINASH: snapshot has children?")
                 for snap in snapshot {
-                    print("AVINASH: going through snaps")
+                    print("AVINASH: Events table, \(snap.key)")
                     if let eventDict = snap.value! as? Dictionary<String, Any> {
-                        print("AVINASH: setting up the event from REF_EVENTS observe callback")
                         let id = snap.key
                         let eventHost = eventDict["eventHost"]
                         let userFromEventHost = self.getUserById(users: self.users, userId: eventHost as! String)

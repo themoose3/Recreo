@@ -18,7 +18,7 @@ class User {
     private var _phoneNumber: String!
     private var _firstName: String!
     private var _lastName: String!
-    private var _profileImageUrl: URL?
+    private var _profileImageUrl: URL!
     
     private var _userRef: FIRDatabaseReference!
     
@@ -42,15 +42,15 @@ class User {
     }
     
     var firstName: String {
-        return _firstName ?? "Dino"
+        return _firstName ?? "NoName"
     }
     
     var lastName: String {
-        return _lastName ?? "Juliet"
+        return _lastName ?? "User"
     }
     
     var profileImageUrl: URL {
-        return _profileImageUrl!
+        return _profileImageUrl ?? URL(string: "https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png")!
     }
     
     var userRef: FIRDatabaseReference {

@@ -114,7 +114,7 @@ class Event {
     }
     
     var eventImageUrl: URL {
-        return _eventImageUrl!
+        return _eventImageUrl ?? URL(string: "http://www.corningcountryclub.com/Websites/countryclub/images/IMG_1266Porche-event.jpg")!
     }
     
     init(eventId: String, eventHost: User) {

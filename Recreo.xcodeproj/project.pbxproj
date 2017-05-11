@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0971AF485D1A365A71196118 /* Pods_Recreo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */; };
+		843AC2451EC4E8CC00187348 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843AC2441EC4E8CC00187348 /* CoreLocation.framework */; };
 		8452C49F1EBDFAB60048E400 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C49E1EBDFAB60048E400 /* DataService.swift */; };
 		8452C4A21EBE79040048E400 /* EventCellWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C4A01EBE79040048E400 /* EventCellWithImage.swift */; };
 		8452C4A31EBE79040048E400 /* EventCellWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452C4A11EBE79040048E400 /* EventCellWithImage.xib */; };
@@ -54,6 +55,7 @@
 /* Begin PBXFileReference section */
 		2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.release.xcconfig"; sourceTree = "<group>"; };
 		3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recreo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		843AC2441EC4E8CC00187348 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8452C49E1EBDFAB60048E400 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8452C4A01EBE79040048E400 /* EventCellWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCellWithImage.swift; sourceTree = "<group>"; };
 		8452C4A11EBE79040048E400 /* EventCellWithImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCellWithImage.xib; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843AC2451EC4E8CC00187348 /* CoreLocation.framework in Frameworks */,
 				B320F2A21EB9978700C5A376 /* MapKit.framework in Frameworks */,
 				0971AF485D1A365A71196118 /* Pods_Recreo.framework in Frameworks */,
 			);
@@ -116,6 +119,7 @@
 		30A60B52830EFDF96893C7D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				843AC2441EC4E8CC00187348 /* CoreLocation.framework */,
 				B320F2A11EB9978700C5A376 /* MapKit.framework */,
 				3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */,
 			);

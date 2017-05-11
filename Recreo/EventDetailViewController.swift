@@ -11,161 +11,122 @@ import FirebaseStorage
 import FirebaseDatabase
 import CoreLocation
 import MapKit
+import AFNetworking
 
-class EventDetailViewController: UIViewController {
+class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    @IBOutlet weak var eventImage: UIImageView!
-    @IBOutlet weak var monthLabel: UILabel!
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var hostLabel: UILabel!
-    @IBOutlet weak var numberGoingLabel: UILabel!
-    @IBOutlet weak var numberMaybeLabel: UILabel!
-    @IBOutlet weak var numberNotGoingLabel: UILabel!
+    
+    @IBOutlet weak var eventDetailImageView: UIImageView!
+    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventMonthLabel: UILabel!
+    @IBOutlet weak var eventDescriptionLabel: UILabel!
+    @IBOutlet weak var eventDayDateLabel: UILabel!
+    @IBOutlet weak var eventTimeLabel: UILabel!
+    @IBOutlet weak var eventVenueLabel: UILabel!
     @IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var eventDescriptionLabel: UILabel!
     
-    
-    
-    // var eventId: Int
-    let eventName = "Dino's Housewarming"
-    let eventDescription = "Join me at my new digs on June 8. Bring your appetite!"
-    let host = "2B8fkHDRikblHTrJdF8vQB320j02"
-    let name1 = "Angie"
-    let name2 = "Avinash"
-    let name3 = "Sideok"
-    let venue = "Dino's Digs"
-    //        let created = String(describing: Date())
-    //        let eventDate = "2017/05/17 23:00"
-    // let startDate = "2017/05/17 20:00"
-    // let endDate = "2017/05/17 23:00"
-    // var galleryId: Gallery?
-    // var eventImage: URL?
     var event: Event? {
         didSet {
-        
+            print("AVINASH: Event name: \(event?.eventId)")
+            print("AVINASH: Event name: \(event?.eventImageUrl)")
+            
         }
     }
+    //setting default location to Mountain View, CA and region radius to show 5km
+    let defaultLocation = CLLocation(latitude: 37.3861, longitude: -122.0839)
+    let regionRadius: CLLocationDistance = 5000
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //let invitees = ["+14088074454": name1, "+14151234567": name2, "+15302345678": name3]
-        setupDetails()
+        self.title = event?.eventName
         
+        //get current location
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
+        //event image
+        eventDetailImageView.image = nil
+        eventDetailImageView.setImageWith((event?.eventImageUrl)!)
         
-//        let geoCoder = CLGeocoder()
-//        geoCoder.geocodeAddressString(address) { (placemarks, error) in
-//            guard
-//                let placemarks = placemarks,
-//                let location = placemarks.first?.location
-//                else {
-//                    // handle no location found
-//                    return
-//            }
-//            
-            // Use your location
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-//            let startDate = formatter.date(from: "2017/05/17 20:00")
-//            let endDate = formatter.date(from: "2017/05/17 23:00")
-            
-//            // File located on disk
-//            let localFile = URL(string: "Assets.xcassets/housewarming.jpg")!
-//            
-//            // Create a reference to the file you want to upload
-//            let storageRef = storage.reference()
-//            let riversRef = storageRef.child("images/rivers.jpg")
-//            
-//            // Upload the file to the path "images/rivers.jpg"
-//            let uploadTask = riversRef.putFile(localFile, metadata: nil) { metadata, error in
-//                if let error = error {
-//                    // Uh-oh, an error occurred!
-//                } else {
-//                    // Metadata contains file metadata such as size, content-type, and download URL.
-//                    let downloadURL = metadata!.downloadURL()
-//                }
-//            }
-//            
-            
-//            let event:[String : AnyObject] = [
-//                "eventName": eventName as AnyObject,
-//                "eventDescription": eventDescription as AnyObject,
-//                "host": host as AnyObject,
-//                "invitees": invitees as AnyObject,
-//                "venue": venue as AnyObject,
-//                //"venueCoords": [location] as AnyObject,
-//                "created": created as AnyObject,
-//                "startDate": "2017/05/17 20:00" as AnyObject,
-//                "endDate": "2017/05/17 23:00" as AnyObject,
-//                "address": address as AnyObject
-//                //"gallery": false as AnyObject,
-//                //"eventImage": false as AnyObject
-//            ]
-//            
-//            //To create Locations
-//            let firebaseRef = FIRDatabase.database().reference()
-//            firebaseRef.child("Events").childByAutoId().setValue(event)
+        //event date time handling
+        let eventStartDate = event?.eventStartDate
+        let eventEndDate = event?.eventEndDate
+        let dateFormatter = DateFormatter()
         
-        //}
+        dateFormatter.dateFormat = "MMM"
+        let monthString = dateFormatter.string(from: eventStartDate!)
+        eventMonthLabel.text = monthString.uppercased()
         
-        // Do any additional setup after loading the view.
-
+        dateFormatter.dateFormat = "dd"
+        let dateString = dateFormatter.string(from: eventStartDate!)
+        eventDateLabel.text = dateString.uppercased()
+        
+        dateFormatter.dateFormat = "EEEE, MMM d"
+        let dayDateString = dateFormatter.string(from: eventStartDate!)
+        eventDayDateLabel.text = dayDateString
+        
+        dateFormatter.dateFormat = "h:mm a"
+        let startTimeString = dateFormatter.string(from: eventStartDate!)
+        let endTimeString = dateFormatter.string(from: eventEndDate!)
+        eventTimeLabel.text = "\(startTimeString) - \(endTimeString)"
+        
+        //event name
+        eventDescriptionLabel.text = event?.eventName
+        
+        //event address
+        eventVenueLabel.text = event?.eventVenue
+        eventAddressLabel.text = "\((event?.eventAddress)!), \((event?.eventCity)!), \((event?.eventState)!)"
+        
+        //setup map view
+        let eventLocation = getLocation(cityState: "\((event?.eventCity)!), \((event?.eventState)!)")
+        centerMapOnLocation(location: eventLocation)
     }
     
-    func setupDetails() {
-        // Set address label and pin for map view
-        let address = "1 Infinite Loop, Cupertino, CA 95014"
-        eventAddressLabel.text = address
-        setPin(address: address)
-        
-        // Set event name and description
-        eventDescriptionLabel.text = eventDescription
-        eventNameLabel.text = eventName
-        
-        // Set date and time labels
-        //parseDateAndTime(start: startDate, end: endDate)
-    }
-    
-//    func parseDateAndTime(start: String, end: String) {
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy/MM/dd hh:mm"
-//        if let date = dateFormatter.date(from: start) {
-//            let calendar = Calendar.current
-//            let month = calendar.component(.month, from: date)
-//            let day = calendar.component(.day, from: date)
-//            let hour = calendar.component(.hour, from: date)
-//            let minutes = calendar.component(.minute, from: date)
-//            
-//            //monthLabel.text = month
-//            
-//        }
-//    }
-    
-    func setPin (address: String) {
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address) { (placemarks, error) in
-            if let placemarks = placemarks {
-                if placemarks.count != 0 {
-                    let annotation = MKPlacemark(placemark: placemarks.first!)
-                    self.mapView.addAnnotation(annotation)
-                }
+    func getLocation(cityState: String) -> CLLocation {
+        var someLocation: CLLocation = defaultLocation
+        CLGeocoder().geocodeAddressString(cityState, completionHandler: { (placemarks, error) in
+            if (placemarks?.count)! > 0 {
+                let placemark = placemarks?.first
+                let annotation = MKPlacemark(placemark: placemark!)
+                self.mapView.addAnnotation(annotation)
+                let coordinate = placemark?.location?.coordinate
+                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                someLocation = CLLocation(latitude: coordinate!.latitude, longitude: coordinate!.longitude)
             }
-        }
-        
-        
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        })
+        return someLocation
     }
     
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius*2.0, regionRadius*2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = location.coordinate
+        mapView.addAnnotation(annotation)
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error updating location: \(error.localizedDescription)")
+    }
+    
+    @IBAction func onDiscussionTap(_ sender: Any) {
+        performSegue(withIdentifier: "ChatSegue", sender: self)
+    }
+    
+    @IBAction func onGalleryTap(_ sender: Any) {
+        performSegue(withIdentifier: "GallerySegue", sender: self)
+    }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GallerySegue" {
             //let galleryVC = segue.destination as! GalleryViewController
@@ -175,9 +136,6 @@ class EventDetailViewController: UIViewController {
             chatVC.eventRef = FIRDatabase.database().reference().child("Events").child((event?.eventId)!)
             
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-
 
 }
