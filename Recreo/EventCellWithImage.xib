@@ -15,10 +15,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="326"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="325"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="325.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_event_image" translatesAutoresizingMaskIntoConstraints="NO" id="j8K-Ty-xPO">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="j8K-Ty-xPO">
                         <rect key="frame" x="4" y="4" width="313" height="120"/>
                         <color key="backgroundColor" red="0.44599652635249576" green="0.80202665747032986" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -77,9 +77,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_profile_image" translatesAutoresizingMaskIntoConstraints="NO" id="EJ3-O5-Q5z">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="EJ3-O5-Q5z">
                         <rect key="frame" x="253" y="132" width="60" height="60"/>
-                        <color key="backgroundColor" red="0.40784313729999999" green="0.93725490199999995" blue="0.67843137249999996" alpha="0.87" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="hrk-C0-oP5"/>
                             <constraint firstAttribute="height" constant="60" id="it0-Fd-4t2"/>
@@ -137,7 +136,7 @@
                 <outlet property="eventCellMessageLabel" destination="s3c-fm-gZq" id="c4o-A7-T3a"/>
                 <outlet property="eventDateLabel" destination="q6U-Lf-qfq" id="ZYJ-cy-AIT"/>
                 <outlet property="eventDayTimeLocationLabel" destination="lke-Fx-kiy" id="GPx-zH-nq3"/>
-                <outlet property="eventHostProfileImageView" destination="pVg-Hf-w6g" id="1WD-25-bDX"/>
+                <outlet property="eventHostProfileImageView" destination="EJ3-O5-Q5z" id="wH1-iz-tHM"/>
                 <outlet property="eventImageView" destination="j8K-Ty-xPO" id="2Zn-aK-sZi"/>
                 <outlet property="eventMonthLabel" destination="JEt-QI-WIy" id="nWf-Qx-Z6o"/>
                 <outlet property="eventNameLabel" destination="Czb-eZ-HPq" id="jfq-fL-Sc4"/>
@@ -149,10 +148,10 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="default_event_image" width="700" height="700"/>
-        <image name="default_profile_image" width="700" height="700"/>
+        <image name="add-image" width="88" height="88"/>
         <image name="going-not-selected" width="512" height="512"/>
         <image name="maybe-not-selected" width="512" height="512"/>
         <image name="notgoing-not-selected" width="512" height="512"/>
+        <image name="placeholder" width="567" height="312"/>
     </resources>
 </document>

@@ -32,6 +32,7 @@ class EventCellWithImage: UITableViewCell {
     
     var event: Event! {
         didSet {
+            print("AVINASH: profile image url from event cell, \(event.eventHost.firstName)")
             eventCellMessageLabel.text = "\(event.eventHost.firstName) is hosting an event"
             
             let eventDate = event.eventStartDate
@@ -45,6 +46,7 @@ class EventCellWithImage: UITableViewCell {
             let dateString = dateFormatter.string(from: eventDate)
             eventDateLabel.text = dateString.uppercased()
             
+            print("AVINASH: profile image url from event cell, \(event.eventName)")
             eventNameLabel.text = event.eventName
             
             dateFormatter.dateFormat = "E"
@@ -52,20 +54,18 @@ class EventCellWithImage: UITableViewCell {
             dateFormatter.dateFormat = "h:mm a"
             let timeString = dateFormatter.string(from: eventDate)
             eventDayTimeLocationLabel.text = "\(dayOfWeekString) \(timeString) at \(event.eventVenue), \(event.eventCity) \(event.eventState)"
+                        
+//            if(event.eventImageUrl != "") {
+//                let eventImageUrl = URL(string: event.eventImageUrl)
+//                eventImageView.setImageWith(eventImageUrl!)
+//            } else {
+//                eventImageView.image = UIImage(named: "default_event_image")
+//            }
+            eventHostProfileImageView.image = nil
+            eventHostProfileImageView.setImageWith(event.eventHost.profileImageUrl)
             
-            if(event.eventHost.profileImageUrl != "") {
-                let hostProfileImageUrl = URL(string: event.eventHost.profileImageUrl)
-                eventHostProfileImageView.setImageWith(hostProfileImageUrl!)
-            } else {
-                eventHostProfileImageView.image = UIImage(named: "default_profile_image")
-            }
-            
-            if(event.eventImageUrl != "") {
-                let eventImageUrl = URL(string: event.eventImageUrl)
-                eventImageView.setImageWith(eventImageUrl!)
-            } else {
-                eventImageView.image = UIImage(named: "default_event_image")
-            }
+            eventImageView.image = nil
+            eventImageView.setImageWith(event.eventImageUrl)
             
             let currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)
             goingYesReference = DataService.ds.REF_EVENTS.child(event.eventId).child("yesGoing").child(currentUser!)
