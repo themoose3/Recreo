@@ -51,6 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let vc = storyboard.instantiateInitialViewController()
             
             self.window?.rootViewController = vc
+            let defaults = UserDefaults.standard
+            defaults.set(nil, forKey: "User")
+            defaults.set(nil, forKey: "UserEmail")
+            defaults.set(nil, forKey: "UserProfileImage")
         }
         return true
     }

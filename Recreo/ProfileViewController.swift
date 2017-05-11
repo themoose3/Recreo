@@ -16,15 +16,22 @@ enum TextField {
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    let defaults = UserDefaults.standard
+    let userRef = FIRDatabase.database().reference().child("users")
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAvatar()
+        setupFields()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
         nameTextField.delegate = self
         emailTextField.delegate = self
         // Do any additional setup after loading the view.
@@ -35,11 +42,43 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
+    func setupFields() {
+        if let name = defaults.string(forKey: "UserName") {
+            nameTextField.text = name
+        } else {
+            nameTextField.text = ""
+        }
+        phoneNumberTextField.text = "+14081234567"
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let image = UIImage(named: "cellphone.png")
+        imageView.image = image
+        phoneNumberTextField.leftView = imageView
+        phoneNumberTextField.leftViewMode = UITextFieldViewMode.always
+
+        emailTextField.text = defaults.string(forKey: "UserEmail")
+        setupEmail()
+
+        setupAvatar()
+
+    }
+    
+    func setupEmail() {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        let image = UIImage(named: "email.png")
+        imageView.image = image
+        emailTextField.leftView = imageView
+        emailTextField.leftViewMode = UITextFieldViewMode.always
+    }
+    
     func setupAvatar() {
         avatarImage.layer.cornerRadius = 10.0
         avatarImage.layer.borderWidth = 5.0
         avatarImage.layer.borderColor = UIColor.black.cgColor
         avatarImage.isUserInteractionEnabled = true
+        
+        if let avatar = defaults.data(forKey: "UserProfileImage") {
+            avatarImage.image = UIImage(data: avatar)
+        }
     }
     
     @IBAction func onAvatarTap(_ sender: UITapGestureRecognizer) {
@@ -98,8 +137,14 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         // do something interesting here!
         avatarImage.image = newImage
+        saveImage()
         
         dismiss(animated: true)
+    }
+    
+    func saveImage(){
+        let imageData = UIImagePNGRepresentation(avatarImage.image!)
+        defaults.set(imageData, forKey: "UserProfileImage")
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -115,13 +160,24 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     }
     
     func saveText(textField: TextField) {
+        let userId = defaults.string(forKey: "User")
+        let specificUserRef = userRef.child(userId!)
+        
         switch textField {
         case .name:
+            specificUserRef.child("name").setValue(nameTextField.text)
+            defaults.set(nameTextField.text, forKey: "UserName")
             print("name")
         default:
+            specificUserRef.child("email").setValue(emailTextField.text)
+            defaults.set(emailTextField.text, forKey: "UserEmail")
             print("email")
         }
-        // Save in Firebase
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
