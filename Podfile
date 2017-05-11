@@ -21,4 +21,5 @@ target 'Recreo' do
   pod 'SwiftGifOrigin'
 
   pod 'MBProgressHUD'
+  pod 'Alamofire'
 end
