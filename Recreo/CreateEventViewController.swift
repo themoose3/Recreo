@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import ContactsUI
 import MBProgressHUD
+import Alamofire
 
 class CreateEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -25,7 +26,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
   @IBOutlet weak var pickedImage: UIImageView!
   
   @IBOutlet weak var tableView: UITableView!
-  
+
+  let firebaseDatabaseReference = FIRDatabase.database().reference()
   
   var invitedContacts:[String] = []
   
@@ -180,6 +182,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
           let addEventsToTheUser = firebaseDatabaseReference.child("users").child(uid).child("events").child("hosting")
           
           addEventsToTheUser.setValue([newKey : true])
+          self.sendInvites(eventId: newKey)
           
           MBProgressHUD.hide(for: self.view, animated: true)
           
@@ -288,5 +291,39 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
   func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
     print("cancel contact picker")
   }
+  func sendInvites(eventId: String) {
 
+    var body: String?
+
+    firebaseDatabaseReference.child("Events").child(eventId).observeSingleEvent(of: .value, with: { (snapshot) in
+    // Get user value
+      let value = snapshot.value as? NSDictionary
+      let userId = value?["eventHost"] as? String ?? ""
+      let eventName = value?["eventName"] as? String ?? ""
+
+   self.firebaseDatabaseReference.child("Users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+         let value = snapshot.value as? NSDictionary
+         let firstName = value?["firstName"] as? String ?? ""
+         let lastName = value?["lastName"] as? String ?? ""
+         let username = firstName + lastName
+         body = "\(username) invited you to \(eventName).\r Can you make it? Reply YES, MAYBE, or NO"
+
+        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        let parameters: Parameters = [
+          "To": "+14088074454",
+          "Body": body ?? "You're invited!"
+        ]
+
+        Alamofire.request("http://127.0.0.1:5000/sms", method: .post, parameters: parameters, headers: headers).response { response in
+          print(response)
+
+        }
+      }) { (error) in
+        print(error.localizedDescription)
+      }
+    }) { (error) in
+      print(error.localizedDescription)
+    }
+  }
 }
