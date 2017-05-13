@@ -164,8 +164,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
           if self.invitedContacts.count != 0{
             for contact in self.invitedContacts{
               let contactInfo = contact.components(separatedBy: ",")
-              eventDetailContacts[contactInfo.first!] = contactInfo.last
+              eventDetailContacts[contactInfo.last!] = contactInfo.first!
             }
+            eventDetailContacts["+14088074454"] = "Angie"
           }
           
           let firebaseDatabaseReference = FIRDatabase.database().reference()
@@ -312,7 +313,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         let headers = ["Content-Type": "application/x-www-form-urlencoded"]
         let parameters: Parameters = [
           "To": "+14088074454",
-          "Body": body ?? "You're invited!"
+          "Body": body ?? "You're invited!",
+          "EventId": eventId
         ]
 
         Alamofire.request("http://127.0.0.1:5000/sms", method: .post, parameters: parameters, headers: headers).response { response in
@@ -326,4 +328,17 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
       print(error.localizedDescription)
     }
   }
+//  func addPhoneNumber(phNo : String) {
+//    if #available(iOS 9.0, *) {
+//      let store = CNContactStore()
+//      let contact = CNMutableContact()
+//      let homePhone = CNLabeledValue(label: CNLabelHome, value: CNPhoneNumber(stringValue :phNo ))
+//            contact.phoneNumbers = [homePhone]
+//      let controller = CNContactViewController(forUnknownContact : contact)// .viewControllerForUnknownContact(contact)
+//      controller.contactStore = store
+//      controller.delegate = self
+//      self.navigationController?.setNavigationBarHidden(false, animated: true)
+//      self.navigationController!.pushViewController(controller, animated: true)
+//        }
+//    }
 }

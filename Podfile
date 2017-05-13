@@ -10,6 +10,7 @@ target 'Recreo' do
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
 
   pod 'FacebookCore'
   pod 'FacebookLogin'
