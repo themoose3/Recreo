@@ -29,7 +29,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        eventsFeedVC = storyboard.instantiateViewController(withIdentifier: "EventsFeedNavigationController")
+        //eventsFeedVC = storyboard.instantiateViewController(withIdentifier: "EventsFeedNavigationController")
+        eventsFeedVC = storyboard.instantiateViewController(withIdentifier: "EventsFeedNavVC")
         profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
         archivesVC = storyboard.instantiateViewController(withIdentifier: "ArchivesNavigationController")
         settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsNavigationController")

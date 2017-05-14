@@ -10,16 +10,17 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import SwiftKeychainWrapper
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        IQKeyboardManager.sharedManager().enable = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
               
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
@@ -29,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
             window?.rootViewController = hamburgerViewController
             
-            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            //let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
             menuViewController.hamburgerViewController = hamburgerViewController
             hamburgerViewController.menuViewController = menuViewController
         } 
@@ -41,7 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let hamburgerViewController = storyboard.instantiateViewController(withIdentifier: "HamburgerViewController") as! HamburgerViewController
             self.window?.rootViewController = hamburgerViewController
             
-            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            //let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+            let menuViewController = storyboard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
             menuViewController.hamburgerViewController = hamburgerViewController
             hamburgerViewController.menuViewController = menuViewController
         }
