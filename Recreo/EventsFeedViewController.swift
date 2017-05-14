@@ -58,16 +58,19 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
                     print("AVINASH: Events table, \(snap.key)")
                     if let eventDict = snap.value! as? Dictionary<String, Any> {
                         let id = snap.key
-                        let eventHost = eventDict["eventHost"]
-                        let userFromEventHost = self.getUserById(users: self.users, userId: eventHost as! String)
-                        print("AVINASH: profile image url, \(userFromEventHost.profileImageUrl)")
-                        print("AVINASH: sending to Event pass with id: \(id) and event host uid: \(eventHost!)")
-                        let event = Event(eventId: id, eventData: eventDict, user: userFromEventHost)
-                        self.events.append(event)
-                        if(event.eventHost.userId == currentUserUID) {
-                            self.hostedEvents.append(event)
-                            self.shownEvents.append(event)
+                        if let eventHost = eventDict["eventHost"] {
+                            let userFromEventHost = self.getUserById(users: self.users, userId: eventHost as! String)
+                            print("AVINASH: profile image url, \(userFromEventHost.profileImageUrl)")
+                            print("AVINASH: sending to Event pass with id: \(id) and event host uid: \(eventHost)")
+                            let event = Event(eventId: id, eventData: eventDict, user: userFromEventHost)
+                            
+                            self.events.append(event)
+                            if(event.eventHost.userId == currentUserUID) {
+                                self.hostedEvents.append(event)
+                                self.shownEvents.append(event)
+                            }
                         }
+
                         //print("SNAPPY: \(event.eventName)")
                         //print("SNAPPY EVENT COUNT: \(self.events.count)")
                     }

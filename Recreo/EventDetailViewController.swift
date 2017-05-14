@@ -28,8 +28,8 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     var event: Event? {
         didSet {
-            print("AVINASH: Event name: \(event?.eventId)")
-            print("AVINASH: Event name: \(event?.eventImageUrl)")
+            print("AVINASH: Event name: \(event?.eventId ?? "no event name")")
+            //print("AVINASH: Event image: \(event?.eventImageUrl ?? nil)")
             
         }
     }
@@ -134,6 +134,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         if segue.identifier == "ChatSegue" {
             let chatVC = segue.destination as! ChatViewController
             chatVC.eventRef = FIRDatabase.database().reference().child("Events").child((event?.eventId)!)
+            chatVC.event = event
             
         }
     }

@@ -86,6 +86,7 @@
 		8B7D86911EC0DF4600EBC135 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B7D86931EC0F06100EBC135 /* CreateEventImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventImageCollectionCell.swift; sourceTree = "<group>"; };
 		A01318A829FE1DC440A7C97B /* Pods-Recreo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.debug.xcconfig"; sourceTree = "<group>"; };
+		B30657451EC7C945008EF53F /* Recreo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Recreo.entitlements; sourceTree = "<group>"; };
 		B320F2831EB662E900C5A376 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B320F2871EB6D6F900C5A376 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B320F2891EB6DB1A00C5A376 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 		84F6649D1EA8463B00044DB4 /* Recreo */ = {
 			isa = PBXGroup;
 			children = (
+				B30657451EC7C945008EF53F /* Recreo.entitlements */,
 				8452C49D1EBDFA8F0048E400 /* Services */,
 				84A7CEAC1EB67C1F0056B160 /* Views */,
 				84A7CEAB1EB67C1A0056B160 /* Models */,
@@ -276,9 +278,13 @@
 				TargetAttributes = {
 					84F6649A1EA8463B00044DB4 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 53ZP587FGZ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -452,7 +458,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -502,7 +509,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -529,11 +537,15 @@
 			baseConfigurationReference = A01318A829FE1DC440A7C97B /* Pods-Recreo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Recreo/Recreo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 53ZP587FGZ;
 				INFOPLIST_FILE = Recreo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -543,11 +555,15 @@
 			baseConfigurationReference = 2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Recreo/Recreo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 53ZP587FGZ;
 				INFOPLIST_FILE = Recreo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

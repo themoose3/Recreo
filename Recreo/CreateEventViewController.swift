@@ -123,7 +123,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
        storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
         
         if error != nil{
-          print(error)
+          print(error ?? "Error with uploading image")
           return
         }
         
@@ -191,6 +191,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
        })
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.registerForPushNotifications(application: UIApplication.shared)
     }
   }
   
@@ -295,6 +297,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
   func sendInvites(eventId: String) {
 
     var body: String?
+    print("I'm hereee")
 
     firebaseDatabaseReference.child("Events").child(eventId).observeSingleEvent(of: .value, with: { (snapshot) in
     // Get user value
@@ -314,10 +317,11 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         let parameters: Parameters = [
           "To": "+14088074454",
           "Body": body ?? "You're invited!",
-          "EventId": eventId
+          "EventId": eventId,
+          "InviteeName": "Angie"
         ]
 
-        Alamofire.request("http://127.0.0.1:5000/sms", method: .post, parameters: parameters, headers: headers).response { response in
+        Alamofire.request("https://c481e0b0.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
           print(response)
 
         }

@@ -11,6 +11,7 @@ import Photos
 import Firebase
 import SwiftGifOrigin
 import JSQMessagesViewController
+import Alamofire
 
 class ChatViewController: JSQMessagesViewController {
     
@@ -21,13 +22,13 @@ class ChatViewController: JSQMessagesViewController {
     private let imageURLNotSetKey = "NOTSET"
     
     lazy var storageRef: FIRStorageReference = FIRStorage.storage().reference(forURL: "gs://recreo-d1441.appspot.com")
-
+    
     private lazy var usersTypingQuery: FIRDatabaseQuery =
         self.eventRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
     
     private lazy var userIsTypingRef: FIRDatabaseReference =
         self.eventRef!.child("typingIndicator").child(self.senderId)
-
+    
     private var localTyping = false
     var isTyping: Bool {
         get {
@@ -47,40 +48,50 @@ class ChatViewController: JSQMessagesViewController {
     
     var messages = [JSQMessage]()
     var eventRef: FIRDatabaseReference?
+    
+    var eventId: String?
+    
     var event: Event? {
         didSet {
             title = event?.eventName
+            eventId = event?.eventId
         }
     }
-
+    
+    let firebaseDatabaseReference = FIRDatabase.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.senderId = defaults.string(forKey: "User")
-        self.senderDisplayName = defaults.string(forKey: "UserEmail")
+        senderId = defaults.string(forKey: "User")
+        senderDisplayName = defaults.string(forKey: "UserEmail")
+        
         
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
         observeMessages()
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         observeTyping()
+        addMessage(withId: "foo", name: "Jane", text: "What are you wearing?")
+        addMessage(withId: "bar", name: "Amit", text: "Sup!" )
+        finishReceivingMessage()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        // messages from someone else
-//        addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
-//        // messages sent from local sender
-//        addMessage(withId: senderId, name: "Me", text: "I bet I can run faster than you!")
-//        addMessage(withId: senderId, name: "Me", text: "I like to run!")
-//        // animates the receiving of a new message on the view
-//        finishReceivingMessage()
-//
-//    }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        // messages from someone else
+    //        addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
+    //        // messages sent from local sender
+    //        addMessage(withId: senderId, name: "Me", text: "I bet I can run faster than you!")
+    //        addMessage(withId: senderId, name: "Me", text: "I like to run!")
+    //        // animates the receiving of a new message on the view
+    //        finishReceivingMessage()
+    //
+    //    }
     
     private func addMessage(withId id: String, name: String, text: String) {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
@@ -118,7 +129,6 @@ class ChatViewController: JSQMessagesViewController {
                 // 5
                 self.finishReceivingMessage()
                 
-            
             } else if let id = messageData["senderId"] as String!,
                 let photoURL = messageData["photoURL"] as String! { // 1
                 // 2
@@ -204,7 +214,7 @@ class ChatViewController: JSQMessagesViewController {
         return cell
     }
     
-    // UI and User Interaction 
+    // UI and User Interaction
     private func setupOutgoingBubble() -> JSQMessagesBubbleImage {
         let bubbleImageFactory = JSQMessagesBubbleImageFactory()
         return bubbleImageFactory!.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
@@ -231,7 +241,44 @@ class ChatViewController: JSQMessagesViewController {
         
         finishSendingMessage()
         isTyping = false
-
+        
+        if text.hasPrefix("@all:") {
+            
+            firebaseDatabaseReference.child("Events").child(eventId!).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                let value = snapshot.value as? NSDictionary
+                let userId = value?["eventHost"] as? String ?? ""
+                let eventName = value?["eventName"] as? String ?? ""
+                
+                self.firebaseDatabaseReference.child("Users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                    // Get user value
+                    let value = snapshot.value as? NSDictionary
+                    let firstName = value?["firstName"] as? String ?? ""
+                    let lastName = value?["lastName"] as? String ?? ""
+                    let username = firstName + " " + lastName
+                    let startIndex = text.index(text.startIndex, offsetBy: 5)
+                    let body = "Update from \(username)'s \(eventName): \(text[startIndex..<text.endIndex])"
+                    
+                    let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+                    let parameters: Parameters = [
+                        "To": "+14088074454",
+                        "Body": body ,
+                        "EventId": (self.eventId)!
+                    ]
+                    
+                    Alamofire.request("http://127.0.0.1:5000/broadcast", method: .post, parameters: parameters, headers: headers).response { response in
+                        print(response)
+                        
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+            }) { (error) in
+                print(error.localizedDescription)
+            }
+            
+        }
+        
     }
     
     override func didPressAccessoryButton(_ sender: UIButton) {
@@ -245,7 +292,7 @@ class ChatViewController: JSQMessagesViewController {
         
         present(picker, animated: true, completion:nil)
     }
-
+    
     override func textViewDidChange(_ textView: UITextView) {
         super.textViewDidChange(textView)
         // If the text is not empty, the user is typing
@@ -267,7 +314,7 @@ class ChatViewController: JSQMessagesViewController {
         finishSendingMessage()
         return itemRef.key
     }
-
+    
     func setImageURL(_ url: String, forPhotoMessageWithKey key: String) {
         let itemRef = messageRef.child(key)
         itemRef.updateChildValues(["photoURL": url])
@@ -320,22 +367,40 @@ class ChatViewController: JSQMessagesViewController {
     
     func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         return kJSQMessagesCollectionViewCellLabelHeightDefault
-
+        
     }
     
-//    override func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
-//        return NSAttributedString(string: self.messages[indexPath.item].date)
-//    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForMessageBubbleTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        return 15
     }
-    */
-
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString? {
+        let message = messages[indexPath.item]
+        switch message.senderId {
+        case senderId:
+            return nil
+        default:
+            guard let senderDisplayName = message.senderDisplayName else {
+                assertionFailure()
+                return nil
+            }
+            return NSAttributedString(string: senderDisplayName)
+        }
+    }
+    
+    //    func collectionView(collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAtIndexPath indexPath: NSIndexPath) -> NSAttributedString? {
+    //        return NSAttributedString(string: self.messages[indexPath.item].date)
+    //    }
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 // MARK: Image Picker Delegate
