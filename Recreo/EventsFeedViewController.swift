@@ -107,11 +107,10 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = shownEvents[indexPath.row]
         
-        if event.eventImageUrl == nil {
-        //if event.eventImageUrl != "" {
+        let data = NSData(contentsOf: event.eventImageUrl)
+        if UIImage(data: (data! as NSData) as Data) == nil {
             let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
             cell.event = event
-            
             return cell
         } else {
             let cell = Bundle.main.loadNibNamed("EventCellWithImage", owner: self, options: nil)?.first as! EventCellWithImage
@@ -119,6 +118,20 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
             
             return cell
         }
+
+        
+//        if event.eventImageUrl == nil {
+//        //if event.eventImageUrl != "" {
+//            let cell = Bundle.main.loadNibNamed("EventCellWithoutImage", owner: self, options: nil)?.first as! EventCellWithoutImage
+//            cell.event = event
+//            
+//            return cell
+//        } else {
+//            let cell = Bundle.main.loadNibNamed("EventCellWithImage", owner: self, options: nil)?.first as! EventCellWithImage
+//            cell.event = event
+//            
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -130,7 +143,9 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let event = shownEvents[indexPath.row]
     
-        if event.eventImageUrl == nil {
+        let data = NSData(contentsOf: event.eventImageUrl)
+        if UIImage(data: (data! as NSData) as Data) == nil {
+       // if event.eventImageUrl == nil {
             return 202
         } else {
             return 312
@@ -139,8 +154,9 @@ class EventsFeedViewController: UIViewController, UITableViewDataSource, UITable
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EventDetailSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            let eventDetailVC = navigationController.topViewController as! EventDetailViewController
+            let eventDetailVC = segue.destination as! EventDetailViewController
+            //let navigationController = segue.destination as! UINavigationController
+            //let eventDetailVC = navigationController.topViewController as! EventDetailViewController
             let row = (sender as! IndexPath).row
             let event = shownEvents[row]
             eventDetailVC.event = event

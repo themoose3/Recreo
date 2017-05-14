@@ -93,6 +93,9 @@ class ChatViewController: JSQMessagesViewController {
     //
     //    }
     
+    @IBAction func onCancel(_ sender: UIBarButtonItem) {
+      self.dismiss(animated: true, completion: nil)
+    }
     private func addMessage(withId id: String, name: String, text: String) {
         if let message = JSQMessage(senderId: id, displayName: name, text: text) {
             messages.append(message)
