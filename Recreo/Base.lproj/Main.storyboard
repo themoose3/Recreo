@@ -181,10 +181,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="pbQ-lD-amR">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="YcX-VN-ddV">
+                            <connections>
+                                <action selector="onCancel:" destination="0Mx-ec-9tW" id="dxC-3q-Oo4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="97n-rw-Ljm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1498" y="3466"/>
+            <point key="canvasLocation" x="-236" y="4226.5367316341835"/>
         </scene>
         <!--Create Event-->
         <scene sceneID="glY-T3-hFo">
@@ -610,7 +617,7 @@
                                 <state key="normal" title="Discussion"/>
                                 <connections>
                                     <action selector="onDiscussionTap:" destination="Pa8-wU-dTA" eventType="touchUpInside" id="ytl-MS-ls1"/>
-                                    <segue destination="0Mx-ec-9tW" kind="show" identifier="ChatSegue" id="0IN-FV-m4e"/>
+                                    <segue destination="PdW-I3-FXy" kind="show" identifier="ChatSegue" id="Snd-6p-g57"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -670,7 +677,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vp4-1C-Xer" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1004" y="2561"/>
+            <point key="canvasLocation" x="-484" y="2563"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="2bD-FZ-ZfB">
@@ -1469,20 +1476,20 @@
             <point key="canvasLocation" x="1700" y="313"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="aD9-ki-2Pi">
+        <scene sceneID="zJV-sb-O3E">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KNC-bj-Kk6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="PdW-I3-FXy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6X-NE-U8c">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1vx-kX-EJU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="QP1-1P-ylY" kind="relationship" relationship="rootViewController" id="BEk-xg-aEm"/>
+                        <segue destination="0Mx-ec-9tW" kind="relationship" relationship="rootViewController" id="qux-ov-CUg"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="myE-zY-meS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HeA-oh-Duy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-482" y="3466"/>
         </scene>
@@ -1525,4 +1532,7 @@
         <image name="portrait1" width="4272" height="2848"/>
         <image name="twitter_icon" width="41" height="41"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ni8-Be-5BG"/>
+    </inferredMetricsTieBreakers>
 </document>

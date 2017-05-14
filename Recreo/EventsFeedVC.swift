@@ -135,6 +135,7 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             //let navigationController = segue.destination as! UINavigationController
             //let eventDetailVC = navigationController.topViewController as! EventDetailViewController
             let eventDetailVC = segue.destination as! EventDetailViewController
+
             let row = (sender as! IndexPath).row
             let event = shownEvents[row]
             eventDetailVC.event = event

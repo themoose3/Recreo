@@ -134,7 +134,8 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             //let galleryVC = segue.destination as! GalleryViewController
         }
         if segue.identifier == "ChatSegue" {
-            let chatVC = segue.destination as! ChatViewController
+            let navigationController = segue.destination as! UINavigationController
+            let chatVC = navigationController.topViewController as! ChatViewController
             chatVC.eventRef = FIRDatabase.database().reference().child("Events").child((event?.eventId)!)
             chatVC.event = event
             
