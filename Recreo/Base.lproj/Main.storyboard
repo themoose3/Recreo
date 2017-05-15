@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o0N-iY-rg7">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o0N-iY-rg7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -620,6 +620,34 @@
                                     <segue destination="PdW-I3-FXy" kind="show" identifier="ChatSegue" id="Snd-6p-g57"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeU-6a-ELT">
+                                <rect key="frame" x="276" y="259" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Me5-OW-ppr">
+                                <rect key="frame" x="324" y="259" width="22" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OB7-ul-ZDC">
+                                <rect key="frame" x="178" y="259" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6r-7h-RZO">
+                                <rect key="frame" x="226" y="259" width="28" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -673,11 +701,13 @@
                         <outlet property="eventTimeLabel" destination="2JU-Rr-f0f" id="Wqi-de-7Ob"/>
                         <outlet property="eventVenueLabel" destination="LIG-Xp-iwO" id="CsJ-Gk-0W7"/>
                         <outlet property="mapView" destination="AjI-FR-uUv" id="dKq-IU-ivM"/>
+                        <outlet property="noCountLabel" destination="JeU-6a-ELT" id="HrK-aC-FOi"/>
+                        <outlet property="yesCountLabel" destination="OB7-ul-ZDC" id="gHt-sH-ESQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vp4-1C-Xer" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-484" y="2563"/>
+            <point key="canvasLocation" x="-484" y="2562.3688155922041"/>
         </scene>
         <!--Gallery View Controller-->
         <scene sceneID="2bD-FZ-ZfB">
@@ -1051,6 +1081,7 @@
                                             <outlet property="eventNameLabel" destination="Qpv-Ns-Lwv" id="8ge-62-koZ"/>
                                             <outlet property="notGoingImageView" destination="rm8-nu-ew3" id="TuB-ff-CQT"/>
                                             <outlet property="yesGoingImageView" destination="4WV-bt-BoN" id="VF5-JY-o5W"/>
+                                            <segue destination="Pa8-wU-dTA" kind="show" identifier="EventDetailSegue" id="Gsv-li-oLN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1533,6 +1564,7 @@
         <image name="twitter_icon" width="41" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="NW1-xW-e6A"/>
         <segue reference="Ni8-Be-5BG"/>
     </inferredMetricsTieBreakers>
 </document>
