@@ -11,6 +11,7 @@ import FirebaseStorage
 import FirebaseDatabase
 import CoreLocation
 import MapKit
+import MBProgressHUD
 
 class EventDetailViewController: UIViewController {
 
@@ -27,8 +28,9 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventDescriptionLabel: UILabel!
     
     
-    
-    // var eventId: Int
+  
+    //Needs to get eventId from Firebase - commented by Sideok
+    let eventId = "-KjjhP0wb6SylxxcxDNG"
     let eventName = "Dino's Housewarming"
     let eventDescription = "Join me at my new digs on June 8. Bring your appetite!"
     let host = "2B8fkHDRikblHTrJdF8vQB320j02"
@@ -162,13 +164,21 @@ class EventDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+  @IBAction func onCancelButton(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
+  }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GallerySegue" {
-            //let galleryVC = segue.destination as! GalleryViewController
+          if let nav = segue.destination as? UINavigationController{
+            if let gvc = nav.visibleViewController as? GalleryViewController{
+              gvc.selectedEventId = self.eventId
+              print("segue to Gallery View")
+            }
+          }
         }
         if segue.identifier == "ChatSegue" {
             let chatVC = segue.destination as! ChatViewController

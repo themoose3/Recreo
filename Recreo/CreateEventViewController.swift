@@ -26,7 +26,6 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
   
   @IBOutlet weak var tableView: UITableView!
   
-  
   var invitedContacts:[String] = []
   
     override func viewDidLoad() {
@@ -43,82 +42,79 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
     }
   
   
-  @IBAction func onAddPhotosButton(_ sender: Any) {
+    @IBAction func onAddPhotosButton(_ sender: Any) {
     
-    let imagePickerController = UIImagePickerController()
-    imagePickerController.delegate = self
+      let imagePickerController = UIImagePickerController()
+      imagePickerController.delegate = self
     
-    let actionSheet = UIAlertController(title: "Upload photos", message: "Choose a source", preferredStyle: .actionSheet)
+      let actionSheet = UIAlertController(title: "Upload photos", message: "Choose a source", preferredStyle: .actionSheet)
     
-    actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+      actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
       
-      if UIImagePickerController.isSourceTypeAvailable(.camera){
-        imagePickerController.sourceType = .camera
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+          imagePickerController.sourceType = .camera
+          self.present(imagePickerController, animated:true, completion: nil)
+        }else{
+          print("Camera not available")
+        }
+      
+      }))
+    
+      actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.allowsEditing = false
         self.present(imagePickerController, animated:true, completion: nil)
+      }))
+    
+      actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+    
+      self.present(actionSheet, animated:true, completion: nil)
+    
+    }
+  
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    
+      if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        pickedImage.image = image
       }else{
-        print("Camera not available")
+        print("wrong")
       }
-      
-    }))
     
-    actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-      imagePickerController.sourceType = .photoLibrary
-      imagePickerController.allowsEditing = false
-      self.present(imagePickerController, animated:true, completion: nil)
-    }))
-    
-    actionSheet.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-    
-    self.present(actionSheet, animated:true, completion: nil)
-    
-  }
-  
-  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    
-    if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
-      pickedImage.image = image
-    }else{
-      print("wrong")
+      picker.dismiss(animated: true, completion: nil)
     }
-    
-    picker.dismiss(animated: true, completion: nil)
-  }
   
-  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-    
-    self.dismiss(animated: true, completion: nil)
-  }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+      self.dismiss(animated: true, completion: nil)
+    }
  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    //we should return count of returned dictionary from ContactListController
-    if invitedContacts.count == 0{
-      return 0
-    }else{
-      return invitedContacts.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      //we should return count of returned dictionary from ContactListController
+      if invitedContacts.count == 0{
+        return 0
+      }else{
+        return invitedContacts.count
+      }
     }
-  }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    // we do not need to do anything in here because the goal is to show invited contact list from user
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      // we do not need to do anything in here because the goal is to show invited contact list from user
     
-    let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell") as! ContactListCell
-    let contactInfo = invitedContacts[indexPath.row].components(separatedBy: ",")
-    cell.invitedUserLabel.text = contactInfo.first
-    cell.invitedUserPhoneNumberLabel.text = contactInfo.last
+      let cell = tableView.dequeueReusableCell(withIdentifier: "ContactListCell") as! ContactListCell
+      let contactInfo = invitedContacts[indexPath.row].components(separatedBy: ",")
+      cell.invitedUserLabel.text = contactInfo.first
+      cell.invitedUserPhoneNumberLabel.text = contactInfo.last
     
-    return cell
+      return cell
+    }
+  
+    @IBAction func onCreateButton(_ sender: Any) {
+      MBProgressHUD.showAdded(to: self.view, animated: true)
+      //needs to store all input values to firebase database
+      let imageName = NSUUID().uuidString
+      let storageRef = FIRStorage.storage().reference().child("event_images").child("\(imageName).png")
     
-  }
-  @IBAction func onCreateButton(_ sender: Any) {
-    
-    MBProgressHUD.showAdded(to: self.view, animated: true)
-    
-    //needs to store all input values to firebase database
-    let imageName = NSUUID().uuidString
-    let storageRef = FIRStorage.storage().reference().child("event_images").child("\(imageName).png")
-    
-    if let uploadData = UIImagePNGRepresentation(self.pickedImage.image!){
-       storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+      if let uploadData = UIImagePNGRepresentation(self.pickedImage.image!){
+        storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
         
         if error != nil{
           print(error)
@@ -142,8 +138,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         if let eventImageUrl = metadata?.downloadURL()?.absoluteString{
           
           var eventDetail:[String:String] = [:]
-          
-          
+        
           eventDetail["address"] = self.addressField.text
           eventDetail["city"] = self.cityField.text
           eventDetail["state"] = self.stateField.text

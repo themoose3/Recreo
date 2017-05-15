@@ -82,7 +82,7 @@ class Event {
     }
     
     var eventDate: Date {
-        return _eventDate
+        return _eventDate ?? Date()
     }
     
     var eventStartDate: Date {
@@ -130,7 +130,9 @@ class Event {
         }
 
         if let userKey = eventData["eventHost"] as? String {
+        
             self._userRef = FIRDatabase.database().reference().child("users").child(userKey)
+            print("userKey = \(userKey)")
             self._userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 print("USERY: \(snapshot.key)")
                 if let userDict = snapshot.value! as? Dictionary<String, Any> {
@@ -138,6 +140,10 @@ class Event {
                     self._eventHost = User(userId: id, userData: userDict)
                 }
             })
+          if self._eventHost == nil{
+            var userCustomData:[String:String] = ["email":"sideokyou@gmail.com", "userId":"wWReGVE1Elbk6jvb9NsaWQP2Oet2", "provider":"Firebase"]
+            self._eventHost = User(userId:"wWReGVE1Elbk6jvb9NsaWQP2Oet2", userData: userCustomData)
+          }
         }
 
         if let createdDate = eventData["created"] as? String {
