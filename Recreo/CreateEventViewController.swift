@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import ContactsUI
 import MBProgressHUD
+import Alamofire
 
 class CreateEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CNContactPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -25,6 +26,11 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
   @IBOutlet weak var pickedImage: UIImageView!
   
   @IBOutlet weak var tableView: UITableView!
+<<<<<<< HEAD
+=======
+
+  let firebaseDatabaseReference = FIRDatabase.database().reference()
+>>>>>>> master
   
   var invitedContacts:[String] = []
   
@@ -117,7 +123,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
         
         if error != nil{
-          print(error)
+          print(error ?? "Error with uploading image")
           return
         }
         
@@ -157,8 +163,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
           if self.invitedContacts.count != 0{
             for contact in self.invitedContacts{
               let contactInfo = contact.components(separatedBy: ",")
-              eventDetailContacts[contactInfo.first!] = contactInfo.last
+              eventDetailContacts[contactInfo.last!] = contactInfo.first!
             }
+            eventDetailContacts["+14088074454"] = "Angie"
           }
           
           let firebaseDatabaseReference = FIRDatabase.database().reference()
@@ -175,6 +182,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
           let addEventsToTheUser = firebaseDatabaseReference.child("users").child(uid).child("events").child("hosting")
           
           addEventsToTheUser.setValue([newKey : true])
+          self.sendInvites(eventId: newKey)
           
           MBProgressHUD.hide(for: self.view, animated: true)
           
@@ -182,6 +190,8 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
         }
         
        })
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.registerForPushNotifications(application: UIApplication.shared)
     }
   }
   
@@ -283,5 +293,55 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
   func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
     print("cancel contact picker")
   }
+  func sendInvites(eventId: String) {
 
+    var body: String?
+    print("I'm hereee")
+
+    firebaseDatabaseReference.child("Events").child(eventId).observeSingleEvent(of: .value, with: { (snapshot) in
+    // Get user value
+      let value = snapshot.value as? NSDictionary
+      let userId = value?["eventHost"] as? String ?? ""
+      let eventName = value?["eventName"] as? String ?? ""
+
+   self.firebaseDatabaseReference.child("Users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+         let value = snapshot.value as? NSDictionary
+         let firstName = value?["firstName"] as? String ?? ""
+         let lastName = value?["lastName"] as? String ?? ""
+         let username = firstName + lastName
+         body = "\(username) invited you to \(eventName).\r Can you make it? Reply YES, MAYBE, or NO"
+
+        let headers = ["Content-Type": "application/x-www-form-urlencoded"]
+        let parameters: Parameters = [
+          "To": "+14088074454",
+          "Body": body ?? "You're invited!",
+          "EventId": eventId,
+          "InviteeName": "Angie"
+        ]
+
+        Alamofire.request("https://c481e0b0.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
+          print(response)
+
+        }
+      }) { (error) in
+        print(error.localizedDescription)
+      }
+    }) { (error) in
+      print(error.localizedDescription)
+    }
+  }
+//  func addPhoneNumber(phNo : String) {
+//    if #available(iOS 9.0, *) {
+//      let store = CNContactStore()
+//      let contact = CNMutableContact()
+//      let homePhone = CNLabeledValue(label: CNLabelHome, value: CNPhoneNumber(stringValue :phNo ))
+//            contact.phoneNumbers = [homePhone]
+//      let controller = CNContactViewController(forUnknownContact : contact)// .viewControllerForUnknownContact(contact)
+//      controller.contactStore = store
+//      controller.delegate = self
+//      self.navigationController?.setNavigationBarHidden(false, animated: true)
+//      self.navigationController!.pushViewController(controller, animated: true)
+//        }
+//    }
 }

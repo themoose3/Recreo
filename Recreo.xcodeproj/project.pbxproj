@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		0971AF485D1A365A71196118 /* Pods_Recreo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */; };
+		842F19521EC886730069FFBF /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842F19511EC886730069FFBF /* MenuVC.swift */; };
+		842F19541EC896030069FFBF /* NewMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842F19531EC896030069FFBF /* NewMenuCell.swift */; };
+		843AC2451EC4E8CC00187348 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843AC2441EC4E8CC00187348 /* CoreLocation.framework */; };
 		8452C49F1EBDFAB60048E400 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C49E1EBDFAB60048E400 /* DataService.swift */; };
 		8452C4A21EBE79040048E400 /* EventCellWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C4A01EBE79040048E400 /* EventCellWithImage.swift */; };
 		8452C4A31EBE79040048E400 /* EventCellWithImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452C4A11EBE79040048E400 /* EventCellWithImage.xib */; };
 		8452C4A81EBE793E0048E400 /* EventCellWithoutImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C4A61EBE793E0048E400 /* EventCellWithoutImage.swift */; };
 		8452C4A91EBE793E0048E400 /* EventCellWithoutImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452C4A71EBE793E0048E400 /* EventCellWithoutImage.xib */; };
-		8452C4AC1EBE82090048E400 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C4AA1EBE82090048E400 /* EventCell.swift */; };
-		8452C4AD1EBE82090048E400 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8452C4AB1EBE82090048E400 /* EventCell.xib */; };
+		84923E071EC7482C0065A1E6 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E061EC7482C0065A1E6 /* CGRectEx.swift */; };
+		84923E091EC748680065A1E6 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E081EC748680065A1E6 /* FadeTransition.swift */; };
+		84923E0B1EC748860065A1E6 /* NSTimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E0A1EC748860065A1E6 /* NSTimerEx.swift */; };
+		84923E0D1EC748A30065A1E6 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E0C1EC748A30065A1E6 /* SpinerLayer.swift */; };
+		84923E0F1EC748C60065A1E6 /* TransitionSubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E0E1EC748C60065A1E6 /* TransitionSubmitButton.swift */; };
+		84923E111EC7499D0065A1E6 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E101EC7499D0065A1E6 /* LoginVC.swift */; };
 		84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEAD1EB67C670056B160 /* LoginViewController.swift */; };
 		84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */; };
 		84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A7CEB41EB6DEEF0056B160 /* Constants.swift */; };
@@ -26,6 +33,9 @@
 		84BBE0EA1EBD012F000B92D3 /* ArchivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */; };
 		84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */; };
 		84BBE0F81EBD1F40000B92D3 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BBE0F71EBD1F40000B92D3 /* MenuCell.swift */; };
+		84D490A51EC74F5F00FDF435 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D490A41EC74F5F00FDF435 /* LoginTextField.swift */; };
+		84D490A71EC7D52400FDF435 /* EventsFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D490A61EC7D52400FDF435 /* EventsFeedVC.swift */; };
+		84D490AB1EC7D77500FDF435 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D490AA1EC7D77500FDF435 /* EventCell.swift */; };
 		84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
 		84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A21EA8463B00044DB4 /* Main.storyboard */; };
@@ -54,13 +64,20 @@
 /* Begin PBXFileReference section */
 		2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.release.xcconfig"; sourceTree = "<group>"; };
 		3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Recreo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842F19511EC886730069FFBF /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		842F19531EC896030069FFBF /* NewMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMenuCell.swift; sourceTree = "<group>"; };
+		843AC2441EC4E8CC00187348 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8452C49E1EBDFAB60048E400 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		8452C4A01EBE79040048E400 /* EventCellWithImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCellWithImage.swift; sourceTree = "<group>"; };
 		8452C4A11EBE79040048E400 /* EventCellWithImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCellWithImage.xib; sourceTree = "<group>"; };
 		8452C4A61EBE793E0048E400 /* EventCellWithoutImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCellWithoutImage.swift; sourceTree = "<group>"; };
 		8452C4A71EBE793E0048E400 /* EventCellWithoutImage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCellWithoutImage.xib; sourceTree = "<group>"; };
-		8452C4AA1EBE82090048E400 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		8452C4AB1EBE82090048E400 /* EventCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		84923E061EC7482C0065A1E6 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
+		84923E081EC748680065A1E6 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		84923E0A1EC748860065A1E6 /* NSTimerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimerEx.swift; sourceTree = "<group>"; };
+		84923E0C1EC748A30065A1E6 /* SpinerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
+		84923E0E1EC748C60065A1E6 /* TransitionSubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionSubmitButton.swift; sourceTree = "<group>"; };
+		84923E101EC7499D0065A1E6 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		84A7CEAD1EB67C670056B160 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		84A7CEB11EB6DE640056B160 /* CustomLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomLoginView.swift; sourceTree = "<group>"; };
 		84A7CEB41EB6DEEF0056B160 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -72,6 +89,9 @@
 		84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchivesViewController.swift; sourceTree = "<group>"; };
 		84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		84BBE0F71EBD1F40000B92D3 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		84D490A41EC74F5F00FDF435 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		84D490A61EC7D52400FDF435 /* EventsFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedVC.swift; sourceTree = "<group>"; };
+		84D490AA1EC7D77500FDF435 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6649E1EA8463B00044DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +104,7 @@
 		8B7D86911EC0DF4600EBC135 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B7D86931EC0F06100EBC135 /* CreateEventImageCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventImageCollectionCell.swift; sourceTree = "<group>"; };
 		A01318A829FE1DC440A7C97B /* Pods-Recreo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Recreo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Recreo/Pods-Recreo.debug.xcconfig"; sourceTree = "<group>"; };
+		B30657451EC7C945008EF53F /* Recreo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Recreo.entitlements; sourceTree = "<group>"; };
 		B320F2831EB662E900C5A376 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B320F2871EB6D6F900C5A376 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B320F2891EB6DB1A00C5A376 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -105,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843AC2451EC4E8CC00187348 /* CoreLocation.framework in Frameworks */,
 				B320F2A21EB9978700C5A376 /* MapKit.framework in Frameworks */,
 				0971AF485D1A365A71196118 /* Pods_Recreo.framework in Frameworks */,
 			);
@@ -116,6 +138,7 @@
 		30A60B52830EFDF96893C7D0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				843AC2441EC4E8CC00187348 /* CoreLocation.framework */,
 				B320F2A11EB9978700C5A376 /* MapKit.framework */,
 				3456E8CD36A188E233EA88C6 /* Pods_Recreo.framework */,
 			);
@@ -128,6 +151,18 @@
 				8452C49E1EBDFAB60048E400 /* DataService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		84923E051EC747D00065A1E6 /* LoginAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				84923E061EC7482C0065A1E6 /* CGRectEx.swift */,
+				84923E081EC748680065A1E6 /* FadeTransition.swift */,
+				84923E0A1EC748860065A1E6 /* NSTimerEx.swift */,
+				84923E0C1EC748A30065A1E6 /* SpinerLayer.swift */,
+				84923E0E1EC748C60065A1E6 /* TransitionSubmitButton.swift */,
+			);
+			name = LoginAnimation;
 			sourceTree = "<group>";
 		};
 		84A7CEAA1EB67C120056B160 /* Controllers */ = {
@@ -145,6 +180,9 @@
 				84BBE0DF1EBBE96E000B92D3 /* MenuViewController.swift */,
 				84BBE0E91EBD012F000B92D3 /* ArchivesViewController.swift */,
 				84BBE0EB1EBD018B000B92D3 /* SettingsViewController.swift */,
+				84923E101EC7499D0065A1E6 /* LoginVC.swift */,
+				84D490A61EC7D52400FDF435 /* EventsFeedVC.swift */,
+				842F19511EC886730069FFBF /* MenuVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -177,9 +215,10 @@
 				8452C4A11EBE79040048E400 /* EventCellWithImage.xib */,
 				8452C4A61EBE793E0048E400 /* EventCellWithoutImage.swift */,
 				8452C4A71EBE793E0048E400 /* EventCellWithoutImage.xib */,
-				8452C4AA1EBE82090048E400 /* EventCell.swift */,
-				8452C4AB1EBE82090048E400 /* EventCell.xib */,
 				8B7D86931EC0F06100EBC135 /* CreateEventImageCollectionCell.swift */,
+				84D490A41EC74F5F00FDF435 /* LoginTextField.swift */,
+				84D490AA1EC7D77500FDF435 /* EventCell.swift */,
+				842F19531EC896030069FFBF /* NewMenuCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -213,6 +252,8 @@
 		84F6649D1EA8463B00044DB4 /* Recreo */ = {
 			isa = PBXGroup;
 			children = (
+				B30657451EC7C945008EF53F /* Recreo.entitlements */,
+				84923E051EC747D00065A1E6 /* LoginAnimation */,
 				8452C49D1EBDFA8F0048E400 /* Services */,
 				84A7CEAC1EB67C1F0056B160 /* Views */,
 				84A7CEAB1EB67C1A0056B160 /* Models */,
@@ -277,6 +318,9 @@
 							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -304,7 +348,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8452C4AD1EBE82090048E400 /* EventCell.xib in Resources */,
 				8B7D86921EC0DF4600EBC135 /* GoogleService-Info.plist in Resources */,
 				B320F2961EB6FDE400C5A376 /* EventDetailViewController.xib in Resources */,
 				8452C4A91EBE793E0048E400 /* EventCellWithoutImage.xib in Resources */,
@@ -360,7 +403,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -371,8 +414,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				84A7CEB91EB6F1810056B160 /* CustomTextField.swift in Sources */,
+				842F19541EC896030069FFBF /* NewMenuCell.swift in Sources */,
 				B320F29A1EB7033700C5A376 /* GalleryViewController.swift in Sources */,
 				84A7CEB51EB6DEEF0056B160 /* Constants.swift in Sources */,
+				84D490A51EC74F5F00FDF435 /* LoginTextField.swift in Sources */,
 				B320F2981EB6FE0200C5A376 /* ChatViewController.swift in Sources */,
 				8B7D86941EC0F06100EBC135 /* CreateEventImageCollectionCell.swift in Sources */,
 				8B613ABB1EB9C3F700C9DA0F /* ContactListCell.swift in Sources */,
@@ -381,27 +426,35 @@
 				B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */,
 				B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */,
 				8452C49F1EBDFAB60048E400 /* DataService.swift in Sources */,
+				84D490AB1EC7D77500FDF435 /* EventCell.swift in Sources */,
 				8B613AB71EB9BCAB00C9DA0F /* CreateEventViewController.swift in Sources */,
 				B320F2881EB6D6F900C5A376 /* User.swift in Sources */,
-				8452C4AC1EBE82090048E400 /* EventCell.swift in Sources */,
 				84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */,
 				84BBE0DE1EBBE95C000B92D3 /* HamburgerViewController.swift in Sources */,
 				8452C4A21EBE79040048E400 /* EventCellWithImage.swift in Sources */,
 				B320F2921EB6DED500C5A376 /* Conversation.swift in Sources */,
+				84923E0B1EC748860065A1E6 /* NSTimerEx.swift in Sources */,
+				84923E0F1EC748C60065A1E6 /* TransitionSubmitButton.swift in Sources */,
 				84BBE0F81EBD1F40000B92D3 /* MenuCell.swift in Sources */,
 				B320F2951EB6FDE400C5A376 /* EventDetailViewController.swift in Sources */,
+				84923E111EC7499D0065A1E6 /* LoginVC.swift in Sources */,
 				B320F2841EB662E900C5A376 /* ProfileViewController.swift in Sources */,
 				84BBE0E01EBBE96E000B92D3 /* MenuViewController.swift in Sources */,
 				84A7CEBB1EB6F3430056B160 /* CustomButton.swift in Sources */,
 				84A7CEB71EB6E1330056B160 /* FacebookButton.swift in Sources */,
 				84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */,
 				84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */,
+				84923E091EC748680065A1E6 /* FadeTransition.swift in Sources */,
+				84923E071EC7482C0065A1E6 /* CGRectEx.swift in Sources */,
 				84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */,
+				842F19521EC886730069FFBF /* MenuVC.swift in Sources */,
 				B320F2901EB6DE2000C5A376 /* Message.swift in Sources */,
 				B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */,
 				8452C4A81EBE793E0048E400 /* EventCellWithoutImage.swift in Sources */,
 				B320F28A1EB6DB1A00C5A376 /* Event.swift in Sources */,
+				84923E0D1EC748A30065A1E6 /* SpinerLayer.swift in Sources */,
 				84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */,
+				84D490A71EC7D52400FDF435 /* EventsFeedVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,7 +501,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -498,7 +552,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Anjana Lal (VG5RJ3NPT6)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -525,11 +580,15 @@
 			baseConfigurationReference = A01318A829FE1DC440A7C97B /* Pods-Recreo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Recreo/Recreo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Recreo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -539,11 +598,15 @@
 			baseConfigurationReference = 2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Recreo/Recreo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Recreo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -16,17 +16,27 @@ enum TextField {
 
 class ProfileViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    let defaults = UserDefaults.standard
+    let userRef = FIRDatabase.database().reference().child("users")
+    
+    var activeField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupAvatar()
+        setupFields()
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
         nameTextField.delegate = self
         emailTextField.delegate = self
+        
+        registerForKeyboardNotifications()
         // Do any additional setup after loading the view.
     }
 
@@ -35,11 +45,43 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         // Dispose of any resources that can be recreated.
     }
     
+    func setupFields() {
+        if let name = defaults.string(forKey: "UserName") {
+            nameTextField.text = name
+        } else {
+            nameTextField.text = ""
+        }
+        phoneNumberTextField.text = "+14081234567"
+        //let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        //let image = UIImage(named: "cellphone.png")
+        //imageView.image = image
+        //phoneNumberTextField.leftView = imageView
+        //phoneNumberTextField.leftViewMode = UITextFieldViewMode.always
+
+        emailTextField.text = defaults.string(forKey: "UserEmail")
+        setupEmail()
+
+        setupAvatar()
+
+    }
+    
+    func setupEmail() {
+        //let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        //let image = UIImage(named: "email.png")
+        //imageView.image = image
+        //emailTextField.leftView = imageView
+        //emailTextField.leftViewMode = UITextFieldViewMode.always
+    }
+    
     func setupAvatar() {
         avatarImage.layer.cornerRadius = 10.0
         avatarImage.layer.borderWidth = 5.0
         avatarImage.layer.borderColor = UIColor.black.cgColor
         avatarImage.isUserInteractionEnabled = true
+        
+        if let avatar = defaults.data(forKey: "UserProfileImage") {
+            avatarImage.image = UIImage(data: avatar)
+        }
     }
     
     @IBAction func onAvatarTap(_ sender: UITapGestureRecognizer) {
@@ -98,8 +140,18 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
         // do something interesting here!
         avatarImage.image = newImage
+        saveImage()
         
         dismiss(animated: true)
+    }
+    
+    func saveImage(){
+        let imageData = UIImagePNGRepresentation(avatarImage.image!)
+        defaults.set(imageData, forKey: "UserProfileImage")
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        activeField = textField
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -112,16 +164,28 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             print("edited email")
         }
          textField.resignFirstResponder()
+        activeField = nil
     }
     
     func saveText(textField: TextField) {
+        let userId = defaults.string(forKey: "User")
+        let specificUserRef = userRef.child(userId!)
+        
         switch textField {
         case .name:
+            specificUserRef.child("name").setValue(nameTextField.text)
+            defaults.set(nameTextField.text, forKey: "UserName")
             print("name")
         default:
+            specificUserRef.child("email").setValue(emailTextField.text)
+            defaults.set(emailTextField.text, forKey: "UserEmail")
             print("email")
         }
-        // Save in Firebase
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -149,13 +213,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
         
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
         
         var aRect : CGRect = self.view.frame
         aRect.size.height -= keyboardSize!.height
-        if (!aRect.contains(emailTextField.frame.origin)){
-            scrollView.scrollRectToVisible(emailTextField.frame, animated: true)
+        if let activeField = self.activeField {
+            if (!aRect.contains(activeField.frame.origin)){
+                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+            }
         }
     }
     
@@ -164,18 +230,15 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         var info = notification.userInfo!
         let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
         let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-        view.endEditing(true)
-        scrollView.isScrollEnabled = false
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.isScrollEnabled = false
     }
-  
+    
     @IBAction func onCreateEventTest(_ sender: Any) {
       print("button clicked")
       performSegue(withIdentifier: "createEventSegue", sender: nil)
     }
-  
-  
-  
     
 }

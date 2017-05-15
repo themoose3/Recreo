@@ -10,6 +10,7 @@ target 'Recreo' do
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Messaging'
 
   pod 'FacebookCore'
   pod 'FacebookLogin'
@@ -19,6 +20,8 @@ target 'Recreo' do
   pod 'AFNetworking'
   pod 'JSQMessagesViewController'
   pod 'SwiftGifOrigin'
+  pod 'IQKeyboardManagerSwift', '4.0.8'
 
   pod 'MBProgressHUD'
+  pod 'Alamofire'
 end

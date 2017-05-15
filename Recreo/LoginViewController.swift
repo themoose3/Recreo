@@ -87,7 +87,6 @@ class LoginViewController: UIViewController {
         let defaults = UserDefaults.standard
         defaults.set(userData["userId"], forKey: "User")
         defaults.set(userData["email"], forKey: "UserEmail")
-        defaults.synchronize()
     }
 }
 
