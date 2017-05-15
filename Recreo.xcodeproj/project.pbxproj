@@ -37,6 +37,8 @@
 		84D490A71EC7D52400FDF435 /* EventsFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D490A61EC7D52400FDF435 /* EventsFeedVC.swift */; };
 		84D490AB1EC7D77500FDF435 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D490AA1EC7D77500FDF435 /* EventCell.swift */; };
 		84F19AA61EBAFCAC00979C3F /* EventsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */; };
+		84F3E22D1EC9C8B600D08F3A /* CreateEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3E22C1EC9C8B600D08F3A /* CreateEventVC.swift */; };
+		84F3E22F1EC9D43700D08F3A /* NewCreateEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F3E22E1EC9D43700D08F3A /* NewCreateEventCell.swift */; };
 		84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F6649E1EA8463B00044DB4 /* AppDelegate.swift */; };
 		84F664A41EA8463B00044DB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A21EA8463B00044DB4 /* Main.storyboard */; };
 		84F664A61EA8463B00044DB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84F664A51EA8463B00044DB4 /* Assets.xcassets */; };
@@ -93,6 +95,8 @@
 		84D490A61EC7D52400FDF435 /* EventsFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedVC.swift; sourceTree = "<group>"; };
 		84D490AA1EC7D77500FDF435 /* EventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		84F19AA51EBAFCAC00979C3F /* EventsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsFeedViewController.swift; sourceTree = "<group>"; };
+		84F3E22C1EC9C8B600D08F3A /* CreateEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventVC.swift; sourceTree = "<group>"; };
+		84F3E22E1EC9D43700D08F3A /* NewCreateEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCreateEventCell.swift; sourceTree = "<group>"; };
 		84F6649B1EA8463B00044DB4 /* Recreo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recreo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F6649E1EA8463B00044DB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F664A31EA8463B00044DB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				84923E101EC7499D0065A1E6 /* LoginVC.swift */,
 				84D490A61EC7D52400FDF435 /* EventsFeedVC.swift */,
 				842F19511EC886730069FFBF /* MenuVC.swift */,
+				84F3E22C1EC9C8B600D08F3A /* CreateEventVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				84D490A41EC74F5F00FDF435 /* LoginTextField.swift */,
 				84D490AA1EC7D77500FDF435 /* EventCell.swift */,
 				842F19531EC896030069FFBF /* NewMenuCell.swift */,
+				84F3E22E1EC9D43700D08F3A /* NewCreateEventCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -413,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F3E22D1EC9C8B600D08F3A /* CreateEventVC.swift in Sources */,
 				84A7CEB91EB6F1810056B160 /* CustomTextField.swift in Sources */,
 				842F19541EC896030069FFBF /* NewMenuCell.swift in Sources */,
 				B320F29A1EB7033700C5A376 /* GalleryViewController.swift in Sources */,
@@ -427,6 +434,7 @@
 				B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */,
 				8452C49F1EBDFAB60048E400 /* DataService.swift in Sources */,
 				84D490AB1EC7D77500FDF435 /* EventCell.swift in Sources */,
+				84F3E22F1EC9D43700D08F3A /* NewCreateEventCell.swift in Sources */,
 				8B613AB71EB9BCAB00C9DA0F /* CreateEventViewController.swift in Sources */,
 				B320F2881EB6D6F900C5A376 /* User.swift in Sources */,
 				84A7CEAE1EB67C670056B160 /* LoginViewController.swift in Sources */,

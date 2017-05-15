@@ -20,6 +20,7 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     var invitedToEvents = [Event]()
     var shownEvents = [Event]()
     var users = [User]()
+    let effectView = UIVisualEffectView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,13 +106,29 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         performSegue(withIdentifier: "EventDetailSegue", sender: indexPath)
     }
     
+    @IBAction func onAddTap(_ sender: Any) {
+        effectView.frame = tableView.frame
+        tableView.addSubview(effectView)
+        UIView.animate(withDuration: 0.8) { 
+            self.effectView.effect = UIBlurEffect(style: .light)
+        }
+        performSegue(withIdentifier: "CreateEventSegue", sender: self)
+    }
+    
+    @IBAction func onStopTap(_ sender: Any) {
+        effectView.removeFromSuperview()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EventDetailSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            let eventDetailVC = navigationController.topViewController as! EventDetailViewController
+            //let navigationController = segue.destination as! UINavigationController
+            //let eventDetailVC = navigationController.topViewController as! EventDetailViewController
+            let eventDetailVC = segue.destination as! EventDetailViewController
             let row = (sender as! IndexPath).row
             let event = shownEvents[row]
             eventDetailVC.event = event
+        } else if segue.identifier == "CreateEventSegue" {
+            
         }
     }
 }
