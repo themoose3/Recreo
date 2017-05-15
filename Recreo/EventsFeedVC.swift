@@ -107,11 +107,18 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EventDetailSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            let eventDetailVC = navigationController.topViewController as! EventDetailViewController
-            let row = (sender as! IndexPath).row
-            let event = shownEvents[row]
-            eventDetailVC.event = event
+//            let navigationController = segue.destination as! UINavigationController
+//            let eventDetailVC = navigationController.topViewController as! EventDetailViewController
+//            let row = (sender as! IndexPath).row
+//            let event = shownEvents[row]
+//            eventDetailVC.event = event
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let selectedRow = indexPath.row
+                let eventDetailVC = segue.destination as! EventDetailViewController
+                eventDetailVC.event = shownEvents[selectedRow]
+            }
+
+
         }
     }
 }

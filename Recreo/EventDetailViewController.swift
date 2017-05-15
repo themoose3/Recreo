@@ -16,6 +16,8 @@ import AFNetworking
 class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     
+    @IBOutlet weak var noCountLabel: UILabel!
+    @IBOutlet weak var yesCountLabel: UILabel!
     @IBOutlet weak var eventDetailImageView: UIImageView!
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventMonthLabel: UILabel!
@@ -28,7 +30,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     var event: Event? {
         didSet {
-            print("AVINASH: Event name: \(event?.eventId ?? "no event name")")
+            print("AVINASH: Event name: \(event?.eventId ?? "no event id")")
             //print("AVINASH: Event image: \(event?.eventImageUrl ?? nil)")
             
         }
@@ -42,6 +44,32 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         super.viewDidLoad()
         self.title = event?.eventName
         
+        print("Event id: \((event?.eventId)!)")
+        
+        if let eventId = event?.eventId {
+            DataService.ds.REF_EVENTS.child(eventId).child("rsvps").observe(.value, with: { (snapshot) in
+                print("Snapshot: \(snapshot)")
+                print("AVINASH: REF_EVENTS_RSVP observe\n")
+                if let snapshot = snapshot.value as? [String : String] {
+                    var yesCounter = 0
+                    var noCounter = 0
+                    for (_, value) in snapshot {
+                        if value == "yes" {
+                            yesCounter += 1
+                        } else if value == "no" {
+                            noCounter += 1
+                        } else {
+                            print("Error: Malformed RSVP response.")
+                        }
+                    }
+                    self.yesCountLabel.text = String(describing: yesCounter)
+                    self.noCountLabel.text = String(describing: noCounter)
+                }
+            })
+        }
+
+        
+        
         //get current location
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
@@ -49,41 +77,59 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         locationManager.startUpdatingLocation()
         
         //event image
-        eventDetailImageView.image = nil
-        eventDetailImageView.setImageWith((event?.eventImageUrl)!)
+        //eventDetailImageView.image = nil
+        if let imageUrl = event?.eventImageUrl {
+            eventDetailImageView.setImageWith(imageUrl)
+        }
         
         //event date time handling
-        let eventStartDate = event?.eventStartDate
-        let eventEndDate = event?.eventEndDate
         let dateFormatter = DateFormatter()
         
+        var startTimeString = ""
+        var endTimeString = ""
+        
         dateFormatter.dateFormat = "MMM"
-        let monthString = dateFormatter.string(from: eventStartDate!)
-        eventMonthLabel.text = monthString.uppercased()
-        
-        dateFormatter.dateFormat = "dd"
-        let dateString = dateFormatter.string(from: eventStartDate!)
-        eventDateLabel.text = dateString.uppercased()
-        
-        dateFormatter.dateFormat = "EEEE, MMM d"
-        let dayDateString = dateFormatter.string(from: eventStartDate!)
-        eventDayDateLabel.text = dayDateString
-        
-        dateFormatter.dateFormat = "h:mm a"
-        let startTimeString = dateFormatter.string(from: eventStartDate!)
-        let endTimeString = dateFormatter.string(from: eventEndDate!)
+        if let startDate = event?.eventStartDate {
+            let monthString = dateFormatter.string(from: startDate)
+            eventMonthLabel.text = monthString.uppercased()
+            
+            dateFormatter.dateFormat = "EEEE, MMM d"
+            let dayDateString = dateFormatter.string(from: startDate)
+            eventDayDateLabel.text = dayDateString
+            
+            dateFormatter.dateFormat = "h:mm a"
+            startTimeString = dateFormatter.string(from: startDate)
+        }
+        if let endDate = event?.eventEndDate {
+            dateFormatter.dateFormat = "dd"
+            let dateString = dateFormatter.string(from: endDate)
+            eventDateLabel.text = dateString.uppercased()
+            endTimeString = dateFormatter.string(from: endDate)
+        }
         eventTimeLabel.text = "\(startTimeString) - \(endTimeString)"
         
         //event name
         eventDescriptionLabel.text = event?.eventName
         
         //event address
-        eventVenueLabel.text = event?.eventVenue
-        eventAddressLabel.text = "\((event?.eventAddress)!), \((event?.eventCity)!), \((event?.eventState)!)"
+        if let venue = event?.eventVenue {
+            eventVenueLabel.text = venue
+        }
+        if let address = event?.eventAddress {
+            
+            if let city = event?.eventCity {
+                
+              if let state = event?.eventState {
+                eventAddressLabel.text = "\(address), \(city), \(state)"
+                //setup map view
+                let eventLocation = getLocation(cityState: "\(city), \(state)")
+                centerMapOnLocation(location: eventLocation)
+                }
+            }
+        } else {
+            eventAddressLabel.text = ""
+        }
         
-        //setup map view
-        let eventLocation = getLocation(cityState: "\((event?.eventCity)!), \((event?.eventState)!)")
-        centerMapOnLocation(location: eventLocation)
     }
     
     func getLocation(cityState: String) -> CLLocation {
