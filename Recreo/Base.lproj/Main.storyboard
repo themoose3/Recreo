@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1596,10 +1596,10 @@
     </scenes>
     <resources>
         <image name="1494305619_Events" width="128" height="128"/>
-        <image name="clem-onojeghuo-151794" width="5400" height="4047"/>
         <image name="GoingNotSelectedImage" width="102" height="40"/>
         <image name="NotGoingNotSelectedImage" width="136" height="40"/>
         <image name="bg_image" width="375" height="667"/>
+        <image name="clem-onojeghuo-151794" width="5400" height="4047"/>
         <image name="clockface" width="700" height="700"/>
         <image name="cool_bg" width="1437" height="2299"/>
         <image name="default_event_image" width="700" height="700"/>
@@ -1612,7 +1612,6 @@
         <image name="menu_events_icon" width="700" height="700"/>
         <image name="portrait1" width="4272" height="2848"/>
         <image name="recreo" width="200" height="200"/>
-        <image name="robot" width="198" height="213"/>
         <image name="twitter_icon" width="41" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>

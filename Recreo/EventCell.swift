@@ -32,7 +32,7 @@ class EventCell: UITableViewCell {
             eventHostProfileImageView.image = nil
             eventHostProfileImageView.setImageWith(event.eventHost.profileImageUrl)
             
-            eventHostNameLabel.text = event.eventName
+            eventNameLabel.text = event.eventName
             
             let eventDate = event.eventStartDate
             let dateFormatter = DateFormatter()
