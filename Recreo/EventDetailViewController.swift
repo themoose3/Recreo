@@ -89,13 +89,15 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     func getLocation(cityState: String) -> CLLocation {
         var someLocation: CLLocation = defaultLocation
         CLGeocoder().geocodeAddressString(cityState, completionHandler: { (placemarks, error) in
-            if (placemarks?.count)! > 0 {
-                let placemark = placemarks?.first
-                let annotation = MKPlacemark(placemark: placemark!)
-                self.mapView.addAnnotation(annotation)
-                let coordinate = placemark?.location?.coordinate
-                print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
-                someLocation = CLLocation(latitude: coordinate!.latitude, longitude: coordinate!.longitude)
+            if let placemarks = placemarks {
+                if (placemarks.count) > 0 {
+                    let placemark = placemarks.first
+                    let annotation = MKPlacemark(placemark: placemark!)
+                    self.mapView.addAnnotation(annotation)
+                    let coordinate = placemark?.location?.coordinate
+                    print("\nlat: \(coordinate!.latitude), long: \(coordinate!.longitude)")
+                    someLocation = CLLocation(latitude: coordinate!.latitude, longitude: coordinate!.longitude)
+                }
             }
         })
         return someLocation

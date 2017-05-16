@@ -55,6 +55,7 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         eventDetail["address"] = eventLocationTextField.text
         eventDetail["eventHost"] = uid
         eventDetail["createdTime"] = createdTime
+        eventDetail["imageUrl"] = ""
         
         var eventDetailContacts:[String:String] = [:]
         if self.invitedContacts.count > 0 {

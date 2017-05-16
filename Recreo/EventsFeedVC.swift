@@ -21,6 +21,7 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     var shownEvents = [Event]()
     var users = [User]()
     let effectView = UIVisualEffectView()
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,8 +94,14 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let event = shownEvents[indexPath.row]
         
-        //let cell = Bundle.main.loadNibNamed("EventCellWithImage", owner: self, options: nil)?.first as! EventCellWithImage
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
+        if let profileImg = EventsFeedVC.imageCache.object(forKey: event.eventHost.profileImageUrl.path as NSString) {
+            cell.eventHostProfileImg = profileImg
+        }
+        if let bgImg = EventsFeedVC.imageCache.object(forKey: event.eventImageUrl.path as NSString) {
+            cell.eventBackgroundImg = bgImg
+        }
+        
         cell.event = event
         
         return cell

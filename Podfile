@@ -20,7 +20,6 @@ target 'Recreo' do
   pod 'AFNetworking'
   pod 'JSQMessagesViewController'
   pod 'SwiftGifOrigin'
-  pod 'IQKeyboardManagerSwift', '4.0.8'
 
   pod 'MBProgressHUD'
   pod 'Alamofire'

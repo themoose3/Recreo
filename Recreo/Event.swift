@@ -114,7 +114,7 @@ class Event {
     }
     
     var eventImageUrl: URL {
-        return _eventImageUrl ?? URL(string: "http://www.corningcountryclub.com/Websites/countryclub/images/IMG_1266Porche-event.jpg")!
+        return _eventImageUrl ?? URL(string: "https://firebasestorage.googleapis.com/v0/b/recreo-d1441.appspot.com/o/events%2Fevent3_bg.jpg?alt=media&token=9a75bfa3-ef71-4ea2-8d45-f7fa1875c2e0")!
     }
     
     init(eventId: String, eventHost: User) {

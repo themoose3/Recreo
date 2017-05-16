@@ -24,13 +24,34 @@ class EventCell: UITableViewCell {
     
     var goingYesReference: FIRDatabaseReference!
     var goingNoReference: FIRDatabaseReference!
+    var eventHostProfileImg: UIImage?
+    var eventBackgroundImg: UIImage?
     
     var event: Event! {
         didSet {
             eventHostNameLabel.text = "\(event.eventHost.firstName) \(event.eventHost.lastName)"
             
-            eventHostProfileImageView.image = nil
-            eventHostProfileImageView.setImageWith(event.eventHost.profileImageUrl)
+            //eventHostProfileImageView.image = nil
+            //eventHostProfileImageView.setImageWith(event.eventHost.profileImageUrl)
+            let profileRef = FIRStorage.storage().reference(forURL: "\(event.eventHost.profileImageUrl)")
+            if eventHostProfileImg != nil {
+                eventHostProfileImageView.image = eventHostProfileImg
+                print("AVINASH: Using profile image in cache")
+            } else {
+                profileRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
+                    if error != nil {
+                        print("AVINASH: Unable to download profile image from Firebase storage")
+                    } else {
+                        print("AVINASH: Profile Image downloaded from Firebase storage")
+                        if let eventHostProfileImgData = data {
+                            if let eventHostProfileImg = UIImage(data: eventHostProfileImgData) {
+                                self.eventHostProfileImageView.image = eventHostProfileImg
+                                EventsFeedVC.imageCache.setObject(eventHostProfileImg, forKey: self.event.eventHost.profileImageUrl.path as NSString)
+                            }
+                        }
+                    }
+                }
+            }
             
             eventNameLabel.text = event.eventName
             
@@ -45,9 +66,28 @@ class EventCell: UITableViewCell {
             let timeString = dateFormatter.string(from: eventDate)
             eventDateTimeLabel.text = "\(monthString) \(dateString) \(timeString)"
 
-            
-            eventBackgroundImageView.image = nil
-            eventBackgroundImageView.setImageWith(event.eventImageUrl)
+            //eventBackgroundImageView.image = nil
+            //eventBackgroundImageView.setImageWith(event.eventImageUrl)
+            let bgRef = FIRStorage.storage().reference(forURL: "\(event.eventImageUrl)")
+            if eventBackgroundImg != nil {
+                eventBackgroundImageView.image = eventBackgroundImg
+                print("AVINASH: Using bg image in cache")
+            } else {
+                bgRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
+                    if error != nil {
+                        print("AVINASH: Unable to download BG image from Firebase storage")
+                    } else {
+                        print("AVINASH: BG Image downloaded from Firebase storage")
+                        if let eventBackgroundImgData = data {
+                            if let eventBackgroundImg = UIImage(data: eventBackgroundImgData) {
+                                self.eventBackgroundImageView.image = eventBackgroundImg
+                                EventsFeedVC.imageCache.setObject(eventBackgroundImg, forKey: self.event.eventImageUrl.path as NSString)
+                            }
+                        }
+                    }
+                }
+            }
+
             
             let currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)
             goingYesReference = DataService.ds.REF_EVENTS.child(event.eventId).child("yesGoing").child(currentUser!)
@@ -127,5 +167,4 @@ class EventCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

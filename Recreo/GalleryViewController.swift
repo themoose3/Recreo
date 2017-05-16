@@ -13,7 +13,7 @@ class GalleryViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     @IBOutlet weak var collectView: UICollectionView!
     
-    let photosArray: [UIImage] = [#imageLiteral(resourceName: "placeholder"), #imageLiteral(resourceName: "man"), #imageLiteral(resourceName: "girl"), #imageLiteral(resourceName: "filled-heart"), #imageLiteral(resourceName: "robot"), #imageLiteral(resourceName: "placeholder"), #imageLiteral(resourceName: "man"), #imageLiteral(resourceName: "girl"), #imageLiteral(resourceName: "filled-heart"), #imageLiteral(resourceName: "robot")]
+    let photosArray: [UIImage] = [#imageLiteral(resourceName: "event1_bg"), #imageLiteral(resourceName: "clem-onojeghuo-151794")]
   
     var ref: FIRDatabaseReference!
   

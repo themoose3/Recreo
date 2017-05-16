@@ -14,7 +14,6 @@ import UserNotifications
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
-import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate {
@@ -25,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 
         // Override point for customization after application launch.
         FIRApp.configure()
-        IQKeyboardManager.sharedManager().enable = true
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
               
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
