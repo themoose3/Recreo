@@ -42,7 +42,7 @@ class Event {
     private var _eventVenueCoords: CLLocationCoordinate2D!
     
     var eventAddress: String {
-        return _eventAddress
+        return _eventAddress ?? "123 Main Way"
     }
     
     var eventCity: String {

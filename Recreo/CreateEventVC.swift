@@ -27,12 +27,12 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         
-        eventNameTextField.attributedPlaceholder =
-            NSAttributedString(string: "Event name",
-                             attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
-        eventLocationTextField.attributedPlaceholder =
-            NSAttributedString(string: "Event location",
-                               attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+//        eventNameTextField.attributedPlaceholder =
+//            NSAttributedString(string: "Event name",
+//                             attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
+//        eventLocationTextField.attributedPlaceholder =
+//            NSAttributedString(string: "Event location",
+//                               attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
 
     }
     
@@ -52,7 +52,7 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         var eventDetail:[String:String] = [:]
         eventDetail["eventName"] = eventNameTextField.text
-        eventDetail["location"] = eventLocationTextField.text
+        eventDetail["address"] = eventLocationTextField.text
         eventDetail["eventHost"] = uid
         eventDetail["createdTime"] = createdTime
         

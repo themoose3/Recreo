@@ -106,18 +106,22 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         performSegue(withIdentifier: "EventDetailSegue", sender: indexPath)
     }
     
-    @IBAction func onAddTap(_ sender: Any) {
-        effectView.frame = tableView.frame
-        tableView.addSubview(effectView)
-        UIView.animate(withDuration: 0.8) { 
-            self.effectView.effect = UIBlurEffect(style: .light)
-        }
+    @IBAction func onAddTapGesture(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "CreateEventSegue", sender: self)
     }
     
-    @IBAction func onStopTap(_ sender: Any) {
-        effectView.removeFromSuperview()
-    }
+//    @IBAction func onAddTap(_ sender: Any) {
+//        effectView.frame = tableView.frame
+//        tableView.addSubview(effectView)
+//        UIView.animate(withDuration: 0.8) { 
+//            self.effectView.effect = UIBlurEffect(style: .light)
+//        }
+//        performSegue(withIdentifier: "CreateEventSegue", sender: self)
+//    }
+//    
+//    @IBAction func onStopTap(_ sender: Any) {
+//        effectView.removeFromSuperview()
+//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EventDetailSegue" {
