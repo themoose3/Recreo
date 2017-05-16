@@ -689,7 +689,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lxA-x0-6L5">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="1y5-N2-ldb"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="1y5-N2-ldb">
+                            <connections>
+                                <action selector="onSave:" destination="Pa8-wU-dTA" id="XX7-cq-ISq"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
@@ -1559,7 +1563,7 @@
         <image name="facebook_icon" width="41" height="41"/>
         <image name="gplus_icon" width="41" height="41"/>
         <image name="loginCard" width="334" height="373"/>
-        <image name="map_pin" width="700" height="700"/>
+        <image name="map_pin" width="460" height="573"/>
         <image name="menu_events_icon" width="700" height="700"/>
         <image name="portrait1" width="4272" height="2848"/>
         <image name="twitter_icon" width="41" height="41"/>
