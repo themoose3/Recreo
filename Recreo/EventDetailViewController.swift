@@ -13,8 +13,18 @@ import CoreLocation
 import MapKit
 import AFNetworking
 
-class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
+let offset_HeaderStop:CGFloat = 140.0 // At this offset the Header stops its transformations
+let distance_W_LabelHeader:CGFloat = 30.0 // The distance between the bottom of the Header and the top of the White Label
+
+class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIScrollViewDelegate {
+
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var header: UIView!
+    @IBOutlet var headerImageView:UIImageView!
+    @IBOutlet var headerBlurImageView:UIImageView!
     
     @IBOutlet weak var noCountLabel: UILabel!
     @IBOutlet weak var yesCountLabel: UILabel!
@@ -28,23 +38,36 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    var event: Event? {
-        didSet {
-            print("AVINASH: Event name: \(event?.eventId ?? "no event id")")
-            //print("AVINASH: Event image: \(event?.eventImageUrl ?? nil)")
-            
-        }
-    }
+    var blurredHeaderImageView:UIImageView?
+    
     //setting default location to Mountain View, CA and region radius to show 5km
     let defaultLocation = CLLocation(latitude: 37.3861, longitude: -122.0839)
     let regionRadius: CLLocationDistance = 5000
     let locationManager = CLLocationManager()
+    
+    var eventName: String?
 
+    var event: Event? {
+        didSet {
+            eventName = event?.eventName
+            print(eventName!)
+            print("AVINASH: Event ID: \(event?.eventId ?? "no event id")")
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = event?.eventName
         
-        print("Event id: \((event?.eventId)!)")
+        scrollView.delegate = self
+        self.edgesForExtendedLayout = []
+        headerLabel.isHidden = true
+        
+        if eventName != nil {
+            eventNameLabel.text = eventName!
+        }
+        //event description
+        //eventDescriptionLabel.text = ""
         
         if let eventId = event?.eventId {
             DataService.ds.REF_EVENTS.child(eventId).child("rsvps").observe(.value, with: { (snapshot) in
@@ -62,74 +85,171 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                             print("Error: Malformed RSVP response.")
                         }
                     }
-                    self.yesCountLabel.text = String(describing: yesCounter)
-                    self.noCountLabel.text = String(describing: noCounter)
+                    //self.yesCountLabel.text = String(describing: yesCounter)
+                    //self.noCountLabel.text = String(describing: noCounter)
                 }
             })
         }
-
+        
         
         
         //get current location
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+//        locationManager.requestWhenInUseAuthorization()
+//        locationManager.startUpdatingLocation()
         
         //event image
         //eventDetailImageView.image = nil
-        if let imageUrl = event?.eventImageUrl {
-            eventDetailImageView.setImageWith(imageUrl)
-        }
+//        if let imageUrl = event?.eventImageUrl {
+//            eventDetailImageView.setImageWith(imageUrl)
+//        }
         
         //event date time handling
-        let dateFormatter = DateFormatter()
+//        let dateFormatter = DateFormatter()
+//        
+//        var startTimeString = ""
+//        var endTimeString = ""
+//        
+//        dateFormatter.dateFormat = "MMM"
+//        if let startDate = event?.eventStartDate {
+//            let monthString = dateFormatter.string(from: startDate)
+//            eventMonthLabel.text = monthString.uppercased()
+//            
+//            dateFormatter.dateFormat = "EEEE, MMM d"
+//            let dayDateString = dateFormatter.string(from: startDate)
+//            eventDayDateLabel.text = dayDateString
+//            
+//            dateFormatter.dateFormat = "h:mm a"
+//            startTimeString = dateFormatter.string(from: startDate)
+//        }
+//        if let endDate = event?.eventEndDate {
+//            dateFormatter.dateFormat = "dd"
+//            let dateString = dateFormatter.string(from: endDate)
+//            eventDateLabel.text = dateString.uppercased()
+//            endTimeString = dateFormatter.string(from: endDate)
+//        }
+//        eventTimeLabel.text = "\(startTimeString) - \(endTimeString)"
         
-        var startTimeString = ""
-        var endTimeString = ""
-        
-        dateFormatter.dateFormat = "MMM"
-        if let startDate = event?.eventStartDate {
-            let monthString = dateFormatter.string(from: startDate)
-            eventMonthLabel.text = monthString.uppercased()
-            
-            dateFormatter.dateFormat = "EEEE, MMM d"
-            let dayDateString = dateFormatter.string(from: startDate)
-            eventDayDateLabel.text = dayDateString
-            
-            dateFormatter.dateFormat = "h:mm a"
-            startTimeString = dateFormatter.string(from: startDate)
-        }
-        if let endDate = event?.eventEndDate {
-            dateFormatter.dateFormat = "dd"
-            let dateString = dateFormatter.string(from: endDate)
-            eventDateLabel.text = dateString.uppercased()
-            endTimeString = dateFormatter.string(from: endDate)
-        }
-        eventTimeLabel.text = "\(startTimeString) - \(endTimeString)"
-        
-        //event name
-        eventDescriptionLabel.text = event?.eventName
         
         //event address
-        if let venue = event?.eventVenue {
-            eventVenueLabel.text = venue
-        }
-        if let address = event?.eventAddress {
+//        if let venue = event?.eventVenue {
+//            eventVenueLabel.text = venue
+//        }
+//        if let address = event?.eventAddress {
+//            
+//            if let city = event?.eventCity {
+//                
+//                if let state = event?.eventState {
+//                    eventAddressLabel.text = "\(address), \(city), \(state)"
+//                    //setup map view
+//                    let eventLocation = getLocation(cityState: "\(city), \(state)")
+//                    centerMapOnLocation(location: eventLocation)
+//                }
+//            }
+//        } else {
+//            eventAddressLabel.text = ""
+//        }
+        
+    }
+    
+    override func loadView() {
+        Bundle.main.loadNibNamed("EventDetailViewController", owner: self, options: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // Header - Image
+        
+        headerImageView = UIImageView(frame: header.bounds)
+        if let imageUrl = event?.eventImageUrl {
+            headerImageView?.setImageWith(imageUrl)
             
-            if let city = event?.eventCity {
+            //headerImageView?.image = UIImage(named: "header_bg")
+            headerImageView?.contentMode = UIViewContentMode.scaleAspectFill
+            header.insertSubview(headerImageView, belowSubview: headerLabel)
+            
+            // Header - Blurred Image
+            
+            headerBlurImageView = UIImageView(frame: header.bounds)
+            
+            do {
+                let image = UIImage(data: try Data(contentsOf: imageUrl))
+                headerBlurImageView?.image = image?.blurredImage(withRadius: 10, iterations: 20, tintColor: UIColor.clear)
+            } catch let error {
+                print("error occured \(error)")
+            }
+            headerBlurImageView?.contentMode = UIViewContentMode.scaleAspectFill
+            headerBlurImageView?.alpha = 0.0
+            header.insertSubview(headerBlurImageView, belowSubview: headerLabel)
+            
+            header.clipsToBounds = true
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let offset = scrollView.contentOffset.y
+        var headerTransform = CATransform3DIdentity
+        
+        print("Offest: \(offset)")
+        
+        // PULL DOWN -----------------
+        
+        if offset < 0 {
+            
+            let headerScaleFactor:CGFloat = -(offset) / header.bounds.height
+            let headerSizevariation = ((header.bounds.height * (1.0 + headerScaleFactor)) - header.bounds.height)/2.0
+            headerTransform = CATransform3DTranslate(headerTransform, 0, headerSizevariation, 0)
+            headerTransform = CATransform3DScale(headerTransform, 1.0 + headerScaleFactor, 1.0 + headerScaleFactor, 0)
+            
+            header.layer.transform = headerTransform
+        }
+            
+            // SCROLL UP/DOWN ------------
+            
+        else {
+            
+            // Header -----------
+            
+            headerTransform = CATransform3DTranslate(headerTransform, 0, max(-offset_HeaderStop, -offset), 0)
+            
+            //  ------------ Label
+            let alignToNameLabel = -offset + header.frame.height + offset_HeaderStop
+            
+            let labelTransform = CATransform3DMakeTranslation(0, max(-distance_W_LabelHeader, eventNameLabel.frame.maxY - offset), 0)
+            headerLabel.layer.transform = labelTransform
+            
+            
+            //  ------------ Blur
+            
+            headerBlurImageView?.alpha = min (1.0, (offset - alignToNameLabel)/distance_W_LabelHeader)
+
+            if eventNameLabel.frame.maxY - offset <= 20.0 {
+                let fadeTextAnimation = CATransition()
+                fadeTextAnimation.duration = 0.8
+                fadeTextAnimation.type = kCATransitionFade
                 
-              if let state = event?.eventState {
-                eventAddressLabel.text = "\(address), \(city), \(state)"
-                //setup map view
-                let eventLocation = getLocation(cityState: "\(city), \(state)")
-                centerMapOnLocation(location: eventLocation)
+                navigationController?.navigationBar.layer.add(fadeTextAnimation, forKey: "fadeText")
+                if let name = eventName {
+                    self.navigationController?.navigationBar.topItem?.title = name
+                    eventNameLabel.isHidden = true
+  
                 }
             }
-        } else {
-            eventAddressLabel.text = ""
         }
         
+        // Apply Transformations
+        
+        header.layer.transform = headerTransform
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return UIStatusBarStyle.lightContent
     }
     
     func getLocation(cityState: String) -> CLLocation {

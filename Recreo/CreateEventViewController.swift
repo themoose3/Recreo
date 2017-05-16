@@ -321,7 +321,7 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
           "InviteeName": "Angie"
         ]
 
-        Alamofire.request("https://3ed871e6.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
+        Alamofire.request("https://c61818be.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
           print(response)
 
         }

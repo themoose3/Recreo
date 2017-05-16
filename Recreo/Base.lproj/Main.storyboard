@@ -688,7 +688,9 @@
                             <constraint firstItem="omv-JU-Ty4" firstAttribute="leading" secondItem="Nsa-pN-ykv" secondAttribute="leading" constant="8" id="ynb-as-OQe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lxA-x0-6L5"/>
+                    <navigationItem key="navigationItem" id="lxA-x0-6L5">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="1y5-N2-ldb"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
@@ -1081,7 +1083,6 @@
                                             <outlet property="eventNameLabel" destination="Qpv-Ns-Lwv" id="8ge-62-koZ"/>
                                             <outlet property="notGoingImageView" destination="rm8-nu-ew3" id="TuB-ff-CQT"/>
                                             <outlet property="yesGoingImageView" destination="4WV-bt-BoN" id="VF5-JY-o5W"/>
-                                            <segue destination="Pa8-wU-dTA" kind="show" identifier="EventDetailSegue" id="Gsv-li-oLN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1552,7 +1553,7 @@
         <image name="NewEventIcon" width="75" height="75"/>
         <image name="NotGoingNotSelectedImage" width="136" height="40"/>
         <image name="bg_image" width="375" height="667"/>
-        <image name="clock-7" width="30" height="30"/>
+        <image name="clockface" width="700" height="700"/>
         <image name="cool_bg" width="1437" height="2299"/>
         <image name="event1_bg" width="1000" height="715"/>
         <image name="facebook_icon" width="41" height="41"/>
@@ -1564,7 +1565,7 @@
         <image name="twitter_icon" width="41" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NW1-xW-e6A"/>
-        <segue reference="Ni8-Be-5BG"/>
+        <segue reference="Dvx-bS-IOq"/>
+        <segue reference="OtB-Zl-suD"/>
     </inferredMetricsTieBreakers>
 </document>

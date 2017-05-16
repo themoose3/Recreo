@@ -269,7 +269,7 @@ class ChatViewController: JSQMessagesViewController {
                         "EventId": (self.eventId)!
                     ]
                     
-                    Alamofire.request("http://127.0.0.1:5000/broadcast", method: .post, parameters: parameters, headers: headers).response { response in
+                    Alamofire.request("https://c61818be.ngrok.io/broadcast", method: .post, parameters: parameters, headers: headers).response { response in
                         print(response)
                         
                     }
