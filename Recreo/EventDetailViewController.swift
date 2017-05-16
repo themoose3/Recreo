@@ -26,24 +26,28 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet var headerImageView:UIImageView!
     @IBOutlet var headerBlurImageView:UIImageView!
     
+    @IBOutlet weak var rsvpButton: UIButton!
     @IBOutlet weak var noCountLabel: UILabel!
     @IBOutlet weak var yesCountLabel: UILabel!
     @IBOutlet weak var eventDetailImageView: UIImageView!
-    @IBOutlet weak var eventDateLabel: UILabel!
-    @IBOutlet weak var eventMonthLabel: UILabel!
-    @IBOutlet weak var eventDescriptionLabel: UILabel!
-    @IBOutlet weak var eventDayDateLabel: UILabel!
-    @IBOutlet weak var eventTimeLabel: UILabel!
-    @IBOutlet weak var eventVenueLabel: UILabel!
-    @IBOutlet weak var eventAddressLabel: UILabel!
+    @IBOutlet weak var eventAddressTextField: UITextField!
+    //@IBOutlet weak var eventDateLabel: UILabel!
+    //@IBOutlet weak var eventMonthLabel: UILabel!
+    //@IBOutlet weak var eventDescriptionLabel: UILabel!
+   // @IBOutlet weak var eventDayDateLabel: UILabel!
+   // @IBOutlet weak var eventTimeLabel: UILabel!
+   // @IBOutlet weak var eventVenueLabel: UILabel!
+    //@IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var eventDescriptionTextView: UITextView!
     
+    @IBOutlet weak var eventStartDateTextField: UITextField!
     var blurredHeaderImageView:UIImageView?
     
     //setting default location to Mountain View, CA and region radius to show 5km
     let defaultLocation = CLLocation(latitude: 37.3861, longitude: -122.0839)
-    let regionRadius: CLLocationDistance = 5000
     let locationManager = CLLocationManager()
+    let regionRadius: CLLocationDistance = 200
     
     var eventName: String?
 
@@ -62,12 +66,17 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         scrollView.delegate = self
         self.edgesForExtendedLayout = []
         headerLabel.isHidden = true
+        eventDescriptionTextView.isHidden = true
         
         if eventName != nil {
             eventNameLabel.text = eventName!
         }
         //event description
-        //eventDescriptionLabel.text = ""
+       // eventDescriptionTextView.text = event?.eventDescription ?? "Give us the deets!"
+        
+        //event address
+        eventAddressTextField.text = event?.eventAddress ?? "123 Main St., SF, CA 94101"
+        mapView.showsUserLocation = true
         
         if let eventId = event?.eventId {
             DataService.ds.REF_EVENTS.child(eventId).child("rsvps").observe(.value, with: { (snapshot) in
@@ -79,25 +88,26 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                     for (_, value) in snapshot {
                         if value == "yes" {
                             yesCounter += 1
+                            self.rsvpButton.shake()
+                            
                         } else if value == "no" {
                             noCounter += 1
+                            self.rsvpButton.shake()
                         } else {
                             print("Error: Malformed RSVP response.")
                         }
                     }
-                    //self.yesCountLabel.text = String(describing: yesCounter)
-                    //self.noCountLabel.text = String(describing: noCounter)
+                    self.yesCountLabel.text = String(describing: yesCounter)
+                    self.noCountLabel.text = String(describing: noCounter)
                 }
             })
         }
         
-        
-        
         //get current location
-//        locationManager.delegate = self
-//        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
         //event image
         //eventDetailImageView.image = nil
@@ -238,6 +248,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                 if let name = eventName {
                     self.navigationController?.navigationBar.topItem?.title = name
                     eventNameLabel.isHidden = true
+                    eventDescriptionTextView.isHidden = false
   
                 }
             }
@@ -291,7 +302,27 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBAction func onGalleryTap(_ sender: Any) {
         performSegue(withIdentifier: "GallerySegue", sender: self)
     }
+    @IBAction func onSave(_ sender: Any) {
+        //Save fields to Firebase
+    }
     
+    @IBAction func onEventTimeButton(_ sender: UIButton) {
+        sender.shake()
+    }
+    
+    @IBAction func onStartDateTextField(_ sender: UITextField) {
+
+    }
+    
+    @IBAction func onMapButton(_ sender: UIButton) {
+        let eventLocation = getLocation(cityState: (event?.eventAddress)!)
+        centerMapOnLocation(location: eventLocation)
+        // Drop a pin at user's Current Location
+        let eventAnnotation: MKPointAnnotation = MKPointAnnotation()
+        eventAnnotation.coordinate = CLLocationCoordinate2DMake(eventLocation.coordinate.latitude, eventLocation.coordinate.longitude);
+        eventAnnotation.title = "Current location"
+        mapView.addAnnotation(eventAnnotation)
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GallerySegue" {
@@ -306,4 +337,16 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         }
     }
 
+}
+
+extension UIButton {
+    
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.duration = 0.6
+        animation.values = [-10.0, 10.0, -10.0, 10.0, -5.0, 5.0, -3.0, 3.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
+    }
+    
 }
