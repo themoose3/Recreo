@@ -46,7 +46,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clem-onojeghuo-151794" translatesAutoresizingMaskIntoConstraints="NO" id="cVY-AV-pcU">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="portrait1" translatesAutoresizingMaskIntoConstraints="NO" id="cVY-AV-pcU">
                                         <rect key="frame" x="87" y="52" width="200" height="200"/>
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
@@ -61,7 +61,6 @@
                                         </connections>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.96470588235294119" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="cVY-AV-pcU" firstAttribute="top" secondItem="kev-Ii-VNj" secondAttribute="top" constant="52" id="2tU-wI-8jj"/>
                                     <constraint firstItem="cVY-AV-pcU" firstAttribute="centerX" secondItem="kev-Ii-VNj" secondAttribute="centerX" id="83T-xf-CUD"/>
@@ -688,7 +687,9 @@
                             <constraint firstItem="omv-JU-Ty4" firstAttribute="leading" secondItem="Nsa-pN-ykv" secondAttribute="leading" constant="8" id="ynb-as-OQe"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lxA-x0-6L5"/>
+                    <navigationItem key="navigationItem" id="lxA-x0-6L5">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="1y5-N2-ldb"/>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
@@ -1204,7 +1205,6 @@
                                             <outlet property="eventNameLabel" destination="Qpv-Ns-Lwv" id="8ge-62-koZ"/>
                                             <outlet property="notGoingImageView" destination="rm8-nu-ew3" id="TuB-ff-CQT"/>
                                             <outlet property="yesGoingImageView" destination="4WV-bt-BoN" id="VF5-JY-o5W"/>
-                                            <segue destination="Pa8-wU-dTA" kind="show" identifier="EventDetailSegue" id="Gsv-li-oLN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1221,6 +1221,7 @@
                     <navigationItem key="navigationItem" title="nimbl" id="jY8-H0-FGp"/>
                     <connections>
                         <outlet property="tableView" destination="6Wp-CK-baC" id="Uje-7n-lj4"/>
+                        <segue destination="Pa8-wU-dTA" kind="show" identifier="EventDetailSegue" id="Dvx-bS-IOq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="smO-Tq-Rru" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1444,9 +1445,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="aad-XB-Yij" kind="relationship" relationship="rootViewController" id="ycD-Jf-AEM"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I7K-wy-0oi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1639,7 +1637,6 @@
         <image name="GoingNotSelectedImage" width="102" height="40"/>
         <image name="NotGoingNotSelectedImage" width="136" height="40"/>
         <image name="bg_image" width="375" height="667"/>
-        <image name="clem-onojeghuo-151794" width="5400" height="4047"/>
         <image name="clockface" width="700" height="700"/>
         <image name="cool_bg" width="1437" height="2299"/>
         <image name="default_event_image" width="700" height="700"/>
@@ -1655,7 +1652,7 @@
         <image name="twitter_icon" width="41" height="41"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NW1-xW-e6A"/>
-        <segue reference="Ni8-Be-5BG"/>
+        <segue reference="Dvx-bS-IOq"/>
+        <segue reference="OtB-Zl-suD"/>
     </inferredMetricsTieBreakers>
 </document>

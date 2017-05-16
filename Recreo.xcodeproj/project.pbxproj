@@ -59,6 +59,7 @@
 		B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */; };
 		B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */; };
 		B320F2A21EB9978700C5A376 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B320F2A11EB9978700C5A376 /* MapKit.framework */; };
+		B3A91B051EC97C1800D5D0D6 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A91B041EC97C1800D5D0D6 /* FXBlurView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,9 @@
 		B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		B320F2A11EB9978700C5A376 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B3A91B021EC97C0300D5D0D6 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXBlurView.h; path = ../../test/TB_TwitterUI/TB_TwitterHeader/FXBlurView.h; sourceTree = "<group>"; };
+		B3A91B031EC97C1700D5D0D6 /* Recreo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Recreo-Bridging-Header.h"; sourceTree = "<group>"; };
+		B3A91B041EC97C1800D5D0D6 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXBlurView.m; path = ../../test/TB_TwitterUI/TB_TwitterHeader/FXBlurView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				84F6649D1EA8463B00044DB4 /* Recreo */,
+				B3A91B011EC97BD400D5D0D6 /* Blur */,
 				84F6649C1EA8463B00044DB4 /* Products */,
 				CDFF6FB3AE11E3DC460F50C6 /* Pods */,
 				30A60B52830EFDF96893C7D0 /* Frameworks */,
@@ -267,6 +272,16 @@
 				8B7D86911EC0DF4600EBC135 /* GoogleService-Info.plist */,
 			);
 			path = Recreo;
+			sourceTree = "<group>";
+		};
+		B3A91B011EC97BD400D5D0D6 /* Blur */ = {
+			isa = PBXGroup;
+			children = (
+				B3A91B041EC97C1800D5D0D6 /* FXBlurView.m */,
+				B3A91B021EC97C0300D5D0D6 /* FXBlurView.h */,
+				B3A91B031EC97C1700D5D0D6 /* Recreo-Bridging-Header.h */,
+			);
+			name = Blur;
 			sourceTree = "<group>";
 		};
 		CDFF6FB3AE11E3DC460F50C6 /* Pods */ = {
@@ -314,6 +329,7 @@
 					84F6649A1EA8463B00044DB4 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 53ZP587FGZ;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -448,6 +464,7 @@
 				84923E091EC748680065A1E6 /* FadeTransition.swift in Sources */,
 				84923E071EC7482C0065A1E6 /* CGRectEx.swift in Sources */,
 				84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */,
+				B3A91B051EC97C1800D5D0D6 /* FXBlurView.m in Sources */,
 				842F19521EC886730069FFBF /* MenuVC.swift in Sources */,
 				B320F2901EB6DE2000C5A376 /* Message.swift in Sources */,
 				B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */,
@@ -581,6 +598,7 @@
 			baseConfigurationReference = A01318A829FE1DC440A7C97B /* Pods-Recreo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Recreo/Recreo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 53ZP587FGZ;
@@ -590,6 +608,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Recreo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -600,6 +620,7 @@
 			baseConfigurationReference = 2C1E76B857393A15A608CD06 /* Pods-Recreo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Recreo/Recreo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 53ZP587FGZ;
@@ -609,6 +630,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.intuit.Recreo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Recreo-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
