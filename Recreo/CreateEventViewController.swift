@@ -26,11 +26,9 @@ class CreateEventViewController: UIViewController, UITableViewDelegate, UITableV
   @IBOutlet weak var pickedImage: UIImageView!
   
   @IBOutlet weak var tableView: UITableView!
-<<<<<<< HEAD
-=======
 
   let firebaseDatabaseReference = FIRDatabase.database().reference()
->>>>>>> master
+
   
   var invitedContacts:[String] = []
   

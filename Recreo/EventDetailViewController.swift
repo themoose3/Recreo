@@ -11,11 +11,8 @@ import FirebaseStorage
 import FirebaseDatabase
 import CoreLocation
 import MapKit
-<<<<<<< HEAD
-import MBProgressHUD
-=======
 import AFNetworking
->>>>>>> master
+
 
 class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -29,8 +26,6 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var eventVenueLabel: UILabel!
     @IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
-    
-<<<<<<< HEAD
   
     //Needs to get eventId from Firebase - commented by Sideok
     let eventId = "-KjjhP0wb6SylxxcxDNG"
@@ -47,8 +42,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     // let endDate = "2017/05/17 23:00"
     // var galleryId: Gallery?
     // var eventImage: URL?
-=======
->>>>>>> master
+
     var event: Event? {
         didSet {
             print("AVINASH: Event name: \(event?.eventId ?? "no event name")")
@@ -128,12 +122,10 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius*2.0, regionRadius*2.0)
         mapView.setRegion(coordinateRegion, animated: true)
     }
-    
-<<<<<<< HEAD
+  
   @IBAction func onCancelButton(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
-=======
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[0]
         let annotation = MKPointAnnotation()
@@ -153,7 +145,6 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBAction func onGalleryTap(_ sender: Any) {
         performSegue(withIdentifier: "GallerySegue", sender: self)
     }
->>>>>>> master
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

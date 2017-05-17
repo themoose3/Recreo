@@ -19,16 +19,12 @@ class User {
     private var _firstName: String!
     private var _lastName: String!
     private var _profileImageUrl: URL!
-    
-    private var _userRef: FIRDatabaseReference!
-<<<<<<< HEAD
-
-=======
-    
-    private var _hostedEvents: [String: Bool]!
-    private var _invitedEvents: [String: Bool]!
   
->>>>>>> master
+    private var _hostedEvents:[String:Bool]!
+    private var _invitedEvents: [String:Bool]!
+  
+    private var _userRef: FIRDatabaseReference!
+
     var userId: String {
         return _userId
     }
@@ -60,10 +56,6 @@ class User {
     var userRef: FIRDatabaseReference {
         return _userRef
     }
-<<<<<<< HEAD
-
-    init(userId: String) {
-=======
   
     var hostedEvents: [String:Bool]{
         return _hostedEvents
@@ -75,7 +67,7 @@ class User {
   
     init(userId: String, firstName: String) {
         print("AVINASH: User pass with init of userId and firstName")
->>>>>>> master
+
         self._userId = userId
         self._firstName = firstName
     }
