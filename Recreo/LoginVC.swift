@@ -22,7 +22,9 @@ class LoginVC: UIViewController, UIViewControllerTransitioningDelegate, UITextFi
         super.viewDidLoad()
         
         emailTextField.delegate = self
+        emailTextField.autocorrectionType = .no
         passwordTextField.delegate = self
+        passwordTextField.autocorrectionType = .no
         
         signInButton.layer.cornerRadius = 25.0
         view.bringSubview(toFront: signInButton)
