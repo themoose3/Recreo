@@ -114,7 +114,7 @@ class Event {
     }
     
     var eventImageUrl: URL {
-        return _eventImageUrl ?? URL(string: "https://firebasestorage.googleapis.com/v0/b/recreo-d1441.appspot.com/o/events%2Fmike-erskine-144525.jpg?alt=media&token=ebfd7c47-dfd8-4d0b-8dfb-fde0a715a0e1")!
+        return _eventImageUrl ?? URL(string: "https://firebasestorage.googleapis.com/v0/b/recreo-d1441.appspot.com/o/events%2Fevent4_bg.jpg?alt=media&token=4c269182-f632-4277-8af0-a57ebf79b3f4")!
     }
     
     init(eventId: String, eventHost: User) {
