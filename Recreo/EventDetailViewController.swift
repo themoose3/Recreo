@@ -124,51 +124,12 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         }
         
         //event date time handling
-//        let dateFormatter = DateFormatter()
-//        
-//        var startTimeString = ""
-//        var endTimeString = ""
-//        
-//        dateFormatter.dateFormat = "MMM"
-//        if let startDate = event?.eventStartDate {
-//            let monthString = dateFormatter.string(from: startDate)
-//            eventMonthLabel.text = monthString.uppercased()
-//            
-//            dateFormatter.dateFormat = "EEEE, MMM d"
-//            let dayDateString = dateFormatter.string(from: startDate)
-//            eventDayDateLabel.text = dayDateString
-//            
-//            dateFormatter.dateFormat = "h:mm a"
-//            startTimeString = dateFormatter.string(from: startDate)
-//        }
-//        if let endDate = event?.eventEndDate {
-//            dateFormatter.dateFormat = "dd"
-//            let dateString = dateFormatter.string(from: endDate)
-//            eventDateLabel.text = dateString.uppercased()
-//            endTimeString = dateFormatter.string(from: endDate)
-//        }
-//        eventTimeLabel.text = "\(startTimeString) - \(endTimeString)"
-        
-        
-        //event address
-//        if let venue = event?.eventVenue {
-//            eventVenueLabel.text = venue
-//        }
-//        if let address = event?.eventAddress {
-//            
-//            if let city = event?.eventCity {
-//                
-//                if let state = event?.eventState {
-//                    eventAddressLabel.text = "\(address), \(city), \(state)"
-//                    //setup map view
-//                    let eventLocation = getLocation(cityState: "\(city), \(state)")
-//                    centerMapOnLocation(location: eventLocation)
-//                }
-//            }
-//        } else {
-//            eventAddressLabel.text = ""
-//        }
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        if let startDate = event?.eventStartDate {
+            let startDateString = dateFormatter.string(from: startDate)
+            eventStartDateTextField.text = startDateString
+        }
     }
     
     override func loadView() {

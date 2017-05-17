@@ -168,7 +168,7 @@ class Event {
             self._createdDate = dateFormatter.date(from: createdDate)
         }
 
-        if let startDate = eventData["eventStartDate"] as? String{
+        if let startDate = eventData["startDate"] as? String{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
             
