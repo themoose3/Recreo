@@ -77,8 +77,8 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         observeTyping()
-        addMessage(withId: "foo", name: "Jane", text: "What are you wearing?")
-        addMessage(withId: "bar", name: "Amit", text: "Sup!" )
+        addMessage(withId: "foo", name: "Andrew", text: "Chloe's has the best potatoes :drool:")
+        addMessage(withId: "bar", name: "Amit", text: "Nah, the french toast is where it's at." )
         finishReceivingMessage()
     }
     

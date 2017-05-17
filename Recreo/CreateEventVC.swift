@@ -57,7 +57,7 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let contactInfo = contact.components(separatedBy: ",")
                 eventDetailContacts[contactInfo.last!] = contactInfo.first!
             }
-            eventDetailContacts["+14088074454"] = "Angie"
+            eventDetailContacts["+14088074454"] = "Andrew Metcalf"
         }
 
         let firebaseDatabaseReference = FIRDatabase.database().reference()
@@ -72,6 +72,8 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //        let addEventsToTheUser = firebaseDatabaseReference.child("users").child(uid!).child("events").child("hosting")
 //        addEventsToTheUser.setValue([newEventKey : true])
         self.sendInvites(eventId: newEventKey)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.registerForPushNotifications(application: UIApplication.shared)
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -174,9 +176,6 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func sendInvites(eventId: String) {
-        
-        var body: String?
-        
         firebaseDatabaseReference.child("Events").child(eventId).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
@@ -189,13 +188,13 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let firstName = value?["firstName"] as? String ?? ""
                 let lastName = value?["lastName"] as? String ?? ""
                 let username = firstName + " " + lastName
-                body = "\(username) invited you to \(eventName).\r Can you make it? Reply YES or NO"
+                let body = "\(username) invited you to \(eventName).\r Checkout more details at: https://www.nimbl.com/XXXXXXXXX/deets. Can you make it? Reply YES or NO"
                 
                 let headers = ["Content-Type": "application/x-www-form-urlencoded"]
                 let parameters: Parameters = [
-                    "Body": body ?? "You're invited!",
+                    "Body": body,
                     "EventId": eventId,
-                    "InviteeName": "Avinash P."
+                    "InviteeName": "Andrew M."
                 ]
                 
                 Alamofire.request("https://da519f1e.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
