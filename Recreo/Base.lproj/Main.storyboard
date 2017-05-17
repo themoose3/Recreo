@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o0N-iY-rg7">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o0N-iY-rg7">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -651,6 +651,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AjI-FR-uUv" secondAttribute="trailing" constant="8" id="2Hp-pc-WhL"/>
+                            <constraint firstItem="0nR-wt-8k4" firstAttribute="top" secondItem="xq4-y0-QKW" secondAttribute="bottom" id="6O5-u0-rlB"/>
                             <constraint firstItem="KZo-BO-6SY" firstAttribute="top" secondItem="2RM-Kf-fsi" secondAttribute="bottom" constant="177" id="83h-Tc-lVr"/>
                             <constraint firstItem="sKS-DB-O1S" firstAttribute="leading" secondItem="d0p-qu-gya" secondAttribute="trailing" constant="16" id="8jY-Zo-ZN4"/>
                             <constraint firstItem="Snu-hv-TAF" firstAttribute="top" secondItem="sKS-DB-O1S" secondAttribute="bottom" constant="31" id="ANy-q8-Pzv"/>
@@ -662,7 +663,6 @@
                             <constraint firstItem="HKu-E0-Lb2" firstAttribute="top" secondItem="omv-JU-Ty4" secondAttribute="bottom" constant="30" id="JCg-xm-VRe"/>
                             <constraint firstItem="k98-jq-g84" firstAttribute="top" secondItem="KZo-BO-6SY" secondAttribute="bottom" constant="15" id="LTr-N9-p3W"/>
                             <constraint firstItem="AjI-FR-uUv" firstAttribute="leading" secondItem="Nsa-pN-ykv" secondAttribute="leading" constant="8" id="N96-dn-OPY"/>
-                            <constraint firstItem="0nR-wt-8k4" firstAttribute="top" secondItem="xq4-y0-QKW" secondAttribute="bottom" id="PKe-Yf-kHW"/>
                             <constraint firstItem="KZo-BO-6SY" firstAttribute="top" secondItem="HKu-E0-Lb2" secondAttribute="bottom" constant="177" id="Rgb-hD-axa"/>
                             <constraint firstItem="2RM-Kf-fsi" firstAttribute="leading" secondItem="HKu-E0-Lb2" secondAttribute="trailing" constant="16" id="SrY-EG-A0T"/>
                             <constraint firstAttribute="trailing" secondItem="k98-jq-g84" secondAttribute="trailing" constant="8" id="UYe-Ff-SFr"/>
@@ -1178,7 +1178,7 @@
                                         <rect key="frame" x="0.0" y="28" width="359" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IJI-WW-JhN" id="giH-7a-vqo">
-                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Appleseed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rn3-bp-Boc">

@@ -192,7 +192,7 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let firstName = value?["firstName"] as? String ?? ""
                 let lastName = value?["lastName"] as? String ?? ""
                 let username = firstName + lastName
-                body = "\(username) invited you to \(eventName).\r Can you make it? Reply YES, MAYBE, or NO"
+                body = "\(username) invited you to \(eventName).\r Can you make it? Reply YES or NO"
                 
                 let headers = ["Content-Type": "application/x-www-form-urlencoded"]
                 let parameters: Parameters = [
@@ -202,7 +202,7 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                     "InviteeName": "Avinash P."
                 ]
                 
-                Alamofire.request("https://c481e0b0.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
+                Alamofire.request("https://da519f1e.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
                     print(response)
                     
                 }
