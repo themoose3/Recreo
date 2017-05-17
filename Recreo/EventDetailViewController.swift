@@ -51,7 +51,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     
     var eventName: String?
 
-    var event: Event? {
+    var event: Event! {
         didSet {
             eventName = event?.eventName
             print(eventName!)
@@ -59,7 +59,12 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
         }
     }
-    
+    //setting default location to Mountain View, CA and region radius to show 5km
+    let defaultLocation = CLLocation(latitude: 37.3861, longitude: -122.0839)
+    let regionRadius: CLLocationDistance = 5000
+    let locationManager = CLLocationManager()
+    var eventBackgroundImg: UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -111,9 +116,26 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         
         //event image
         //eventDetailImageView.image = nil
-//        if let imageUrl = event?.eventImageUrl {
-//            eventDetailImageView.setImageWith(imageUrl)
-//        }
+        
+        let bgRef = FIRStorage.storage().reference(forURL: "\(event.eventImageUrl)")
+        if eventBackgroundImg != nil {
+            eventDetailImageView.image = eventBackgroundImg
+            print("AVINASH: Using bg image in cache")
+        } else {
+            bgRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
+                if error != nil {
+                    print("AVINASH: Unable to download BG image from Firebase storage")
+                } else {
+                    print("AVINASH: BG Image downloaded from Firebase storage")
+                    if let eventBackgroundImgData = data {
+                        if let eventBackgroundImg = UIImage(data: eventBackgroundImgData) {
+                            self.eventDetailImageView.image = eventBackgroundImg
+                            EventsFeedVC.imageCache.setObject(eventBackgroundImg, forKey: self.event.eventImageUrl.path as NSString)
+                        }
+                    }
+                }
+            }
+        }
         
         //event date time handling
 //        let dateFormatter = DateFormatter()
