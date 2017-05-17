@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -602,7 +602,6 @@
                                 <state key="normal" title="Gallery"/>
                                 <connections>
                                     <action selector="onGalleryTap:" destination="Pa8-wU-dTA" eventType="touchUpInside" id="mOM-me-rm3"/>
-                                    <segue destination="KNC-bj-Kk6" kind="show" identifier="GallerySegue" id="QTD-0U-2s6"/>
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AjI-FR-uUv">
@@ -796,7 +795,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkE-In-fAy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-482" y="4247"/>
+            <point key="canvasLocation" x="-1081" y="4227"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="zHN-WU-VrC">
@@ -1390,7 +1389,7 @@
             <objects>
                 <navigationController storyboardIdentifier="ProfileNavigationController" title="ProfileNav" automaticallyAdjustsScrollViewInsets="NO" id="NVW-Qd-9LI" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="a9x-Ro-Pwf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a9x-Ro-Pwf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.94901960784313721" green="0.21568627450980393" blue="0.41568627450980394" alpha="1" colorSpace="calibratedRGB"/>
@@ -1557,7 +1556,7 @@
         <image name="NewEventIcon" width="75" height="75"/>
         <image name="NotGoingNotSelectedImage" width="136" height="40"/>
         <image name="bg_image" width="375" height="667"/>
-        <image name="clockface" width="700" height="700"/>
+        <image name="clock-7" width="30" height="30"/>
         <image name="cool_bg" width="1437" height="2299"/>
         <image name="event1_bg" width="1000" height="715"/>
         <image name="facebook_icon" width="41" height="41"/>
@@ -1568,8 +1567,4 @@
         <image name="portrait1" width="4272" height="2848"/>
         <image name="twitter_icon" width="41" height="41"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="Dvx-bS-IOq"/>
-        <segue reference="OtB-Zl-suD"/>
-    </inferredMetricsTieBreakers>
 </document>

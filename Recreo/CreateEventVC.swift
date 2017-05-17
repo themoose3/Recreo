@@ -177,10 +177,10 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 
                 let headers = ["Content-Type": "application/x-www-form-urlencoded"]
                 let parameters: Parameters = [
-                    "To": "+14088074454",
+                    "To": "+18052186993",
                     "Body": body ?? "You're invited!",
                     "EventId": eventId,
-                    "InviteeName": "Angie"
+                    "InviteeName": "Avinash P."
                 ]
                 
                 Alamofire.request("https://c481e0b0.ngrok.io/sms", method: .post, parameters: parameters, headers: headers).response { response in
