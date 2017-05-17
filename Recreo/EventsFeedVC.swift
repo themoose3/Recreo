@@ -92,7 +92,7 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let event = shownEvents[indexPath.row]
+        let event = shownEvents[shownEvents.count - 1 - indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as! EventCell
         if let profileImg = EventsFeedVC.imageCache.object(forKey: event.eventHost.profileImageUrl.path as NSString) {
