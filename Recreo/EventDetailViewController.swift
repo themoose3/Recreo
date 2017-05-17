@@ -26,7 +26,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    var event: Event? {
+    var event: Event! {
         didSet {
             print("AVINASH: Event name: \(event?.eventId ?? "no event name")")
             //print("AVINASH: Event image: \(event?.eventImageUrl ?? nil)")
@@ -37,6 +37,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     let defaultLocation = CLLocation(latitude: 37.3861, longitude: -122.0839)
     let regionRadius: CLLocationDistance = 5000
     let locationManager = CLLocationManager()
+    var eventBackgroundImg: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,28 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         locationManager.startUpdatingLocation()
         
         //event image
-        eventDetailImageView.image = nil
-        eventDetailImageView.setImageWith((event?.eventImageUrl)!)
+        //eventDetailImageView.image = nil
+        //eventDetailImageView.setImageWith((event?.eventImageUrl)!)
+        
+        let bgRef = FIRStorage.storage().reference(forURL: "\(event.eventImageUrl)")
+        if eventBackgroundImg != nil {
+            eventDetailImageView.image = eventBackgroundImg
+            print("AVINASH: Using bg image in cache")
+        } else {
+            bgRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
+                if error != nil {
+                    print("AVINASH: Unable to download BG image from Firebase storage")
+                } else {
+                    print("AVINASH: BG Image downloaded from Firebase storage")
+                    if let eventBackgroundImgData = data {
+                        if let eventBackgroundImg = UIImage(data: eventBackgroundImgData) {
+                            self.eventDetailImageView.image = eventBackgroundImg
+                            EventsFeedVC.imageCache.setObject(eventBackgroundImg, forKey: self.event.eventImageUrl.path as NSString)
+                        }
+                    }
+                }
+            }
+        }
         
         //event date time handling
         let eventStartDate = event?.eventStartDate

@@ -97,6 +97,7 @@ PODS:
   - Protobuf (3.3.0)
   - SwiftGifOrigin (1.6.1)
   - SwiftKeychainWrapper (3.0.1)
+  - SwiftyPickerPopover (4.0.0)
 
 DEPENDENCIES:
   - AFNetworking
@@ -113,6 +114,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - SwiftGifOrigin
   - SwiftKeychainWrapper
+  - SwiftyPickerPopover
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -140,7 +142,8 @@ SPEC CHECKSUMS:
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
+  SwiftyPickerPopover: 2b8cda56c6635a59248cb6f675e595899813d944
 
-PODFILE CHECKSUM: 1de1e4dde8309e89abdb5788f0313f06de774d11
+PODFILE CHECKSUM: e7a8605fc9ffdd9eadd0ec06d79ec42ea5922aed
 
 COCOAPODS: 1.2.0

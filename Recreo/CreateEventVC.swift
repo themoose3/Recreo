@@ -10,12 +10,14 @@ import UIKit
 import Firebase
 import ContactsUI
 import Alamofire
+import SwiftyPickerPopover
 
 class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CNContactPickerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var eventNameTextField: LoginTextField!
     @IBOutlet weak var eventLocationTextField: LoginTextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var startDateTextField: LoginTextField!
     
     let firebaseDatabaseReference = FIRDatabase.database().reference()
     var invitedContacts:[String] = []
@@ -26,14 +28,6 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        
-//        eventNameTextField.attributedPlaceholder =
-//            NSAttributedString(string: "Event name",
-//                             attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
-//        eventLocationTextField.attributedPlaceholder =
-//            NSAttributedString(string: "Event location",
-//                               attributes: [NSForegroundColorAttributeName: UIColor.darkGray])
-
     }
     
     @IBAction func onCreateTap(_ sender: UITapGestureRecognizer) {
@@ -55,7 +49,7 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         eventDetail["address"] = eventLocationTextField.text
         eventDetail["eventHost"] = uid
         eventDetail["createdTime"] = createdTime
-        eventDetail["imageUrl"] = ""
+        eventDetail["startDate"] = startDateTextField.text
         
         var eventDetailContacts:[String:String] = [:]
         if self.invitedContacts.count > 0 {
@@ -140,6 +134,22 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
         print("cancel contact picker")
     }
+    
+    @IBAction func onStartDateTap(_ sender: Any) {
+        DatePickerPopover(title: "DatePicker")
+            .setDateMode(.dateAndTime)
+            .setSelectedDate(Date())
+            .setDoneButton(action: { popover, selectedDate in
+                print("selectedDate \(selectedDate)")
+                self.startDateTextField.text = "\(selectedDate)"
+            })
+            .setCancelButton(action: { v in
+                print("cancel")
+            })
+            .appear(originView: sender as! UIView, baseViewController: self)
+
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return invitedContacts.count
