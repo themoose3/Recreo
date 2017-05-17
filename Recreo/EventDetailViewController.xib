@@ -61,7 +61,7 @@
                     <rect key="frame" x="0.0" y="-20" width="375" height="687"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Housewarming party" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q93-ja-Xr1">
-                            <rect key="frame" x="72" y="166" width="230.5" height="29"/>
+                            <rect key="frame" x="72" y="166" width="231" height="33"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -234,7 +234,6 @@
                     <constraints>
                         <constraint firstItem="kmJ-5d-m1g" firstAttribute="top" secondItem="1ee-lj-dCf" secondAttribute="bottom" constant="35" id="1DB-eT-L1R"/>
                         <constraint firstAttribute="trailing" secondItem="pyw-zl-wbc" secondAttribute="trailing" constant="13" id="2tp-VB-tNY"/>
-                        <constraint firstItem="q93-ja-Xr1" firstAttribute="leading" secondItem="dV0-yL-qr1" secondAttribute="leading" constant="72" id="3yH-dj-G2c"/>
                         <constraint firstItem="kmJ-5d-m1g" firstAttribute="leading" secondItem="dV0-yL-qr1" secondAttribute="leading" constant="11" id="6nH-CD-7mc"/>
                         <constraint firstItem="pyw-zl-wbc" firstAttribute="leading" secondItem="kmJ-5d-m1g" secondAttribute="trailing" constant="17" id="9Hz-ct-eyv"/>
                         <constraint firstItem="USE-w4-hfG" firstAttribute="top" secondItem="EIj-5t-nmh" secondAttribute="bottom" constant="39" id="BLL-4f-USj"/>
@@ -247,8 +246,9 @@
                         <constraint firstItem="ElA-4z-7nd" firstAttribute="leading" secondItem="dV0-yL-qr1" secondAttribute="leading" constant="8" id="VT9-oM-8xW"/>
                         <constraint firstItem="USE-w4-hfG" firstAttribute="leading" secondItem="dV0-yL-qr1" secondAttribute="leading" id="VgW-X8-R44"/>
                         <constraint firstItem="EIj-5t-nmh" firstAttribute="leading" secondItem="1ee-lj-dCf" secondAttribute="trailing" constant="16" id="Xq7-ht-ef7"/>
-                        <constraint firstItem="kmJ-5d-m1g" firstAttribute="top" secondItem="q93-ja-Xr1" secondAttribute="bottom" constant="104" id="bUd-3c-kG8"/>
+                        <constraint firstItem="kmJ-5d-m1g" firstAttribute="top" secondItem="q93-ja-Xr1" secondAttribute="bottom" constant="100" id="bUd-3c-kG8"/>
                         <constraint firstItem="USE-w4-hfG" firstAttribute="top" secondItem="kmJ-5d-m1g" secondAttribute="bottom" constant="-25" id="f0X-GR-XQT"/>
+                        <constraint firstItem="q93-ja-Xr1" firstAttribute="centerX" secondItem="dV0-yL-qr1" secondAttribute="centerX" id="iJo-jP-Kdn"/>
                         <constraint firstItem="USE-w4-hfG" firstAttribute="top" secondItem="pyw-zl-wbc" secondAttribute="bottom" constant="-24" id="moH-Ze-jpa"/>
                         <constraint firstItem="q93-ja-Xr1" firstAttribute="top" secondItem="dV0-yL-qr1" secondAttribute="top" constant="166" id="o7g-Xf-X55"/>
                         <constraint firstItem="pyw-zl-wbc" firstAttribute="centerY" secondItem="kmJ-5d-m1g" secondAttribute="centerY" id="ph9-yb-o6n"/>

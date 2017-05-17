@@ -38,7 +38,7 @@ class EventCell: UITableViewCell {
                 eventHostProfileImageView.image = eventHostProfileImg
                 print("AVINASH: Using profile image in cache")
             } else {
-                profileRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
+                profileRef.data(withMaxSize: 30 * 1024 * 1024) { (data, error) in
                     if error != nil {
                         print("AVINASH: Unable to download profile image from Firebase storage")
                     } else {
@@ -73,7 +73,7 @@ class EventCell: UITableViewCell {
                 eventBackgroundImageView.image = eventBackgroundImg
                 print("AVINASH: Using bg image in cache")
             } else {
-                bgRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
+                bgRef.data(withMaxSize: 30 * 1024 * 1024) { (data, error) in
                     if error != nil {
                         print("AVINASH: Unable to download BG image from Firebase storage")
                     } else {

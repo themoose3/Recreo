@@ -64,7 +64,8 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                         print("AVINASH: profile image url, \(userFromEventHost.profileImageUrl)")
                         print("AVINASH: sending to Event pass with id: \(id) and event host uid: \(eventHost!)")
                         let event = Event(eventId: id, eventData: eventDict, user: userFromEventHost)
-                        self.events.append(event)
+                        //self.events.append(event)
+                        self.events.insert(event, at: 0)
                         if(event.eventHost.userId == currentUserUID) {
                             self.hostedEvents.append(event)
                             self.shownEvents.append(event)
@@ -102,7 +103,9 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             cell.eventBackgroundImg = bgImg
         }
         
+    
         cell.event = event
+        print("Cell event: \(cell.event.eventName)")
         
         return cell
     }
@@ -137,7 +140,7 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             let eventDetailVC = segue.destination as! EventDetailViewController
 
             let row = (sender as! IndexPath).row
-            let event = shownEvents[row]
+            let event = shownEvents[shownEvents.count - 1 - row]
             eventDetailVC.event = event
         } else if segue.identifier == "CreateEventSegue" {
             

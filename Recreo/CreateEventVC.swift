@@ -191,12 +191,11 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 let value = snapshot.value as? NSDictionary
                 let firstName = value?["firstName"] as? String ?? ""
                 let lastName = value?["lastName"] as? String ?? ""
-                let username = firstName + lastName
+                let username = firstName + " " + lastName
                 body = "\(username) invited you to \(eventName).\r Can you make it? Reply YES or NO"
                 
                 let headers = ["Content-Type": "application/x-www-form-urlencoded"]
                 let parameters: Parameters = [
-                    "To": "+18052186993",
                     "Body": body ?? "You're invited!",
                     "EventId": eventId,
                     "InviteeName": "Avinash P."

@@ -108,7 +108,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             headerImageView.image = eventBackgroundImg
             print("AVINASH: Using bg image in cache")
         } else {
-            bgRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
+            bgRef.data(withMaxSize: 30 * 1024 * 1024) { (data, error) in
                 if error != nil {
                     print("AVINASH: Unable to download BG image from Firebase storage")
                 } else {

@@ -264,7 +264,6 @@ class ChatViewController: JSQMessagesViewController {
                     
                     let headers = ["Content-Type": "application/x-www-form-urlencoded"]
                     let parameters: Parameters = [
-                        "To": "+18052186993",
                         "Body": body ,
                         "EventId": (self.eventId)!
                     ]
