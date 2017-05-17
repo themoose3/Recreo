@@ -264,12 +264,12 @@ class ChatViewController: JSQMessagesViewController {
                     
                     let headers = ["Content-Type": "application/x-www-form-urlencoded"]
                     let parameters: Parameters = [
-                        "To": "+14088074454",
+                        "To": "+18052186993",
                         "Body": body ,
                         "EventId": (self.eventId)!
                     ]
                     
-                    Alamofire.request("https://c61818be.ngrok.io/broadcast", method: .post, parameters: parameters, headers: headers).response { response in
+                    Alamofire.request("https://da519f1e.ngrok.io/broadcast", method: .post, parameters: parameters, headers: headers).response { response in
                         print(response)
                         
                     }

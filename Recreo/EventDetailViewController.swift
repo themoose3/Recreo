@@ -29,15 +29,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
     @IBOutlet weak var rsvpButton: UIButton!
     @IBOutlet weak var noCountLabel: UILabel!
     @IBOutlet weak var yesCountLabel: UILabel!
-    @IBOutlet weak var eventDetailImageView: UIImageView!
     @IBOutlet weak var eventAddressTextField: UITextField!
-    //@IBOutlet weak var eventDateLabel: UILabel!
-    //@IBOutlet weak var eventMonthLabel: UILabel!
-    //@IBOutlet weak var eventDescriptionLabel: UILabel!
-   // @IBOutlet weak var eventDayDateLabel: UILabel!
-   // @IBOutlet weak var eventTimeLabel: UILabel!
-   // @IBOutlet weak var eventVenueLabel: UILabel!
-    //@IBOutlet weak var eventAddressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var eventDescriptionTextView: UITextView!
     
@@ -110,12 +102,10 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-        //event image
-        //eventDetailImageView.image = nil
-        
+        //event image        
         let bgRef = FIRStorage.storage().reference(forURL: "\(event.eventImageUrl)")
         if eventBackgroundImg != nil {
-            eventDetailImageView.image = eventBackgroundImg
+            headerImageView.image = eventBackgroundImg
             print("AVINASH: Using bg image in cache")
         } else {
             bgRef.data(withMaxSize: 10 * 1024 * 1024) { (data, error) in
@@ -125,7 +115,7 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
                     print("AVINASH: BG Image downloaded from Firebase storage")
                     if let eventBackgroundImgData = data {
                         if let eventBackgroundImg = UIImage(data: eventBackgroundImgData) {
-                            self.eventDetailImageView.image = eventBackgroundImg
+                            self.headerImageView.image = eventBackgroundImg
                             EventsFeedVC.imageCache.setObject(eventBackgroundImg, forKey: self.event.eventImageUrl.path as NSString)
                         }
                     }
