@@ -69,8 +69,8 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         eventUniqueKey.child("invitees").setValue(eventDetailContacts)
         print("AVINASH: insertion is completed")
         
-        let addEventsToTheUser = firebaseDatabaseReference.child("users").child(uid!).child("events").child("hosting")
-        addEventsToTheUser.setValue([newEventKey : true])
+//        let addEventsToTheUser = firebaseDatabaseReference.child("users").child(uid!).child("events").child("hosting")
+//        addEventsToTheUser.setValue([newEventKey : true])
         self.sendInvites(eventId: newEventKey)
         
         self.dismiss(animated: true, completion: nil)
@@ -170,15 +170,12 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.invitedUserNameLabel.text = contactInfo.first
         cell.invitedUserPhoneNumberLabel.text = contactInfo.last
         
-        //cell.textLabel?.text = "Row \(indexPath)"
-        
         return cell
     }
     
     func sendInvites(eventId: String) {
         
         var body: String?
-        print("I'm hereee")
         
         firebaseDatabaseReference.child("Events").child(eventId).observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
