@@ -89,11 +89,14 @@ class EventCell: UITableViewCell {
             }
 
             
+            
             let currentUser = KeychainWrapper.standard.string(forKey: KEY_UID)
             goingYesReference = DataService.ds.REF_EVENTS.child(event.eventId).child("yesGoing").child(currentUser!)
             goingNoReference = DataService.ds.REF_EVENTS.child(event.eventId).child("noGoing").child(currentUser!)
 
             //set initial state when the table view loads
+            yesGoingImageView.isHidden = true
+            notGoingImageView.isHidden = true
             goingYesReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let _ = snapshot.value as? NSNull {
                     self.yesGoingImageView.image = UIImage(named: "GoingNotSelectedImage")
