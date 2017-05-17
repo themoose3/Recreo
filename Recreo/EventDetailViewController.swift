@@ -59,10 +59,6 @@ class EventDetailViewController: UIViewController, CLLocationManagerDelegate, MK
             
         }
     }
-    //setting default location to Mountain View, CA and region radius to show 5km
-    let defaultLocation = CLLocation(latitude: 37.3861, longitude: -122.0839)
-    let regionRadius: CLLocationDistance = 5000
-    let locationManager = CLLocationManager()
     var eventBackgroundImg: UIImage?
 
     override func viewDidLoad() {
