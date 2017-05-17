@@ -82,6 +82,11 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func onTapAnywhereElse(_ sender: Any) {
+        eventNameTextField.resignFirstResponder()
+        eventLocationTextField.resignFirstResponder()
+    }
+    
     @IBAction func onCancelTap(_ sender: UITapGestureRecognizer) {
          self.dismiss(animated: true, completion: nil)
     }

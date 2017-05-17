@@ -12,6 +12,7 @@
 		842F19541EC896030069FFBF /* NewMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842F19531EC896030069FFBF /* NewMenuCell.swift */; };
 		843AC2451EC4E8CC00187348 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 843AC2441EC4E8CC00187348 /* CoreLocation.framework */; };
 		8452C49F1EBDFAB60048E400 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8452C49E1EBDFAB60048E400 /* DataService.swift */; };
+		84626EBB1ECC1CA700B01D02 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84626EBA1ECC1CA700B01D02 /* FXBlurView.m */; };
 		84923E071EC7482C0065A1E6 /* CGRectEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E061EC7482C0065A1E6 /* CGRectEx.swift */; };
 		84923E091EC748680065A1E6 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E081EC748680065A1E6 /* FadeTransition.swift */; };
 		84923E0B1EC748860065A1E6 /* NSTimerEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84923E0A1EC748860065A1E6 /* NSTimerEx.swift */; };
@@ -51,7 +52,6 @@
 		B320F29C1EB703A400C5A376 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */; };
 		B320F29E1EB70C8200C5A376 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */; };
 		B320F2A21EB9978700C5A376 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B320F2A11EB9978700C5A376 /* MapKit.framework */; };
-		B3A91B051EC97C1800D5D0D6 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A91B041EC97C1800D5D0D6 /* FXBlurView.m */; };
 		B3A91B0B1ECC058A00D5D0D6 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A91B0A1ECC058A00D5D0D6 /* EventDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +62,8 @@
 		842F19531EC896030069FFBF /* NewMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMenuCell.swift; sourceTree = "<group>"; };
 		843AC2441EC4E8CC00187348 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8452C49E1EBDFAB60048E400 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		84626EB91ECC1CA700B01D02 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		84626EBA1ECC1CA700B01D02 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		84923E061EC7482C0065A1E6 /* CGRectEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectEx.swift; sourceTree = "<group>"; };
 		84923E081EC748680065A1E6 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
 		84923E0A1EC748860065A1E6 /* NSTimerEx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSTimerEx.swift; sourceTree = "<group>"; };
@@ -105,9 +107,7 @@
 		B320F29B1EB703A400C5A376 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		B320F29D1EB70C8200C5A376 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		B320F2A11EB9978700C5A376 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		B3A91B021EC97C0300D5D0D6 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FXBlurView.h; path = ../../test/TB_TwitterUI/TB_TwitterHeader/FXBlurView.h; sourceTree = "<group>"; };
 		B3A91B031EC97C1700D5D0D6 /* Recreo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Recreo-Bridging-Header.h"; sourceTree = "<group>"; };
-		B3A91B041EC97C1800D5D0D6 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FXBlurView.m; path = ../../test/TB_TwitterUI/TB_TwitterHeader/FXBlurView.m; sourceTree = "<group>"; };
 		B3A91B0A1ECC058A00D5D0D6 /* EventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -256,8 +256,8 @@
 		B3A91B011EC97BD400D5D0D6 /* Blur */ = {
 			isa = PBXGroup;
 			children = (
-				B3A91B041EC97C1800D5D0D6 /* FXBlurView.m */,
-				B3A91B021EC97C0300D5D0D6 /* FXBlurView.h */,
+				84626EB91ECC1CA700B01D02 /* FXBlurView.h */,
+				84626EBA1ECC1CA700B01D02 /* FXBlurView.m */,
 				B3A91B031EC97C1700D5D0D6 /* Recreo-Bridging-Header.h */,
 			);
 			name = Blur;
@@ -397,7 +397,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -436,9 +436,9 @@
 				84F6649F1EA8463B00044DB4 /* AppDelegate.swift in Sources */,
 				84BBE0EC1EBD018B000B92D3 /* SettingsViewController.swift in Sources */,
 				84923E091EC748680065A1E6 /* FadeTransition.swift in Sources */,
+				84626EBB1ECC1CA700B01D02 /* FXBlurView.m in Sources */,
 				84923E071EC7482C0065A1E6 /* CGRectEx.swift in Sources */,
 				84A7CEB21EB6DE640056B160 /* CustomLoginView.swift in Sources */,
-				B3A91B051EC97C1800D5D0D6 /* FXBlurView.m in Sources */,
 				842F19521EC886730069FFBF /* MenuVC.swift in Sources */,
 				B320F2901EB6DE2000C5A376 /* Message.swift in Sources */,
 				B320F28C1EB6DD3700C5A376 /* Gallery.swift in Sources */,
