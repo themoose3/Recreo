@@ -79,6 +79,7 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBAction func onTapAnywhereElse(_ sender: Any) {
         eventNameTextField.resignFirstResponder()
         eventLocationTextField.resignFirstResponder()
+        startDateTextField.resignFirstResponder()
     }
     
     @IBAction func onCancelTap(_ sender: UITapGestureRecognizer) {
@@ -141,6 +142,9 @@ class CreateEventVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     @IBAction func onStartDateTap(_ sender: Any) {
+        eventNameTextField.resignFirstResponder()
+        eventLocationTextField.resignFirstResponder()
+        startDateTextField.resignFirstResponder()
         DatePickerPopover(title: "DatePicker")
             .setDateMode(.dateAndTime)
             .setSelectedDate(Date())
