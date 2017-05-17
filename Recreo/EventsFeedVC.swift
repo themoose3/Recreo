@@ -61,7 +61,6 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                         let id = snap.key
                         if let eventHost = eventDict["eventHost"] {
                           print("Host:\(String(describing: eventHost))")
-
                           let userFromEventHost = self.getUserById(users: self.users, userId: eventHost as! String)
                           print("AVINASH: profile image url, \(userFromEventHost.profileImageUrl)")
                           print("AVINASH: sending to Event pass with id: \(id) and event host uid: \(eventHost)")
