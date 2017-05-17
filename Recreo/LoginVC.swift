@@ -12,7 +12,7 @@ import FacebookCore
 import FacebookLogin
 import SwiftKeychainWrapper
 
-class LoginVC: UIViewController, UIViewControllerTransitioningDelegate {
+class LoginVC: UIViewController, UIViewControllerTransitioningDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: LoginTextField!
     @IBOutlet weak var passwordTextField: LoginTextField!
@@ -20,6 +20,9 @@ class LoginVC: UIViewController, UIViewControllerTransitioningDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         
         signInButton.layer.cornerRadius = 25.0
         view.bringSubview(toFront: signInButton)
@@ -84,6 +87,11 @@ class LoginVC: UIViewController, UIViewControllerTransitioningDelegate {
         }
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return TKFadeInAnimator(transitionDuration: 0.5, startingAlpha: 0.8)
     }
