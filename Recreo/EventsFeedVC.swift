@@ -59,16 +59,19 @@ class EventsFeedVC: UIViewController, UITableViewDataSource, UITableViewDelegate
                     print("AVINASH: Events table, \(snap.key)")
                     if let eventDict = snap.value! as? Dictionary<String, Any> {
                         let id = snap.key
-                        let eventHost = eventDict["eventHost"]
-                        let userFromEventHost = self.getUserById(users: self.users, userId: eventHost as! String)
-                        print("AVINASH: profile image url, \(userFromEventHost.profileImageUrl)")
-                        print("AVINASH: sending to Event pass with id: \(id) and event host uid: \(eventHost!)")
-                        let event = Event(eventId: id, eventData: eventDict, user: userFromEventHost)
+                        if let eventHost = eventDict["eventHost"] {
+                          print("Host:\(String(describing: eventHost))")
+                          print("Users: \(self.users[0].email, self.users[1].email, self.users[2].email)")
+                          let userFromEventHost = self.getUserById(users: self.users, userId: eventHost as! String)
+                          print("AVINASH: profile image url, \(userFromEventHost.profileImageUrl)")
+                          print("AVINASH: sending to Event pass with id: \(id) and event host uid: \(eventHost)")
+                          let event = Event(eventId: id, eventData: eventDict, user: userFromEventHost)
                         //self.events.append(event)
-                        self.events.insert(event, at: 0)
-                        if(event.eventHost.userId == currentUserUID) {
+                          self.events.insert(event, at: 0)
+                          if(event.eventHost.userId == currentUserUID) {
                             self.hostedEvents.append(event)
                             self.shownEvents.append(event)
+                          }
                         }
                         //print("SNAPPY: \(event.eventName)")
                         //print("SNAPPY EVENT COUNT: \(self.events.count)")
